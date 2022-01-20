@@ -28,7 +28,7 @@ public static int currentId=0;
         
         JaratFoglalo newO = new JaratFoglalo();
         newO.adder("adada");
-        System.out.println(newO.test);
+        
     }
     
 }

@@ -35,17 +35,20 @@ public class jaratHome extends javax.swing.JFrame {
     
     protected void setCru(String currentUser){
         cru.setText("Username: " + currentUser);
+        System.out.println("Successful name print: "+currentUser);
         
     }
+
     protected void setAdmnOnly(int currentId){
-        
+        currId.setText(String.valueOf(currentId));
+       System.out.println("Successful ID print: " + currentId);
         //admnOnly.setText(String.valueOf(currentId));
-        if (currentId==1) {
-            admnOnly.setText("Admin commands");
-             admnOnly.setVisible(false);
+        if (currentId!=1) {
+            adminButton.setVisible(false);
+            System.out.println("User is not an admin");
         }else{
-        admnOnly.setVisible(false);
-        adminButton.setVisible(false);
+        
+       // adminButton.setVisible(false);
         }
         
     }
@@ -63,8 +66,8 @@ public class jaratHome extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         inner = new javax.swing.JTextField();
         cru = new javax.swing.JLabel();
-        admnOnly = new javax.swing.JLabel();
         adminButton = new javax.swing.JButton();
+        currId = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -79,14 +82,6 @@ public class jaratHome extends javax.swing.JFrame {
 
         cru.setText("Username:");
 
-        admnOnly.setForeground(new java.awt.Color(51, 102, 255));
-        admnOnly.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        admnOnly.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                admnOnlyMouseClicked(evt);
-            }
-        });
-
         adminButton.setText("Admin commands");
         adminButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,41 +89,41 @@ public class jaratHome extends javax.swing.JFrame {
             }
         });
 
+        currId.setText("ID:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(adminButton)
-                .addGap(48, 275, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(112, 112, 112)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1)
-                    .addComponent(inner, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(cru)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(admnOnly, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(73, 73, 73))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addComponent(currId)
+                .addGap(266, 266, 266))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(adminButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(112, 112, 112)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton1)
+                            .addComponent(inner, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addComponent(admnOnly, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(cru)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(adminButton)))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cru)
+                    .addComponent(currId))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(adminButton)
                 .addGap(44, 44, 44)
                 .addComponent(inner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -174,11 +169,6 @@ public class jaratHome extends javax.swing.JFrame {
         }   
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void admnOnlyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_admnOnlyMouseClicked
-        JaratMegtekint jr = new JaratMegtekint();
-        jr.show();
-    }//GEN-LAST:event_admnOnlyMouseClicked
-
     private void adminButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminButtonActionPerformed
         dispose();
         JaratMegtekint jr = new JaratMegtekint();
@@ -223,8 +213,8 @@ public class jaratHome extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton adminButton;
-    private javax.swing.JLabel admnOnly;
     private javax.swing.JLabel cru;
+    private javax.swing.JLabel currId;
     private javax.swing.JTextField inner;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
@@ -234,9 +224,7 @@ public class jaratHome extends javax.swing.JFrame {
     public JLabel getCru(){
         return cru;
     }
-    public JLabel getAdmnOnly(){
-        return admnOnly;
-    }
-
+    
+ 
     
 }
