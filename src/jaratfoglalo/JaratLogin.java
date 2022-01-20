@@ -124,9 +124,6 @@ public class JaratLogin extends javax.swing.JFrame{
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        JaratFoglalo newO = new JaratFoglalo();
-        System.out.println(newO.test);
-        
         
         
         try{
@@ -210,7 +207,7 @@ public class JaratLogin extends javax.swing.JFrame{
         });
     }
 
-    //fghfghfghfghfgh
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
