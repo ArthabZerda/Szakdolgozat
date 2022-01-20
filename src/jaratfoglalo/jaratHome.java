@@ -34,13 +34,13 @@ public class jaratHome extends javax.swing.JFrame {
     
     
     protected void setCru(String currentUser){
-        cru.setText("Username: " + currentUser);
+        cru.setText("CMDR " + currentUser);
         System.out.println("Successful name print: "+currentUser);
         
     }
 
     protected void setAdmnOnly(int currentId){
-        currId.setText(String.valueOf(currentId));
+        currId.setText("ID: "+String.valueOf(currentId));
        System.out.println("Successful ID print: " + currentId);
         //admnOnly.setText(String.valueOf(currentId));
         if (currentId!=1) {
