@@ -101,6 +101,11 @@ public class JaratMegtekint extends javax.swing.JFrame {
         });
 
         jButton4.setText("New System");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -235,6 +240,10 @@ public class JaratMegtekint extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         JaratAddShuttle jas = new JaratAddShuttle(); jas.show();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        JaratAddSystem jast = new JaratAddSystem(); jast.show();
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     private void listaFeltoltes(){
         try{
