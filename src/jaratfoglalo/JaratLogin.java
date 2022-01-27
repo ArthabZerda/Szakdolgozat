@@ -48,7 +48,7 @@ public class JaratLogin extends javax.swing.JFrame{
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Username:");
 
@@ -133,11 +133,14 @@ public class JaratLogin extends javax.swing.JFrame{
           
           String username = usernameField.getText();
           String password = passwordField.getText();
+            if (password.contains("passwordfield")) {
+                JaratBRUH XD = new JaratBRUH(); XD.show(); dispose();
+            }else{
           
           Statement stm = con.createStatement();
           String sql = "SELECT * FROM users WHERE userfield='"+username+"' and passwordfield='"+password+"'";
           ResultSet rs = stm.executeQuery(sql);
-          
+            
             
           
           //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
@@ -153,13 +156,13 @@ public class JaratLogin extends javax.swing.JFrame{
              name.setCru(currentUser);
              name.setAdmnOnly(currentId);
             dispose();
-              
+             
           }else{
               JOptionPane.showMessageDialog(this,"Név vagy jelszó rossz");
               usernameField.setText("");
               passwordField.setText("");
           }
-          
+           }
       } catch (ClassNotFoundException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
