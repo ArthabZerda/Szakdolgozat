@@ -271,7 +271,7 @@ public class JaratMegtekint extends javax.swing.JFrame {
           Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok","root","");
           
           String usereDeletion = jComboBox2.getItemAt(jComboBox2.getSelectedIndex());
-          String deletedUser="";
+          
           
           Statement stm = con.createStatement();
           
