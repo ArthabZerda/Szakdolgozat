@@ -305,7 +305,10 @@ public class JaratAddShuttle extends javax.swing.JFrame {
           String sql = "INSERT INTO `shuttles` (`id`, `manufacturer`,`shipName`, `maxFuel`, `eSeats`, `bSeats`, `fSeats`) VALUES (NULL, '"+mf+"','"+sN+"', '"+maxFu+"', '"+es+"', '"+bs+"', '"+fs+"')";
           stm.executeUpdate(sql);
           JOptionPane.showMessageDialog(this,"Sikeres feltöltés!'"); 
+          numberOfShips++;
+                 System.out.println("Number of ships in database has changed to: " + numberOfShips);
           System.out.println("Feltöltve: " +mf+ ", "+sN+ ", "+maxFu+ ", "+es+ ", "+bs+ ", "+fs);
+          shipListaTorol();
           SN_Field.setText("");
           manufacturers.setText("");
           MF_Field.setText("");
@@ -347,7 +350,10 @@ public class JaratAddShuttle extends javax.swing.JFrame {
           
           stm.executeUpdate("DELETE FROM `shuttles` WHERE `shuttles`.`shipname` = '"+shipDeletion+"'");
           JOptionPane.showMessageDialog(this,"Sikeres törlés"); 
+          shipListaTorol();
              System.out.println("Hajó törölve: " + shipDeletion);
+             numberOfShips--;
+             System.out.println("Number of ships in the database has changed to: " + numberOfShips);
           
           //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
           
