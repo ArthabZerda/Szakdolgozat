@@ -129,15 +129,25 @@ public class JaratRegister extends javax.swing.JFrame {
           String registerEmail = emailField.getText();
           
           Statement stm = con.createStatement();
+          String sql1 = "SELECT * FROM users WHERE userfield='"+registerName+"'";
+          ResultSet rs = stm.executeQuery(sql1);
+          if (rs.next()) {
+              System.out.println("Felhasználónév már foglalt");
+              JOptionPane.showMessageDialog(this,"Felhasználónév már foglalt!"); 
+              regUsername.setText("");
+              registerPassword1.setText("");
+              registerPassword2.setText("");
+              emailField.setText("");
+          }else{
           String sql = "INSERT INTO `users` (`id`, `userfield`, `passwordfield`, `email`) VALUES (NULL, '"+registerName+"', '"+registerPass+"', '"+registerEmail+"')";
           stm.executeUpdate(sql);
-          JOptionPane.showMessageDialog(this,"Sikeres regisztráció!'"); 
+          JOptionPane.showMessageDialog(this,"Sikeres regisztráció!"); 
           dispose();
           JaratLogin lg = new JaratLogin();
             lg.show();
           //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
           
-          
+          }
       } catch (ClassNotFoundException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {

@@ -27,99 +27,311 @@ public class JaratBRUH extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
+        jLabel38 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
+        jLabel40 = new javax.swing.JLabel();
+        jLabel41 = new javax.swing.JLabel();
+        jLabel42 = new javax.swing.JLabel();
+        jLabel43 = new javax.swing.JLabel();
+        jLabel44 = new javax.swing.JLabel();
+        jLabel45 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(0, 0, 0));
+        setPreferredSize(new java.awt.Dimension(1920, 1080));
 
-        jLabel1.setText("LOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOL");
+        jLabel14.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel14.setFont(new java.awt.Font("Viner Hand ITC", 3, 18)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel14.setText("  LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO  LMAO    ");
 
-        jLabel2.setText("LOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOL");
+        jLabel15.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel15.setFont(new java.awt.Font("Viner Hand ITC", 3, 18)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel15.setText("  LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO  LMAO    ");
 
-        jLabel3.setText("LOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOL");
+        jLabel16.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel16.setFont(new java.awt.Font("Viner Hand ITC", 3, 18)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel16.setText("  LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO  LMAO    ");
 
-        jLabel4.setText("LOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOL");
+        jLabel17.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel17.setFont(new java.awt.Font("Viner Hand ITC", 3, 18)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel17.setText("  LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO  LMAO    ");
 
-        jLabel5.setText("LOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOL");
+        jLabel18.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel18.setFont(new java.awt.Font("Viner Hand ITC", 3, 18)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel18.setText("  LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO  LMAO    ");
 
-        jLabel6.setText("LOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOL");
+        jLabel19.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel19.setFont(new java.awt.Font("Viner Hand ITC", 3, 18)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel19.setText("  LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO  LMAO    ");
 
-        jLabel7.setText("LOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOL");
+        jLabel20.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel20.setFont(new java.awt.Font("Viner Hand ITC", 3, 18)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel20.setText("  LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO  LMAO    ");
 
-        jLabel8.setText("LOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOL");
+        jLabel21.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel21.setFont(new java.awt.Font("Viner Hand ITC", 3, 18)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel21.setText("  LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO  LMAO    ");
 
-        jLabel9.setText("LOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOL");
+        jLabel22.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel22.setFont(new java.awt.Font("Viner Hand ITC", 3, 18)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel22.setText("  LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO  LMAO    ");
 
-        jLabel10.setText("LOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOL");
+        jLabel23.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel23.setFont(new java.awt.Font("Viner Hand ITC", 3, 18)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel23.setText("  LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO  LMAO    ");
 
-        jLabel11.setText("LOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOL");
+        jLabel24.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel24.setFont(new java.awt.Font("Viner Hand ITC", 3, 18)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel24.setText("  LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO  LMAO    ");
 
-        jLabel12.setText("LOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOL");
+        jLabel25.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel25.setFont(new java.awt.Font("Viner Hand ITC", 3, 18)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel25.setText("  LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO  LMAO    ");
 
-        jLabel13.setText("LOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOLLOLOLOLOL");
+        jLabel26.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel26.setFont(new java.awt.Font("Viner Hand ITC", 3, 18)); // NOI18N
+        jLabel26.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel26.setText("  LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO  LMAO    ");
+
+        jLabel27.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel27.setFont(new java.awt.Font("Viner Hand ITC", 3, 18)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel27.setText("  LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO  LMAO    ");
+
+        jLabel28.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel28.setFont(new java.awt.Font("Viner Hand ITC", 3, 18)); // NOI18N
+        jLabel28.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel28.setText("  LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO  LMAO    ");
+
+        jLabel29.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel29.setFont(new java.awt.Font("Viner Hand ITC", 3, 18)); // NOI18N
+        jLabel29.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel29.setText("  LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO  LMAO    ");
+
+        jLabel30.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel30.setFont(new java.awt.Font("Viner Hand ITC", 3, 18)); // NOI18N
+        jLabel30.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel30.setText("  LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO  LMAO    ");
+
+        jLabel31.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel31.setFont(new java.awt.Font("Viner Hand ITC", 3, 18)); // NOI18N
+        jLabel31.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel31.setText("  LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO  LMAO    ");
+
+        jLabel32.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel32.setFont(new java.awt.Font("Viner Hand ITC", 3, 18)); // NOI18N
+        jLabel32.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel32.setText("  LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO  LMAO    ");
+
+        jLabel33.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel33.setFont(new java.awt.Font("Viner Hand ITC", 3, 18)); // NOI18N
+        jLabel33.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel33.setText("  LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO  LMAO    ");
+
+        jLabel34.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel34.setFont(new java.awt.Font("Viner Hand ITC", 3, 18)); // NOI18N
+        jLabel34.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel34.setText("  LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO  LMAO    ");
+
+        jLabel35.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel35.setFont(new java.awt.Font("Viner Hand ITC", 3, 18)); // NOI18N
+        jLabel35.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel35.setText("  LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO  LMAO    ");
+
+        jLabel36.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel36.setFont(new java.awt.Font("Viner Hand ITC", 3, 18)); // NOI18N
+        jLabel36.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel36.setText("  LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO  LMAO    ");
+
+        jLabel37.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel37.setFont(new java.awt.Font("Viner Hand ITC", 3, 18)); // NOI18N
+        jLabel37.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel37.setText("  LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO  LMAO    ");
+
+        jLabel38.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel38.setFont(new java.awt.Font("Viner Hand ITC", 3, 18)); // NOI18N
+        jLabel38.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel38.setText("  LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO  LMAO    ");
+
+        jLabel39.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel39.setFont(new java.awt.Font("Viner Hand ITC", 3, 18)); // NOI18N
+        jLabel39.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel39.setText("  LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO  LMAO    ");
+
+        jLabel40.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel40.setFont(new java.awt.Font("Viner Hand ITC", 3, 18)); // NOI18N
+        jLabel40.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel40.setText("  LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO  LMAO    ");
+
+        jLabel41.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel41.setFont(new java.awt.Font("Viner Hand ITC", 3, 18)); // NOI18N
+        jLabel41.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel41.setText("  LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO  LMAO    ");
+
+        jLabel42.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel42.setFont(new java.awt.Font("Viner Hand ITC", 3, 18)); // NOI18N
+        jLabel42.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel42.setText("  LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO  LMAO    ");
+
+        jLabel43.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel43.setFont(new java.awt.Font("Viner Hand ITC", 3, 18)); // NOI18N
+        jLabel43.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel43.setText("  LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO  LMAO    ");
+
+        jLabel44.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel44.setFont(new java.awt.Font("Viner Hand ITC", 3, 18)); // NOI18N
+        jLabel44.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel44.setText("  LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO  LMAO    ");
+
+        jLabel45.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel45.setFont(new java.awt.Font("Viner Hand ITC", 3, 18)); // NOI18N
+        jLabel45.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel45.setText("  LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO   LMAO  LMAO    ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel12)
-                    .addComponent(jLabel13))
-                .addContainerGap(86, Short.MAX_VALUE))
+                    .addComponent(jLabel14)
+                    .addComponent(jLabel15)
+                    .addComponent(jLabel16)
+                    .addComponent(jLabel17)
+                    .addComponent(jLabel18)
+                    .addComponent(jLabel19)
+                    .addComponent(jLabel20)
+                    .addComponent(jLabel21)
+                    .addComponent(jLabel22)
+                    .addComponent(jLabel23)
+                    .addComponent(jLabel24)
+                    .addComponent(jLabel25)
+                    .addComponent(jLabel26)
+                    .addComponent(jLabel27)
+                    .addComponent(jLabel28)
+                    .addComponent(jLabel29)
+                    .addComponent(jLabel30)
+                    .addComponent(jLabel31)
+                    .addComponent(jLabel32)
+                    .addComponent(jLabel33)
+                    .addComponent(jLabel34)
+                    .addComponent(jLabel35)
+                    .addComponent(jLabel36)
+                    .addComponent(jLabel37)
+                    .addComponent(jLabel38)
+                    .addComponent(jLabel39)
+                    .addComponent(jLabel40)
+                    .addComponent(jLabel41)
+                    .addComponent(jLabel42)
+                    .addComponent(jLabel43)
+                    .addComponent(jLabel44)
+                    .addComponent(jLabel45))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
+                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4)
+                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
+                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel7)
+                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel6)
+                .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel8)
+                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5)
+                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel10)
+                .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel11)
+                .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel9)
+                .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel13)
+                .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel12)
+                .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel38, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel45, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel44, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel43, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel40, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel41, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel42, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel39, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -162,18 +374,37 @@ public class JaratBRUH extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
     // End of variables declaration//GEN-END:variables
 }

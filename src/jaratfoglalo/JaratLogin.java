@@ -133,7 +133,7 @@ public class JaratLogin extends javax.swing.JFrame{
           
           String username = usernameField.getText();
           String password = passwordField.getText();
-            if (password.contains("passwordfield")) {
+            if (password.contains("passwordfield") || username.contains("userfield")) {
                 JaratBRUH XD = new JaratBRUH(); XD.show(); dispose();
             }else{
           
