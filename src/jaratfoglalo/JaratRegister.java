@@ -126,14 +126,27 @@ public class JaratRegister extends javax.swing.JFrame {
           
           String registerName = regUsername.getText();
           String registerPass = registerPassword2.getText();
+          String rgel = registerPassword1.getText();
           String registerEmail = emailField.getText();
           
           Statement stm = con.createStatement();
           String sql1 = "SELECT * FROM users WHERE userfield='"+registerName+"'";
           ResultSet rs = stm.executeQuery(sql1);
+            if (registerName=="" || registerPass=="" || registerEmail=="") {
+                 System.out.println("All fields has to be filled out!");
+              JOptionPane.showMessageDialog(this,"All fields has to be filled out!"); 
+            }else{
+            if (!rgel.matches(registerPass)) {
+                System.out.println("Given password do not match");
+              JOptionPane.showMessageDialog(this,"Given password do not match!"); 
+              regUsername.setText("");
+              registerPassword1.setText("");
+              registerPassword2.setText("");
+              emailField.setText("");
+            }else{
           if (rs.next()) {
-              System.out.println("Felhasználónév már foglalt");
-              JOptionPane.showMessageDialog(this,"Felhasználónév már foglalt!"); 
+              System.out.println("Username is already taken!");
+              JOptionPane.showMessageDialog(this,"Username is already taken!"); 
               regUsername.setText("");
               registerPassword1.setText("");
               registerPassword2.setText("");
@@ -146,8 +159,8 @@ public class JaratRegister extends javax.swing.JFrame {
           JaratLogin lg = new JaratLogin();
             lg.show();
           //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
-          
           }
+          }}
       } catch (ClassNotFoundException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
