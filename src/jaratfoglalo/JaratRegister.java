@@ -120,53 +120,59 @@ public class JaratRegister extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
-        try{
-          Class.forName("com.mysql.cj.jdbc.Driver");
-          Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok","root","");
-          
-          String registerName = regUsername.getText();
-          String registerPass = registerPassword2.getText();
-          String rgel = registerPassword1.getText();
-          String registerEmail = emailField.getText();
-          
-          Statement stm = con.createStatement();
-          String sql1 = "SELECT * FROM users WHERE userfield='"+registerName+"'";
-          ResultSet rs = stm.executeQuery(sql1);
-            if (registerName=="" || registerPass=="" || registerEmail=="") {
-                 System.out.println("All fields has to be filled out!");
-              JOptionPane.showMessageDialog(this,"All fields has to be filled out!"); 
-            }else{
-            if (!rgel.matches(registerPass)) {
-                System.out.println("Given password do not match");
-              JOptionPane.showMessageDialog(this,"Given password do not match!"); 
-              regUsername.setText("");
-              registerPassword1.setText("");
-              registerPassword2.setText("");
-              emailField.setText("");
-            }else{
-          if (rs.next()) {
-              System.out.println("Username is already taken!");
-              JOptionPane.showMessageDialog(this,"Username is already taken!"); 
-              regUsername.setText("");
-              registerPassword1.setText("");
-              registerPassword2.setText("");
-              emailField.setText("");
-          }else{
-          String sql = "INSERT INTO `users` (`id`, `userfield`, `passwordfield`, `email`) VALUES (NULL, '"+registerName+"', '"+registerPass+"', '"+registerEmail+"')";
-          stm.executeUpdate(sql);
-          JOptionPane.showMessageDialog(this,"Sikeres regisztráció!"); 
-          dispose();
-          JaratLogin lg = new JaratLogin();
-            lg.show();
-          //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
-          }
-          }}
-      } catch (ClassNotFoundException ex) {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
+
+            String registerName = regUsername.getText();
+            String registerPass = registerPassword2.getText();
+            String rgel = registerPassword1.getText();
+            String registerEmail = emailField.getText();
+
+            Statement stm = con.createStatement();
+            String sql1 = "SELECT * FROM users WHERE userfield='" + registerName + "'";
+            ResultSet rs = stm.executeQuery(sql1);
+            if (!registerEmail.contains("@") || !registerEmail.contains(".")) {
+                System.out.println("Invalid email");
+                JOptionPane.showMessageDialog(this, "Please enter a valid email");
+            } else {
+                if (registerName == "" || registerPass == "" || registerEmail == "") {
+                    System.out.println("All fields has to be filled out!");
+                    JOptionPane.showMessageDialog(this, "All fields has to be filled out!");
+                } else {
+                    if (!rgel.matches(registerPass)) {
+                        System.out.println("Given password do not match");
+                        JOptionPane.showMessageDialog(this, "Given password do not match!");
+                        regUsername.setText("");
+                        registerPassword1.setText("");
+                        registerPassword2.setText("");
+                        emailField.setText("");
+                    } else {
+                        if (rs.next()) {
+                            System.out.println("Username is already taken!");
+                            JOptionPane.showMessageDialog(this, "Username is already taken!");
+                            regUsername.setText("");
+                            registerPassword1.setText("");
+                            registerPassword2.setText("");
+                            emailField.setText("");
+                        } else {
+                            String sql = "INSERT INTO `users` (`id`, `userfield`, `passwordfield`, `email`) VALUES (NULL, '" + registerName + "', '" + registerPass + "', '" + registerEmail + "')";
+                            stm.executeUpdate(sql);
+                            JOptionPane.showMessageDialog(this, "Sikeres regisztráció!");
+                            dispose();
+                            JaratLogin lg = new JaratLogin();
+                            lg.show();
+                            //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
+                        }
+                    }
+                }
+            }
+        } catch (ClassNotFoundException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         }        // TODO add your handling code here:
-      
+
     }//GEN-LAST:event_registerButtonActionPerformed
 
     private void regUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regUsernameActionPerformed
@@ -220,4 +226,3 @@ public class JaratRegister extends javax.swing.JFrame {
     private javax.swing.JPasswordField registerPassword2;
     // End of variables declaration//GEN-END:variables
 }
-
