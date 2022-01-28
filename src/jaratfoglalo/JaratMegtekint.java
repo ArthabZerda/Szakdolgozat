@@ -7,6 +7,8 @@ package jaratfoglalo;
 import static jaratfoglalo.JaratFoglalo.bruh;
 import static jaratfoglalo.JaratFoglalo.currentId;
 import static jaratfoglalo.JaratFoglalo.currentUser;
+
+import static jaratfoglalo.JaratFoglalo.testerInt;
 import jaratfoglalo.jaratHome;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -30,6 +32,7 @@ public class JaratMegtekint extends javax.swing.JFrame {
     public JaratMegtekint() {
         initComponents();
         listaFeltoltes();
+        
     }
 
     /**
@@ -269,8 +272,11 @@ public class JaratMegtekint extends javax.swing.JFrame {
           Statement stm = con.createStatement();
           String sql = "SELECT `userfield` FROM users WHERE 1";
           ResultSet rs = stm.executeQuery(sql);
+          
           String mezon = "userfield";
-          String [] record = new String[100];
+           
+          String [] record = new String[testerInt];
+            
           int index=0;
           while (rs.next()) {
                 record[index++]=rs.getString(mezon);

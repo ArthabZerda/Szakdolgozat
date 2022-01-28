@@ -17,6 +17,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import static jaratfoglalo.JaratFoglalo.currentUser;
 import static jaratfoglalo.JaratFoglalo.currentId;
+import static jaratfoglalo.JaratFoglalo.cntr;
+import static jaratfoglalo.JaratFoglalo.testerInt;
 /**
  *
  * @author Bakcsányi Dominik
@@ -25,6 +27,7 @@ public class jaratHome extends javax.swing.JFrame {
 
     public String a;
     public int cSeged=0;
+    
     /**
      * Creates new form jaratHome
      */
@@ -137,6 +140,7 @@ public class jaratHome extends javax.swing.JFrame {
      
         
         try{
+            
           Class.forName("com.mysql.cj.jdbc.Driver");
           Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok","root","");
           int ine=Integer.parseInt(inner.getText());
@@ -169,6 +173,23 @@ public class jaratHome extends javax.swing.JFrame {
         dispose();
         JaratMegtekint jr = new JaratMegtekint();
         jr.show();
+        try{
+            
+            Class.forName("com.mysql.cj.jdbc.Driver");
+          Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok","root","");
+          
+          Statement stm = con.createStatement();
+          String sql = "SELECT `userfield` FROM users WHERE 1";
+          ResultSet rs = stm.executeQuery(sql);
+          
+          
+        
+          
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+        }   
         // TODO add your handling code here:
     }//GEN-LAST:event_adminButtonActionPerformed
 

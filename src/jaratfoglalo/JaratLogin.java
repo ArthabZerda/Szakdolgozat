@@ -15,6 +15,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import static jaratfoglalo.JaratFoglalo.currentUser;
 import static jaratfoglalo.JaratFoglalo.currentId;
+import static jaratfoglalo.JaratFoglalo.testerInt;
 /**
  *
  * @author Bakcsányi Dominik
@@ -127,7 +128,8 @@ public class JaratLogin extends javax.swing.JFrame{
         
         
         try{
-           
+            
+            
           Class.forName("com.mysql.cj.jdbc.Driver");
           Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok","root","");
           
@@ -144,6 +146,8 @@ public class JaratLogin extends javax.swing.JFrame{
             
           
           //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
+          
+          
           if (rs.next()) {
             jaratHome name=new jaratHome();
             name.setVisible(true);
