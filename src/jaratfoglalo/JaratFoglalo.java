@@ -31,6 +31,7 @@ public static String currentUser="no conn";
 public static int currentId=0;
 
 public static int testerInt=0;
+public static int numberOfShips=0;
     
     
     public static void main(String[] args) {
@@ -53,6 +54,27 @@ public static int testerInt=0;
           }
          
             System.out.println("Number of Users in the database is: " + testerInt);
+            
+          
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        try{
+            
+            Class.forName("com.mysql.cj.jdbc.Driver");
+          Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok","root","");
+          
+          Statement stm = con.createStatement();
+          String sql = "SELECT `shipName` FROM shuttles WHERE 1";
+          ResultSet rs = stm.executeQuery(sql);
+          
+          while(rs.next()){
+              numberOfShips++;
+          }
+         
+            System.out.println("Number of Ships in the database is: " + numberOfShips);
             
           
         } catch (ClassNotFoundException ex) {
