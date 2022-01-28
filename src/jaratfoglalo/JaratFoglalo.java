@@ -29,7 +29,7 @@ public class JaratFoglalo extends Tester{
 public static String bruh="nem jó";
 public static String currentUser="no conn";
 public static int currentId=0;
-public static int cntr=0;
+
 public static int testerInt=0;
     
     
@@ -49,9 +49,9 @@ public static int testerInt=0;
           ResultSet rs = stm.executeQuery(sql);
           
           while(rs.next()){
-              cntr++;
+              testerInt++;
           }
-          testerInt=cntr;
+         
             System.out.println("Number of Users in the database is: " + testerInt);
             
           

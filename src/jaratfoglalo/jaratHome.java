@@ -17,7 +17,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import static jaratfoglalo.JaratFoglalo.currentUser;
 import static jaratfoglalo.JaratFoglalo.currentId;
-import static jaratfoglalo.JaratFoglalo.cntr;
 import static jaratfoglalo.JaratFoglalo.testerInt;
 /**
  *
