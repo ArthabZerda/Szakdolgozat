@@ -307,7 +307,7 @@ public class JaratAddShuttle extends javax.swing.JFrame {
           JOptionPane.showMessageDialog(this,"Sikeres feltöltés!'"); 
           numberOfShips++;
                  System.out.println("Number of ships in database has changed to: " + numberOfShips);
-          System.out.println("Feltöltve: " +mf+ ", "+sN+ ", "+maxFu+ ", "+es+ ", "+bs+ ", "+fs);
+          System.out.println("Feltöltve: " + "\nManufacturer: " +mf+ "\nShip Name: "+sN+ "\nMaxFuel: "+maxFu+ "\nEconomy Seats"+es+ "\nBusiness Seats: "+bs+ "\nFirst Class Seats: "+fs);
           shipListaTorol();
           SN_Field.setText("");
           manufacturers.setText("");
