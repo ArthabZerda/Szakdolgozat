@@ -321,8 +321,15 @@ public class JaratAddShuttle extends javax.swing.JFrame {
           
       } catch (ClassNotFoundException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+            
         } catch (SQLException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this,"Invalid values were given!"); 
+            
+          MF_Field.setText("");
+          ES_Field.setText("");
+          BS_Field.setText("");
+          FCS_Field.setText("");
         }       
          
     }//GEN-LAST:event_jButton1ActionPerformed
