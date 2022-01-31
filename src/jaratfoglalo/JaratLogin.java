@@ -16,6 +16,7 @@ import javax.swing.JOptionPane;
 import static jaratfoglalo.JaratFoglalo.currentUser;
 import static jaratfoglalo.JaratFoglalo.currentId;
 import static jaratfoglalo.JaratFoglalo.testerInt;
+import static jaratfoglalo.JaratFoglalo.level;
 /**
  *
  * @author Bakcsányi Dominik
@@ -50,6 +51,7 @@ public class JaratLogin extends javax.swing.JFrame{
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jLabel1.setText("Username:");
 
@@ -156,7 +158,8 @@ public class JaratLogin extends javax.swing.JFrame{
             currentId=rs.getInt("id");
               System.out.println("Current User: " + currentUser);
               System.out.println("Current User_Id: " + currentId);
-              
+              level=rs.getString("clearance");
+              System.out.println("User clearance level: " + level);
              name.setCru(currentUser);
              name.setAdmnOnly(currentId);
             dispose();

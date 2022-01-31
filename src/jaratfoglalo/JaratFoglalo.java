@@ -32,6 +32,7 @@ public static int currentId=0;
 
 public static int testerInt=0;
 public static int numberOfShips=0;
+public static String level="";
     
     
     public static void main(String[] args) {

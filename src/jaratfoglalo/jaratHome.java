@@ -18,6 +18,7 @@ import javax.swing.JOptionPane;
 import static jaratfoglalo.JaratFoglalo.currentUser;
 import static jaratfoglalo.JaratFoglalo.currentId;
 import static jaratfoglalo.JaratFoglalo.testerInt;
+import static jaratfoglalo.JaratFoglalo.level;
 /**
  *
  * @author Bakcsányi Dominik
@@ -39,13 +40,14 @@ public class jaratHome extends javax.swing.JFrame {
         cru.setText("CMDR " + currentUser);
         System.out.println("Successful name print: "+currentUser);
         
+        
     }
 
     protected void setAdmnOnly(int currentId){
         currId.setText("ID: "+String.valueOf(currentId));
        System.out.println("Successful ID print: " + currentId);
         //admnOnly.setText(String.valueOf(currentId));
-        if (currentId!=1) {
+        if (!level.matches("O5")) {
             adminButton.setVisible(false);
             System.out.println("User is not an admin");
         }else{
@@ -72,6 +74,7 @@ public class jaratHome extends javax.swing.JFrame {
         currId = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jButton1.setText("jButton1");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
