@@ -298,7 +298,9 @@ public class JaratMegtekint extends javax.swing.JFrame {
           int index=0;
           while (rs.next()) {
               if (rs.getString("clearance").matches("O5")) {
-                  
+                  System.out.println("Not listing O5's");
+              }else if(currentUser.matches(rs.getString("userfield"))){
+                  System.out.println("Can't list current user");
               }else{
                 record[index++]=rs.getString(mezon);
               } 
