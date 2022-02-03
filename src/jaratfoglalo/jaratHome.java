@@ -38,20 +38,17 @@ public class jaratHome extends javax.swing.JFrame {
     
     protected void setCru(String currentUser){
         cru.setText("CMDR " + currentUser);
-       
-        
-        
     }
 
     protected void setAdmnOnly(int currentId){
         currId.setText("ID: "+String.valueOf(currentId));
        
         //admnOnly.setText(String.valueOf(currentId));
-        if (!level.matches("O5")) {
+        if (level.matches("L0")) {
             adminButton.setVisible(false);
             System.out.println("User is not an admin");
         }else{
-        
+            System.out.println("User classified as admin");
        // adminButton.setVisible(false);
         }
         

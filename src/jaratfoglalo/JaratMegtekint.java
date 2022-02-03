@@ -288,7 +288,7 @@ public class JaratMegtekint extends javax.swing.JFrame {
           Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok","root","");
           
           Statement stm = con.createStatement();
-          String sql = "SELECT `userfield` FROM users WHERE 1";
+          String sql = "SELECT * FROM users WHERE 1";
           ResultSet rs = stm.executeQuery(sql);
           
           String mezon = "userfield";
@@ -297,8 +297,11 @@ public class JaratMegtekint extends javax.swing.JFrame {
             
           int index=0;
           while (rs.next()) {
+              if (rs.getString("clearance").matches("O5")) {
+                  
+              }else{
                 record[index++]=rs.getString(mezon);
-              
+              } 
           }
           jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(record));
         } catch (ClassNotFoundException ex) {
