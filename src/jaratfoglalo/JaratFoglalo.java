@@ -63,6 +63,7 @@ public static String level="";
           
           while(rs.next()){
               testerInt++;
+              
           }
          testerInt++;
             System.out.println("Number of Users in the database is: " + testerInt);

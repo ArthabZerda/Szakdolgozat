@@ -28,6 +28,7 @@ public class JaratAddAdmin extends javax.swing.JFrame {
      */
     public JaratAddAdmin() {
         initComponents();
+        numFix();
         listaFeltoltes();
     }
 
@@ -136,6 +137,33 @@ public class JaratAddAdmin extends javax.swing.JFrame {
             }
         });
     }
+    private void numFix(){
+    try{
+            
+            Class.forName("com.mysql.cj.jdbc.Driver");
+          Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok","root","");
+          
+          Statement stm = con.createStatement();
+          String sql = "SELECT * FROM users WHERE 1";
+          ResultSet rs = stm.executeQuery(sql);
+          
+          while(rs.next()){
+              if (rs.getString("clearance").matches("L4") || rs.getString("clearance").matches("O5")) {
+                  testerInt--;
+              }
+              
+              
+          }
+        
+            
+          
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+    }
+    
     private void listaFeltoltes(){
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -147,14 +175,17 @@ public class JaratAddAdmin extends javax.swing.JFrame {
           
           String mezon = "userfield";
            
+                
+            
           String [] record = new String[testerInt];
             
           int index=0;
           while (rs.next()) {
-              if (currentUser.matches(rs.getString("userfield"))) {
-                  
-              }else if(rs.getString("clearance").matches("L4") ){
               
+              if (currentUser.matches(rs.getString("userfield"))) {
+                  System.out.println("Not listing current user");
+              }else if(rs.getString("clearance").matches("L4") || rs.getString("clearance").matches("O5") ){
+                  System.out.println("Not listing: " + rs.getString("userfield") + "-" + rs.getString("clearance"));
               }else{
                 record[index++]=rs.getString(mezon);
               }
