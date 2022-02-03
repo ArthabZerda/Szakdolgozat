@@ -29,6 +29,7 @@ public class JaratAddAdmin extends javax.swing.JFrame {
     public JaratAddAdmin() {
         initComponents();
         numFix();
+        testerInt--;
         listaFeltoltes();
     }
 
