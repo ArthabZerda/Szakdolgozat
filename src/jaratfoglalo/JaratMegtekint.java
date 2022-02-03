@@ -280,6 +280,7 @@ public class JaratMegtekint extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         JaratAddAdmin aa = new JaratAddAdmin();
         aa.show();
+        dispose();  
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void listaFeltoltes(){
@@ -310,7 +311,8 @@ public class JaratMegtekint extends javax.swing.JFrame {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
-        }   
+        }
+         
     }
     
     /**

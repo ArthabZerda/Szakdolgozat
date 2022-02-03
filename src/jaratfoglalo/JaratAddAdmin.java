@@ -22,14 +22,14 @@ import javax.swing.JOptionPane;
  * @author Bakcsányi Dominik
  */
 public class JaratAddAdmin extends javax.swing.JFrame {
-
+protected static int userNumList;
     /**
      * Creates new form JaratAddAdmin
      */
     public JaratAddAdmin() {
         initComponents();
         numFix();
-        testerInt--;
+        userNumList--;
         listaFeltoltes();
     }
 
@@ -44,13 +44,21 @@ public class JaratAddAdmin extends javax.swing.JFrame {
 
         jComboBox1 = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jButton1.setText("jButton1");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Return");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
             }
         });
 
@@ -64,6 +72,10 @@ public class JaratAddAdmin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
                 .addContainerGap(129, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addGap(41, 41, 41))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -72,7 +84,9 @@ public class JaratAddAdmin extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
-                .addContainerGap(93, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -103,6 +117,12 @@ public class JaratAddAdmin extends javax.swing.JFrame {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        JaratMegtekint jr = new JaratMegtekint();jr.show();
+        dispose();
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -148,14 +168,16 @@ public class JaratAddAdmin extends javax.swing.JFrame {
           String sql = "SELECT * FROM users WHERE 1";
           ResultSet rs = stm.executeQuery(sql);
           
+          userNumList = testerInt;
+          
           while(rs.next()){
               if (rs.getString("clearance").matches("L4") || rs.getString("clearance").matches("O5")) {
-                  testerInt--;
+                  userNumList--;
               }
               
               
           }
-        
+        System.out.println("None admin users: " + userNumList);
             
           
         } catch (ClassNotFoundException ex) {
@@ -178,7 +200,7 @@ public class JaratAddAdmin extends javax.swing.JFrame {
            
                 
             
-          String [] record = new String[testerInt];
+          String [] record = new String[userNumList];
             
           int index=0;
           while (rs.next()) {
@@ -201,6 +223,7 @@ public class JaratAddAdmin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
     // End of variables declaration//GEN-END:variables
 }
