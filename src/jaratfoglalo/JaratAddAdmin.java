@@ -6,6 +6,7 @@
 package jaratfoglalo;
 
 
+import static jaratfoglalo.JaratFoglalo.currentUser;
 import static jaratfoglalo.JaratFoglalo.testerInt;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -150,8 +151,11 @@ public class JaratAddAdmin extends javax.swing.JFrame {
             
           int index=0;
           while (rs.next()) {
+              if (currentUser.matches(rs.getString("userfield"))) {
+                  
+              }else{
                 record[index++]=rs.getString(mezon);
-              
+              }
           }
           jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(record));
         } catch (ClassNotFoundException ex) {
