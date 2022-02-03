@@ -142,7 +142,7 @@ public class JaratAddAdmin extends javax.swing.JFrame {
           Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok","root","");
           
           Statement stm = con.createStatement();
-          String sql = "SELECT `userfield` FROM users WHERE 1";
+          String sql = "SELECT * FROM users WHERE 1";
           ResultSet rs = stm.executeQuery(sql);
           
           String mezon = "userfield";
@@ -153,6 +153,8 @@ public class JaratAddAdmin extends javax.swing.JFrame {
           while (rs.next()) {
               if (currentUser.matches(rs.getString("userfield"))) {
                   
+              }else if(rs.getString("clearance").matches("L4") ){
+              
               }else{
                 record[index++]=rs.getString(mezon);
               }
