@@ -266,6 +266,7 @@ public class JaratLogin extends javax.swing.JFrame{
           if (rs.next()) {
             jaratHome name=new jaratHome();
             name.setVisible(true);
+            name.setLocationRelativeTo(null);
             
             currentUser=rs.getString("userfield");
             currentId=rs.getInt("id");

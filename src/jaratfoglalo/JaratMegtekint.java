@@ -55,6 +55,7 @@ public class JaratMegtekint extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -123,6 +124,13 @@ public class JaratMegtekint extends javax.swing.JFrame {
             }
         });
 
+        jButton6.setText("Create Route");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -137,7 +145,8 @@ public class JaratMegtekint extends javax.swing.JFrame {
                                 .addComponent(jButton3)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel2))
-                            .addComponent(jButton1)))
+                            .addComponent(jButton1)
+                            .addComponent(jButton6)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addComponent(deleteUser)
@@ -186,7 +195,9 @@ public class JaratMegtekint extends javax.swing.JFrame {
                         .addComponent(jButton4)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton6)
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         pack();
@@ -283,6 +294,12 @@ public class JaratMegtekint extends javax.swing.JFrame {
         dispose();  
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        JaratAddJarat b = new JaratAddJarat();
+        b.show();
+        dispose(); 
+    }//GEN-LAST:event_jButton6ActionPerformed
+
     private void listaFeltoltes(){
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -360,6 +377,7 @@ public class JaratMegtekint extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

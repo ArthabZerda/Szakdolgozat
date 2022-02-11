@@ -33,6 +33,7 @@ public class jaratHome extends javax.swing.JFrame {
      */
     public jaratHome() {
         initComponents();
+        
     }
     
     
@@ -47,6 +48,7 @@ public class jaratHome extends javax.swing.JFrame {
         if (level.matches("L0")) {
             adminButton.setVisible(false);
             System.out.println("User is not an admin");
+            
         }else{
             System.out.println("User classified as admin");
        // adminButton.setVisible(false);

@@ -1,2 +1,0 @@
-jaratfoglalo.Tester
-jaratfoglalo.JaratFoglalo
