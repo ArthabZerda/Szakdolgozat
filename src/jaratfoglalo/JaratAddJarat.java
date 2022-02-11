@@ -105,15 +105,13 @@ public class JaratAddJarat extends javax.swing.JFrame {
          int currentUser;
           //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
          
-          String sS;
-          String sF;
-          String sT;
+         
           while(rs.next()) {
-             System.out.println(rs.getString("systems.systemName"));
              System.out.println(rs.getString("shuttles.shipName"));
-             sS=rs.getString("shuttles.shipName");
-             sS=rs.getString("systems.systemName");
-             sS=rs.getString("systems.systemName");
+             System.out.println(rs.getString("systems.systemName")+" : " + rs.getString("systems.starportName"));
+            
+           
+            
           }
           
           
@@ -145,12 +143,12 @@ public class JaratAddJarat extends javax.swing.JFrame {
          
           Statement stm = con.createStatement();
         String selectedTo = toBox.getItemAt(toBox.getSelectedIndex());
-          ResultSet rs = stm.executeQuery("SELECT `systemName` FROM `systems` WHERE systemName LIKE '"+selectedTo+"'");
+          ResultSet rs = stm.executeQuery("SELECT `systemName` , `starportName` FROM `systems` WHERE systemName LIKE '"+selectedTo+"'");
           int segedc =0;
          int currentUser;
           //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
          while(rs.next()) {
-             System.out.println(rs.getString("systemName"));
+             System.out.println(rs.getString("systemName")+" : " + rs.getString("starportName"));
              
           }
             
