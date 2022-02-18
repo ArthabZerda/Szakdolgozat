@@ -15,6 +15,7 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -45,6 +46,7 @@ public class JaratAddJarat extends javax.swing.JFrame {
         toBox = new javax.swing.JComboBox<>();
         fromBox = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -61,12 +63,12 @@ public class JaratAddJarat extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(65, 65, 65)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(shipBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(toBox, 0, 116, Short.MAX_VALUE)
-                        .addComponent(fromBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(shipBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(toBox, 0, 116, Short.MAX_VALUE)
+                    .addComponent(fromBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(226, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -78,9 +80,11 @@ public class JaratAddJarat extends javax.swing.JFrame {
                 .addComponent(fromBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(17, 17, 17)
                 .addComponent(toBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(13, 13, 13)
                 .addComponent(jButton1)
-                .addContainerGap(99, Short.MAX_VALUE))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
 
         pack();
@@ -97,6 +101,11 @@ public class JaratAddJarat extends javax.swing.JFrame {
          System.out.println("Selecteds ship is: " + selectedShip);
          System.out.println("Selecteds from is: " + selectedFrom);
          System.out.println("Selecteds to is: " + selectedTo);
+         String selectedDate =((JTextField)jDateChooser1.getDateEditor().getUiComponent()).getText();
+         selectedDate = selectedDate.replaceAll("[.]", "-");
+         selectedDate = selectedDate.substring(0, selectedDate.length() - 1);
+         System.out.println("Departure date: " + selectedDate);
+          
          Statement stm = con.createStatement();
          ResultSet rs = stm.executeQuery("SELECT systems.systemName , systems.starportName, systems.solDistance, shuttles.shipName, shuttles.maxFuel, shuttles.eSeats, shuttles.bSeats, shuttles.fSeats FROM shuttles , systems WHERE shuttles.shipName LIKE '"+selectedShip+"' AND systems.systemName LIKE '"+selectedFrom+"'" );
         // ResultSet rs2 = stm.executeQuery("SELECT `systemName`,`starportName`,`solDistance` FROM `systems` WHERE systemName='"+selectedFrom+"'" );
@@ -268,6 +277,7 @@ public class JaratAddJarat extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> fromBox;
     private javax.swing.JButton jButton1;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JComboBox<String> shipBox;
     private javax.swing.JComboBox<String> toBox;
     // End of variables declaration//GEN-END:variables
