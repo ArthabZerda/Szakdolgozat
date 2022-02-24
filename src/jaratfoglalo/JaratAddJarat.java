@@ -307,7 +307,7 @@ public class JaratAddJarat extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Departure and Arrival location can NOT be the same\n(Data not uploaded)");
             }else if(selFuel<solD){
               JOptionPane.showMessageDialog(this, "Insuficient fuel for this distance\nPlease choose a ship with a fuel capacity above " + solD + " Tons!");
-                System.out.println("asdasdf: " + selFuel + ":::: " +solD);
+              
             
             }else{
           String sql = "INSERT INTO `routes` (`id`, `fromS`, `toS`, `ship`, `mfuel`, `date` ,`economy`, `business` , `first`) VALUES (NULL, '" + selectedFr + "', '" + selTo + "', '" + selShip + "', '" + selFuel + "', '" + selectedDate + "', '" + seco + "', '" + sebu + "', '" + sefi + "')";
