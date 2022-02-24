@@ -30,6 +30,9 @@ public class JaratAddJarat extends javax.swing.JFrame {
      protected String toPort = "";
     protected String selTo = "";
     protected String selShip = "";
+    protected int fromD =0;
+    protected int toD =0;
+    protected int solD =0;
     protected int selFuel = 0;
     protected int seco = 0;
     protected int sebu = 0;
@@ -232,6 +235,7 @@ public class JaratAddJarat extends javax.swing.JFrame {
             seco = rs.getInt("shuttles.eSeats");
             sebu = rs.getInt("shuttles.bSeats");
             sefi = rs.getInt("shuttles.fSeats");
+            fromD = rs.getInt("systems.solDistance");
           }
           
           
@@ -263,7 +267,7 @@ public class JaratAddJarat extends javax.swing.JFrame {
          
           Statement stm = con.createStatement();
         String selectedTo = toBox.getItemAt(toBox.getSelectedIndex());
-          ResultSet rs = stm.executeQuery("SELECT `systemName` , `starportName` FROM `systems` WHERE systemName LIKE '"+selectedTo+"'");
+          ResultSet rs = stm.executeQuery("SELECT `systemName` , `starportName` , `solDistance` FROM `systems` WHERE systemName LIKE '"+selectedTo+"'");
           int segedc =0;
          int currentUser;
           //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
@@ -271,6 +275,8 @@ public class JaratAddJarat extends javax.swing.JFrame {
              System.out.println(rs.getString("systemName")+" : " + rs.getString("starportName"));
              selTo=rs.getString("systemName");
              toPort = rs.getString("starportName");
+             toD = rs.getInt("solDistance");
+             
           }
           System.out.println("Selected items: " + selectedFr  + " : " + fromPort + " : " + selTo + " : " + fromPort + " : " + selShip   + " : " + selFuel
              + " : " + seco  + " : " + sebu + " : " + sefi);
@@ -284,10 +290,13 @@ public class JaratAddJarat extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         } 
+        if (toD>fromD) {
+          solD=toD-fromD;  
+        }else solD=fromD-toD; 
         
         
-        
-        
+        System.out.println("Sol distance: " + solD);
+        solD = solD/10;
         try{
           Class.forName("com.mysql.cj.jdbc.Driver");
           Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok","root","");
@@ -296,10 +305,14 @@ public class JaratAddJarat extends javax.swing.JFrame {
             if (selectedFr.matches(selTo)) {
                 System.out.println("HIBAAA");
                 JOptionPane.showMessageDialog(this, "Departure and Arrival location can NOT be the same\n(Data not uploaded)");
+            }else if(selFuel<solD){
+              JOptionPane.showMessageDialog(this, "Insuficient fuel for this distance\nPlease choose a ship with a fuel capacity above " + solD + " Tons!");
+                System.out.println("asdasdf: " + selFuel + ":::: " +solD);
+            
             }else{
           String sql = "INSERT INTO `routes` (`id`, `fromS`, `toS`, `ship`, `mfuel`, `date` ,`economy`, `business` , `first`) VALUES (NULL, '" + selectedFr + "', '" + selTo + "', '" + selShip + "', '" + selFuel + "', '" + selectedDate + "', '" + seco + "', '" + sebu + "', '" + sefi + "')";
           stm.executeUpdate(sql);
-          
+           System.out.println("asdasdf: " + selFuel + ":::: " +solD);
             }
        //INSERT INTO `routes` (`id`, `fromS`, `toS`, `ship`, `mfuel`, `date` ,`economy`, `business` , `first`) VALUES (NULL, '" + selectedFr + "', '" + selTo + "', '" + selShip + "', '" + selFuel + "', '" + selectedDate + "', '" + seco + "', '" + sebu + "', '" + sefi + "')"
           
