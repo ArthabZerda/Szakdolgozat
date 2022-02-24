@@ -5,6 +5,7 @@
  */
 package jaratfoglalo;
 
+import static jaratfoglalo.JaratFoglalo.numberOfSystems;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -144,6 +145,8 @@ public class JaratAddSystem extends javax.swing.JFrame {
           StarportName.setText("");
           DFS.setText("");
           FSS.setText("");
+          
+          numberOfSystems++;
           
           //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
           
