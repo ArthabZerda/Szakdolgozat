@@ -25,9 +25,11 @@ public class JaratRoutes extends javax.swing.JFrame {
     /**
      * Creates new form JaratRoutes
      */
+    protected static int selId=1;
     public JaratRoutes() {
         initComponents();
         lista();
+        
     }
 
     /**
@@ -49,6 +51,7 @@ public class JaratRoutes extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,9 +60,14 @@ public class JaratRoutes extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Departure", "Destination", "Launch Date"
+                "Departure", "Destination", "Launch Date", "id"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jPanel1.setBackground(new java.awt.Color(255, 102, 0));
@@ -102,6 +110,8 @@ public class JaratRoutes extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setText("jButton2");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -111,7 +121,9 @@ public class JaratRoutes extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(66, 66, 66)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(61, 61, 61)
+                        .addComponent(jButton2))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(62, 62, 62)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -124,7 +136,7 @@ public class JaratRoutes extends javax.swing.JFrame {
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addContainerGap(102, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -138,9 +150,15 @@ public class JaratRoutes extends javax.swing.JFrame {
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(47, 47, 47))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addComponent(jButton2)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         pack();
@@ -157,9 +175,9 @@ public class JaratRoutes extends javax.swing.JFrame {
           String dep=jTextField1.getText();
           String arri=jTextField2.getText();
           Statement stm = con.createStatement();
-          String sql = "SELECT `fromS`,`toS`,`date` FROM `routes` WHERE `fromS` LIKE '%"+dep+"%' AND `toS` LIKE '%"+arri+"%'";
+          String sql = "SELECT `id`,`fromS`,`toS`,`date` FROM `routes` WHERE `fromS` LIKE '%"+dep+"%' AND `toS` LIKE '%"+arri+"%'";
           ResultSet rs = stm.executeQuery(sql);
-          Object rowData[] = new Object[3];
+          Object rowData[] = new Object[4];
           DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
          
           while (rs.next()) {
@@ -167,6 +185,8 @@ public class JaratRoutes extends javax.swing.JFrame {
                 rowData[0] = rs.getString("fromS");
                 rowData[1] = rs.getString("toS");
                 rowData[2] = rs.getString("date");
+                 rowData[3] = rs.getString("id");
+                
                 model.addRow(rowData);
               
           }
@@ -178,6 +198,43 @@ public class JaratRoutes extends javax.swing.JFrame {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         }   
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+        
+        selId = jTable1.getSelectedRow()+1;
+        System.out.println(selId);
+         try{
+          Class.forName("com.mysql.cj.jdbc.Driver");
+          Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok","root","");
+          
+      
+          
+         Statement stm = con.createStatement();
+         ResultSet rs = stm.executeQuery("SELECT * FROM `routes` WHERE id='"+selId+"';");
+         int dis=0;
+         int eSeat=0;
+         int bSeat=0;
+         int fSeat=0;
+         
+         int ePrice=0;
+         int bPrice=0;
+         int fPrice=0;
+          while(rs.next()) {
+          eSeat=rs.getInt("economy");
+          bSeat=rs.getInt("business");
+          fSeat=rs.getInt("first");
+         // ---
+          }
+          
+          
+      } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+        }   
+        
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -221,15 +278,16 @@ public class JaratRoutes extends javax.swing.JFrame {
           Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok","root","");
           
           Statement stm = con.createStatement();
-          String sql = "SELECT `fromS`,`toS`,`date` FROM `routes`";
+          String sql = "SELECT `id`,`fromS`,`toS`,`date` FROM `routes`";
           ResultSet rs = stm.executeQuery(sql);
-          Object rowData[] = new Object[3];
+          Object rowData[] = new Object[4];
           DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
          
           while (rs.next()) {
                 rowData[0] = rs.getString("fromS");
                 rowData[1] = rs.getString("toS");
                 rowData[2] = rs.getString("date");
+                rowData[3] = rs.getString("id");
                 model.addRow(rowData);
               
           }
@@ -245,6 +303,7 @@ public class JaratRoutes extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -296,7 +296,7 @@ public class JaratAddJarat extends javax.swing.JFrame {
         
         
         System.out.println("Sol distance: " + solD);
-        solD = solD/10;
+        int segedsold = solD/10;
         try{
           Class.forName("com.mysql.cj.jdbc.Driver");
           Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok","root","");
@@ -305,12 +305,13 @@ public class JaratAddJarat extends javax.swing.JFrame {
             if (selectedFr.matches(selTo)) {
                 System.out.println("HIBAAA");
                 JOptionPane.showMessageDialog(this, "Departure and Arrival location can NOT be the same\n(Data not uploaded)");
-            }else if(selFuel<solD){
-              JOptionPane.showMessageDialog(this, "Insuficient fuel for this distance\nPlease choose a ship with a fuel capacity above " + solD + " Tons!");
+            }else if(selFuel<segedsold){
+              JOptionPane.showMessageDialog(this, "Insuficient fuel for this distance\nPlease choose a ship with a fuel capacity above " + segedsold + " Tons!");
               
             
             }else{
-          String sql = "INSERT INTO `routes` (`id`, `fromS`, `toS`, `ship`, `mfuel`, `date` ,`economy`, `business` , `first`) VALUES (NULL, '" + selectedFr + "', '" + selTo + "', '" + selShip + "', '" + selFuel + "', '" + selectedDate + "', '" + seco + "', '" + sebu + "', '" + sefi + "')";
+                System.out.println("asdffffffffffffffffffffffffffffffff: "+solD);
+          String sql = "INSERT INTO `routes` (`id`, `fromS`, `toS`, `ship`, `mfuel`, `date` ,`economy`, `business` , `first`, `distance`) VALUES (NULL, '" + selectedFr + "', '" + selTo + "', '" + selShip + "', '" + selFuel + "', '" + selectedDate + "', '" + seco + "', '" + sebu + "', '" + sefi + "', '" + solD + "')";
           stm.executeUpdate(sql);
            System.out.println("asdasdf: " + selFuel + ":::: " +solD);
             }
