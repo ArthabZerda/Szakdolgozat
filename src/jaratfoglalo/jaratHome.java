@@ -224,6 +224,7 @@ public class jaratHome extends javax.swing.JFrame {
         JaratRoutes jr = new JaratRoutes();
         jr.setLocationRelativeTo(null);
         jr.show();
+        dispose();
             // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -231,6 +232,7 @@ public class jaratHome extends javax.swing.JFrame {
         JaratWallet jw = new JaratWallet(); 
         jw.setLocationRelativeTo(null);
         jw.show();
+        dispose();
         
     }//GEN-LAST:event_jButton3ActionPerformed
 
