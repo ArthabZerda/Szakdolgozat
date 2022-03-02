@@ -5,6 +5,7 @@
  */
 package jaratfoglalo;
 
+import static jaratfoglalo.JaratFoglalo.currentId;
 import static jaratfoglalo.JaratFoglalo.numberOfShips;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -13,6 +14,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -134,8 +136,18 @@ public class JaratRoutes extends javax.swing.JFrame {
         });
 
         jButton2.setText("Buy");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Buy");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Buy");
 
@@ -290,13 +302,22 @@ public class JaratRoutes extends javax.swing.JFrame {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         }   
     }//GEN-LAST:event_jButton1ActionPerformed
+protected int ePrice;
+protected int bPrice;
+protected int fPrice;
+protected String selel;
 
+protected String dp;
+protected String ds;
+protected String sp;
+protected String dt;
+protected String type;
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
        
         
         int column = 0;
         int row = jTable1.getSelectedRow();
-        String selId = jTable1.getModel().getValueAt(row, column).toString();
+        selel = jTable1.getModel().getValueAt(row, column).toString();
         
          try{
           Class.forName("com.mysql.cj.jdbc.Driver");
@@ -305,7 +326,7 @@ public class JaratRoutes extends javax.swing.JFrame {
       
           
          Statement stm = con.createStatement();
-         ResultSet rs = stm.executeQuery("SELECT * FROM `routes` WHERE id='"+selId+"';");
+         ResultSet rs = stm.executeQuery("SELECT * FROM `routes` WHERE id='"+selel+"';");
          int dis=0;
          int eSeat=0;
          int bSeat=0;
@@ -317,11 +338,19 @@ public class JaratRoutes extends javax.swing.JFrame {
           bSeat=rs.getInt("business");
           fSeat=rs.getInt("first");
           dis=rs.getInt("distance");
+          
+          dp=rs.getString("fromS");
+          dt=rs.getString("toS");
+          sp=rs.getString("ship");
+          dt=rs.getString("date");
+          
+          
+          
          // ---
           }
-         int ePrice=300*dis;
-         int bPrice=500*dis;
-         int fPrice=800*dis;
+         ePrice=300*dis;
+         bPrice=500*dis;
+         fPrice=800*dis;
          
          jButton2.setText("Buy for " + String.valueOf(ePrice) + " CR");
          jButton3.setText("Buy for " + String.valueOf(bPrice) + " CR");
@@ -344,6 +373,70 @@ public class JaratRoutes extends javax.swing.JFrame {
         jr.show();
         dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+              type="economy";  
+        try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
+
+                Statement stm = con.createStatement();
+                String sql = "UPDATE `users` SET `wallet` = wallet-'" + ePrice + "' WHERE `users`.`id` = " + currentId + ";";
+                
+                stm.executeUpdate(sql);
+                JOptionPane.showMessageDialog(this, "Successfull purchase!'");
+
+                
+
+                //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
+         try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
+
+                Statement stm = con.createStatement();
+                String sql = "UPDATE `routes` SET `economy` = economy-'" + 1 + "' WHERE `routes`.`id` = " + selel + ";";
+                
+                stm.executeUpdate(sql);
+                
+
+                
+
+                //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+            }
+         try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
+
+                Statement stm = con.createStatement();
+                String sql = "INSERT INTO `tickets` (`user_id`, `departure`, `destination`, `ship`, `date`, `seat`) VALUES ('"+currentId+"', '" + dp + "', '" + ds + "', '" + sp + "' , '"+dt+"', '"+type+"')";
+                
+                stm.executeUpdate(sql);
+                
+
+                
+
+                //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+            }
+         
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
