@@ -24,7 +24,8 @@ import javax.swing.JOptionPane;
 public class JaratWallet extends javax.swing.JFrame {
 
     protected int wal = 0;
-
+    protected boolean data=false;
+    protected boolean date=false;
     /**
      * Creates new form JaratWallet
      */
@@ -186,14 +187,21 @@ protected int cvc = 0;
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         cvc = Integer.parseInt(jTextField4.getText());
         int value = Integer.parseInt(jTextField5.getText());
+        String emptyName=jTextField3.getText();
+        String emptyCr=jTextField3.getText();
         System.out.println(value);
 
-        if (value < 0) {
-
-        }
+        
         if (cvc < 99 || cvc > 999) {
-            JOptionPane.showMessageDialog(this, "Please enter valid card details");
-        } else {
+            JOptionPane.showMessageDialog(this, "Please enter valid card details!");
+        } else if(emptyName.matches("")){
+            System.out.println("sdf:("+emptyCr+")");
+            JOptionPane.showMessageDialog(this, "Please enter valid card details!");
+        }else if(value<0 || emptyName.matches("")){
+            JOptionPane.showMessageDialog(this, "Please enter valid amount");
+        }else if(data==false || date==false){
+        JOptionPane.showMessageDialog(this, "Please enter valid card details!");
+        }else{
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
@@ -239,6 +247,7 @@ protected int cvc = 0;
             seged = wa;
             jTextField1.setText(seged);
             jTextField1.setEditable(false);
+            data=true;
 
         }
 
@@ -261,6 +270,7 @@ protected int cvc = 0;
         }
         if (datCount == 4) {
             jTextField2.setEditable(false);
+            date=true;
         }
     }//GEN-LAST:event_jTextField2KeyReleased
 
