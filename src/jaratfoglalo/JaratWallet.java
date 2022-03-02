@@ -22,15 +22,17 @@ import javax.swing.JOptionPane;
  * @author Bakcsányi Dominik
  */
 public class JaratWallet extends javax.swing.JFrame {
-    protected int wal=0;
+
+    protected int wal = 0;
+
     /**
      * Creates new form JaratWallet
      */
     public JaratWallet() {
         initComponents();
-        jLabel3.setText("Username: "+currentUser);
+        jLabel3.setText("Username: " + currentUser);
         raiden();
-        
+
     }
 
     /**
@@ -54,6 +56,7 @@ public class JaratWallet extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jTextField5 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -90,8 +93,23 @@ public class JaratWallet extends javax.swing.JFrame {
         );
 
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField2KeyReleased(evt);
+            }
+        });
         jPanel3.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 50, 20));
         jPanel3.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, 180, 20));
+
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField1KeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField1KeyReleased(evt);
+            }
+        });
         jPanel3.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 210, 20));
         jPanel3.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 70, 30, -1));
 
@@ -107,7 +125,15 @@ public class JaratWallet extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, -1, -1));
+        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 160, -1, -1));
+
+        jButton2.setText("Clear");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 160, -1, -1));
 
         jLabel5.setText("Amount to be transfered:");
 
@@ -156,37 +182,97 @@ public class JaratWallet extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+protected int cvc = 0;
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       
+        cvc = Integer.parseInt(jTextField4.getText());
         int value = Integer.parseInt(jTextField5.getText());
-            System.out.println(value);
-            
-            if (value<0) {
-            
+        System.out.println(value);
+
+        if (value < 0) {
+
         }
-        try{
-          Class.forName("com.mysql.cj.jdbc.Driver");
-          Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok","root","");
-          
-          
-          Statement stm = con.createStatement();
-          String sql = "UPDATE `users` SET `wallet` = wallet+'"+value+"' WHERE `users`.`id` = "+currentId+";";
-          stm.executeUpdate(sql);
-          JOptionPane.showMessageDialog(this,"Sikeres feltöltés!'"); 
-          
-          jTextField5.setText("");
-          raiden();
-          
-          //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
-          
-          
-      } catch (ClassNotFoundException ex) {
-            Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
-        }  
+        if (cvc < 99 || cvc > 999) {
+            JOptionPane.showMessageDialog(this, "Please enter valid card details");
+        } else {
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
+
+                Statement stm = con.createStatement();
+                String sql = "UPDATE `users` SET `wallet` = wallet+'" + value + "' WHERE `users`.`id` = " + currentId + ";";
+                stm.executeUpdate(sql);
+                JOptionPane.showMessageDialog(this, "Sikeres feltöltés!'");
+
+                jTextField5.setText("");
+                raiden();
+
+                //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }//GEN-LAST:event_jButton1ActionPerformed
+    }
+    protected int count = 0;
+
+    protected String seged = "";
+    private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
+        String wa = jTextField1.getText();
+
+        count++;
+
+        System.out.println(count);
+
+        if (count % 4 == 0) {
+
+            wa = wa + "-";
+            if (count < 16) {
+                jTextField1.setText(wa);
+            }
+            if (count >= 16) {
+                wa = wa.substring(0, wa.length() - 1);
+
+            }
+        }
+        if (count == 16) {
+            seged = wa;
+            jTextField1.setText(seged);
+            jTextField1.setEditable(false);
+
+        }
+
+    }//GEN-LAST:event_jTextField1KeyReleased
+    protected String dat;
+    protected int datCount = 0;
+
+    private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
+
+    }//GEN-LAST:event_jTextField1KeyPressed
+
+    private void jTextField2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyReleased
+        // TODO add your handling code here:datCount++;
+
+        dat = jTextField2.getText();
+        datCount++;
+        if (datCount == 2) {
+            dat = dat + " / ";
+            jTextField2.setText(dat);
+        }
+        if (datCount == 4) {
+            jTextField2.setEditable(false);
+        }
+    }//GEN-LAST:event_jTextField2KeyReleased
+
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        jTextField1.setText("");
+        jTextField2.setText("");
+        jTextField2.setEditable(true);
+        jTextField1.setEditable(true);
+        count = 0;
+        datCount = 0;
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -222,32 +308,36 @@ public class JaratWallet extends javax.swing.JFrame {
             }
         });
     }
-        protected void raiden(){
-        
-         try{
-            
+
+    protected void raiden() {
+        //int cvc=Integer.parseInt(jTextField4.getText());
+
+        try {
+
             Class.forName("com.mysql.cj.jdbc.Driver");
-          Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok","root","");
-          
-          Statement stm = con.createStatement();
-          String sql = "SELECT `wallet` FROM users WHERE `id` = "+currentId+"";
-          ResultSet rs = stm.executeQuery(sql);
-          
-          while(rs.next()){
-              wal=rs.getInt("wallet");
-          }
-         
-          jLabel4.setText(String.valueOf("My wallet: "+wal));
-            
-          
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
+
+            Statement stm = con.createStatement();
+            String sql = "SELECT `wallet` FROM users WHERE `id` = " + currentId + "";
+            ResultSet rs = stm.executeQuery(sql);
+
+            while (rs.next()) {
+                wal = rs.getInt("wallet");
+
+            }
+            jLabel4.setText(String.valueOf("My wallet: " + wal));
+
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
-        } }   
+
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
