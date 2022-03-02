@@ -321,6 +321,11 @@ public class JaratRoutes extends javax.swing.JFrame {
     protected String sp;
     protected String dt;
     protected String type;
+    
+    protected int eSeat = 0;
+    protected int bSeat = 0;
+    protected int fSeat = 0;
+    
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
 
         int column = 0;
@@ -334,9 +339,7 @@ public class JaratRoutes extends javax.swing.JFrame {
             Statement stm = con.createStatement();
             ResultSet rs = stm.executeQuery("SELECT * FROM `routes` WHERE id='" + selel + "';");
             int dis = 0;
-            int eSeat = 0;
-            int bSeat = 0;
-            int fSeat = 0;
+            
 
             while (rs.next()) {
                 eSeat = rs.getInt("economy");
@@ -381,6 +384,8 @@ public class JaratRoutes extends javax.swing.JFrame {
         type = "Economy";
         if (wal<ePrice) {
              JOptionPane.showMessageDialog(this, "Unsuficient credits!");
+        }else if(eSeat<1){
+            JOptionPane.showMessageDialog(this, "No available seats!");
         }else{
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -414,7 +419,7 @@ public class JaratRoutes extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println("asd: " + ds);
+        
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
@@ -440,6 +445,8 @@ public class JaratRoutes extends javax.swing.JFrame {
          type = "Business Class";
         if (wal<bPrice) {
              JOptionPane.showMessageDialog(this, "Unsuficient credits!");
+        }else if(bSeat<1){
+            JOptionPane.showMessageDialog(this, "No available seats!");
         }else{
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -473,7 +480,7 @@ public class JaratRoutes extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println("asd: " + ds);
+        
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
@@ -498,6 +505,8 @@ public class JaratRoutes extends javax.swing.JFrame {
         type = "First Class";
         if (wal<fPrice) {
              JOptionPane.showMessageDialog(this, "Unsuficient credits!");
+        }else if(fSeat<1){
+            JOptionPane.showMessageDialog(this, "No available seats!");
         }else{
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -531,7 +540,7 @@ public class JaratRoutes extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println("asd: " + ds);
+        
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
