@@ -158,7 +158,7 @@ public class JaratRegister extends javax.swing.JFrame {
                         } else {
                             String sql = "INSERT INTO `users` (`id`, `userfield`, `passwordfield`, `email`, `clearance`) VALUES (NULL, '" + registerName + "', '" + registerPass + "', '" + registerEmail + "' , 'L0')";
                             stm.executeUpdate(sql);
-                            JOptionPane.showMessageDialog(this, "Sikeres regisztráció!");
+                            JOptionPane.showMessageDialog(this, "Registered Successfully");
                             dispose();
                             JaratLogin lg = new JaratLogin();
                             lg.show();

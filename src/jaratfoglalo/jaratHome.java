@@ -65,9 +65,6 @@ public class jaratHome extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        inner = new javax.swing.JTextField();
         cru = new javax.swing.JLabel();
         adminButton = new javax.swing.JButton();
         currId = new javax.swing.JLabel();
@@ -76,15 +73,6 @@ public class jaratHome extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
-
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setText("jLabel1");
 
         cru.setText("Username:");
 
@@ -122,15 +110,9 @@ public class jaratHome extends javax.swing.JFrame {
                         .addComponent(cru)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                         .addComponent(currId)
-                        .addGap(63, 63, 63)
-                        .addComponent(inner, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(130, 130, 130))
+                        .addGap(266, 266, 266))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(adminButton)
-                        .addGap(40, 40, 40)
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel1)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -144,57 +126,20 @@ public class jaratHome extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cru)
-                    .addComponent(currId)
-                    .addComponent(inner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(currId))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(adminButton)
-                    .addComponent(jButton1)
-                    .addComponent(jLabel1))
+                .addComponent(adminButton)
                 .addGap(18, 18, 18)
                 .addComponent(jButton2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton3)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-     
-        
-        try{
-            
-          Class.forName("com.mysql.cj.jdbc.Driver");
-          Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok","root","");
-          int ine=Integer.parseInt(inner.getText());
-          int s1=1;
-          Statement stm = con.createStatement();
-
-          ResultSet rs = stm.executeQuery("SELECT `email` FROM users WHERE id='"+ine+"'" );
-          int segedc =0;
-         int currentUser;
-          //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
-         while(rs.next()) {
-            
-            jLabel1.setText(rs.getString("email"));
-            a=rs.getString("email");
-            
-             
-          }
-            
-            bruh=a;
-            System.out.println(bruh);
-            
-      } catch (ClassNotFoundException ex) {
-            Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
-        }   
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void adminButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminButtonActionPerformed
         dispose();
         JaratMegtekint jr = new JaratMegtekint();
@@ -275,11 +220,8 @@ public class jaratHome extends javax.swing.JFrame {
     private javax.swing.JButton adminButton;
     private javax.swing.JLabel cru;
     private javax.swing.JLabel currId;
-    private javax.swing.JTextField inner;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 
 
