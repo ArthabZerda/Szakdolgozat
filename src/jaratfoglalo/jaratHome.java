@@ -198,6 +198,7 @@ public class jaratHome extends javax.swing.JFrame {
     private void adminButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminButtonActionPerformed
         dispose();
         JaratMegtekint jr = new JaratMegtekint();
+        jr.setLocationRelativeTo(null);
         jr.show();
         try{
             
@@ -220,12 +221,17 @@ public class jaratHome extends javax.swing.JFrame {
     }//GEN-LAST:event_adminButtonActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        JaratRoutes jr = new JaratRoutes(); jr.show();
+        JaratRoutes jr = new JaratRoutes();
+        jr.setLocationRelativeTo(null);
+        jr.show();
             // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        JaratWallet jw = new JaratWallet(); jw.show();
+        JaratWallet jw = new JaratWallet(); 
+        jw.setLocationRelativeTo(null);
+        jw.show();
+        
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

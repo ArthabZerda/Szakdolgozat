@@ -267,11 +267,15 @@ public class JaratMegtekint extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        JaratAddShuttle jas = new JaratAddShuttle(); jas.show();dispose();
+        JaratAddShuttle jas = new JaratAddShuttle();
+        jas.setLocationRelativeTo(null);
+        jas.show();dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        JaratAddSystem jast = new JaratAddSystem(); jast.show();dispose();
+        JaratAddSystem jast = new JaratAddSystem();
+        jast.setLocationRelativeTo(null);
+        jast.show();dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -290,12 +294,14 @@ public class JaratMegtekint extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         JaratAddAdmin aa = new JaratAddAdmin();
+        aa.setLocationRelativeTo(null);
         aa.show();
         dispose();  
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         JaratAddJarat b = new JaratAddJarat();
+        b.setLocationRelativeTo(null);
         b.show();
         dispose(); 
     }//GEN-LAST:event_jButton6ActionPerformed

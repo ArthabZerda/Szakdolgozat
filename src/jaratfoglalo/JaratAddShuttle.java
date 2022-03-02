@@ -374,7 +374,11 @@ public class JaratAddShuttle extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        JaratMegtekint jm = new JaratMegtekint(); jm.show(); dispose();
+        JaratMegtekint jm = new JaratMegtekint(); 
+        jm.setLocationRelativeTo(null);
+        jm.show(); 
+        
+        dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void shipListaTorol(){

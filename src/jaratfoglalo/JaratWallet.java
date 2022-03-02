@@ -192,7 +192,7 @@ protected int cvc = 0;
         System.out.println(value);
 
         
-        if (cvc < 99 || cvc > 999) {
+        if (cvc < 100 || cvc > 1000) {
             JOptionPane.showMessageDialog(this, "Please enter valid card details!");
         } else if(emptyName.matches("")){
             System.out.println("sdf:("+emptyCr+")");
