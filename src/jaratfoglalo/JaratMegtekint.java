@@ -56,6 +56,7 @@ public class JaratMegtekint extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -131,6 +132,13 @@ public class JaratMegtekint extends javax.swing.JFrame {
             }
         });
 
+        jButton7.setText("Return");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -146,7 +154,10 @@ public class JaratMegtekint extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel2))
                             .addComponent(jButton1)
-                            .addComponent(jButton6)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton7))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addComponent(deleteUser)
@@ -196,8 +207,10 @@ public class JaratMegtekint extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton6)
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton6)
+                    .addComponent(jButton7))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pack();
@@ -306,6 +319,13 @@ public class JaratMegtekint extends javax.swing.JFrame {
         dispose(); 
     }//GEN-LAST:event_jButton6ActionPerformed
 
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+       jaratHome jr = new jaratHome();
+        jr.setLocationRelativeTo(null);
+        jr.show();
+        dispose();
+    }//GEN-LAST:event_jButton7ActionPerformed
+
     private void listaFeltoltes(){
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -384,6 +404,7 @@ public class JaratMegtekint extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
