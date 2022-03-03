@@ -5,6 +5,16 @@
  */
 package jaratfoglalo;
 
+import static jaratfoglalo.JaratFoglalo.currentId;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Bakcsányi Dominik
@@ -16,6 +26,7 @@ public class JaratMyTickets extends javax.swing.JFrame {
      */
     public JaratMyTickets() {
         initComponents();
+        tickets();
     }
 
     /**
@@ -109,6 +120,34 @@ public class JaratMyTickets extends javax.swing.JFrame {
                 new JaratMyTickets().setVisible(true);
             }
         });
+    }
+    protected void tickets(){
+         try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
+
+            Statement stm = con.createStatement();
+            String sql = "SELECT `ticketId`,`user_id`,`departure`,`destination`,`date` FROM `tickets` WHERE `user_id`="+currentId+"";
+            ResultSet rs = stm.executeQuery(sql);
+            Object rowData[] = new Object[4];
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+
+            while (rs.next()) {
+                rowData[0] = rs.getString("ticketId");
+                rowData[1] = rs.getString("departure");
+                rowData[2] = rs.getString("destination");
+                rowData[3] = rs.getString("date");
+                
+                model.addRow(rowData);
+
+            }
+            con.close();
+
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

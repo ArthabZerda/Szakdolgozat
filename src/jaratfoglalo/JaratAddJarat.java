@@ -227,7 +227,7 @@ public class JaratAddJarat extends javax.swing.JFrame {
          System.out.println("Selecteds ship is: " + selectedShip);
          System.out.println("Selecteds from is: " + selectedFrom);
          System.out.println("Selecteds to is: " + selectedTo);
-        selectedDate =((JTextField)jDateChooser1.getDateEditor().getUiComponent()).getText();
+         selectedDate =((JTextField)jDateChooser1.getDateEditor().getUiComponent()).getText(); 
          selectedDate = selectedDate.replaceAll("[.]", "-");
          selectedDate = selectedDate.substring(0, selectedDate.length() - 1);
          System.out.println("Departure date: " + selectedDate);
