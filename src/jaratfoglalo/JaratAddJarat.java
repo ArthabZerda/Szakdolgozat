@@ -244,14 +244,14 @@ public class JaratAddJarat extends javax.swing.JFrame {
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel5)
-                                .addGap(52, 52, 52)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(25, 25, 25)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton2)
                             .addComponent(jButton3)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 26, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -259,6 +259,8 @@ public class JaratAddJarat extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        jTable1.setModel(new DefaultTableModel(null, new String[]{"Route ID", "Departure", "Destination", "Date"}));
+        routeList();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
@@ -276,8 +278,6 @@ public class JaratAddJarat extends javax.swing.JFrame {
 
             Statement stm = con.createStatement();
             ResultSet rs = stm.executeQuery("SELECT systems.systemName , systems.starportName, systems.solDistance, shuttles.shipName, shuttles.maxFuel, shuttles.eSeats, shuttles.bSeats, shuttles.fSeats FROM shuttles , systems WHERE shuttles.shipName LIKE '" + selectedShip + "' AND systems.systemName LIKE '" + selectedFrom + "'");
-            // ResultSet rs2 = stm.executeQuery("SELECT `systemName`,`starportName`,`solDistance` FROM `systems` WHERE systemName='"+selectedFrom+"'" );
-            //SELECT systems.systemName , systems.starportName, systems.solDistance, shuttles.shipName, shuttles.maxFuel, shuttles.eSeats, shuttles.bSeats, shuttles.fSeats FROM shuttles , systems WHERE shuttles.shipName LIKE 'mamba' AND systems.systemName LIKE 'ys'
             int segedc = 0;
             int currentUser;
             //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
@@ -297,10 +297,6 @@ public class JaratAddJarat extends javax.swing.JFrame {
             jTable1.setModel(new DefaultTableModel(null, new String[]{"Route ID", "Departure", "Destination", "Date"}));
            routeList();
 
-            // String sql = "INSERT INTO `routes` (`id`, `systemName`, `starportName`, `solDistance`, `numOfBodies`) VALUES (NULL, '"+system+"', '"+starport+"', '"+dfs+"', '"+fss+"')";
-            //  stm.executeUpdate(sql);
-            //  JOptionPane.showMessageDialog(this,"Sikeres feltöltés!'"); 
-            //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -317,7 +313,7 @@ public class JaratAddJarat extends javax.swing.JFrame {
             ResultSet rs = stm.executeQuery("SELECT `systemName` , `starportName` , `solDistance` FROM `systems` WHERE systemName LIKE '" + selectedTo + "'");
             int segedc = 0;
             int currentUser;
-            //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
+          
             while (rs.next()) {
                 System.out.println(rs.getString("systemName") + " : " + rs.getString("starportName"));
                 selTo = rs.getString("systemName");
@@ -395,10 +391,6 @@ public class JaratAddJarat extends javax.swing.JFrame {
             jLabel4.setText("Business  Seats: " + String.valueOf(sebu));
             jLabel5.setText("First class Seats: " + String.valueOf(sefi));
 
-            // String sql = "INSERT INTO `routes` (`id`, `systemName`, `starportName`, `solDistance`, `numOfBodies`) VALUES (NULL, '"+system+"', '"+starport+"', '"+dfs+"', '"+fss+"')";
-            //  stm.executeUpdate(sql);
-            //  JOptionPane.showMessageDialog(this,"Sikeres feltöltés!'"); 
-            //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -440,6 +432,7 @@ public class JaratAddJarat extends javax.swing.JFrame {
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        
         try {
 
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -448,7 +441,7 @@ public class JaratAddJarat extends javax.swing.JFrame {
             Statement stm = con.createStatement();
 
             stm.executeUpdate("DELETE FROM `routes` WHERE `id` = '" + selectedRouteId + "'");
-            JOptionPane.showMessageDialog(this, "Sikeres törlés");
+            JOptionPane.showMessageDialog(this, "Route deleted successfully");
             jTable1.setModel(new DefaultTableModel(null, new String[]{"Route ID", "Departure", "Destination", "Date"}));
             routeList();
         } catch (ClassNotFoundException ex) {
