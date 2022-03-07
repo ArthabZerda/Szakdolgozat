@@ -156,7 +156,7 @@ public class JaratRegister extends javax.swing.JFrame {
                             registerPassword2.setText("");
                             emailField.setText("");
                         } else {
-                            String sql = "INSERT INTO `users` (`id`, `userfield`, `passwordfield`, `email`, `clearance`) VALUES (NULL, '" + registerName + "', '" + registerPass + "', '" + registerEmail + "' , 'L0')";
+                            String sql = "INSERT INTO `users` (`id`, `userfield`, `passwordfield`, `email`, `clearance`, `wallet`) VALUES (NULL, '" + registerName + "', '" + registerPass + "', '" + registerEmail + "' , 'L0', '0')";
                             stm.executeUpdate(sql);
                             JOptionPane.showMessageDialog(this, "Registered Successfully");
                             dispose();
