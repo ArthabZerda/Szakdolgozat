@@ -189,6 +189,7 @@ protected String des;
 protected String ship;
 protected String date;
 protected String seat;
+protected String usr;
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         int column = 0;
         int row = jTable1.getSelectedRow();
@@ -216,6 +217,22 @@ protected String seat;
         } catch (SQLException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
+          try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
+
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery("SELECT `userfield` FROM `users` WHERE `id`='"+usrId+"'");
+            
+            while (rs.next()) {
+               usr=rs.getString("userfield");
+            }
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+        }
          
 
     }//GEN-LAST:event_jTable1MouseClicked
@@ -234,7 +251,7 @@ protected String seat;
          PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(selected+"_ID_Ticket.pdf"));
          document.open();
          
-         document.add(new Paragraph("\tTicket ID: "+selected+""));
+         document.add(new Paragraph("\tTicket ID: "+selected+"\nTicket owner: " +usr));
          document.add(new Paragraph("Ship departures from: " + dep + "\nArrives to: " + des +"\nDeparture date: " + date));
          
          document.close();
@@ -246,9 +263,7 @@ protected String seat;
       {
          e.printStackTrace();
       }
-      
-        
-        
+      //táblázatos pdf teszt
         /*   String pt="";
        JFileChooser j = new JFileChooser();
        j.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
