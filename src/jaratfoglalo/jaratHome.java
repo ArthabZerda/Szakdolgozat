@@ -56,6 +56,17 @@ public class jaratHome extends javax.swing.JFrame {
         
         jPanel1.setOpaque(false);
         
+         currId.setText("ID: "+String.valueOf(currentId));
+       
+        //admnOnly.setText(String.valueOf(currentId));
+        if (level.matches("L0")) {
+            adminButton.setVisible(false);
+            System.out.println("User is not an admin");
+            
+        }else{
+            System.out.println("User classified as admin");
+       // adminButton.setVisible(false);
+        }
         
       
         
@@ -95,6 +106,7 @@ public class jaratHome extends javax.swing.JFrame {
         currId = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         closeB = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -149,6 +161,15 @@ public class jaratHome extends javax.swing.JFrame {
             .addComponent(closeB, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
         );
 
+        jLabel9.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("Log Out");
+        jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel9MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -158,7 +179,9 @@ public class jaratHome extends javax.swing.JFrame {
                 .addComponent(cru)
                 .addGap(18, 18, 18)
                 .addComponent(currId)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 872, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 709, Short.MAX_VALUE)
+                .addComponent(jLabel9)
+                .addGap(108, 108, 108)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -168,8 +191,9 @@ public class jaratHome extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cru)
-                    .addComponent(currId))
-                .addContainerGap(15, Short.MAX_VALUE))
+                    .addComponent(currId)
+                    .addComponent(jLabel9))
+                .addContainerGap(12, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -463,6 +487,13 @@ public class jaratHome extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_closeBActionPerformed
 
+    private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
+        JaratLogin jl = new JaratLogin();
+        jl.setLocationRelativeTo(null);
+        jl.show();
+        dispose();
+    }//GEN-LAST:event_jLabel9MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -513,6 +544,7 @@ public class jaratHome extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
