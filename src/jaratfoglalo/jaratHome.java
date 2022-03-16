@@ -56,17 +56,27 @@ public class jaratHome extends javax.swing.JFrame {
         
         jPanel1.setOpaque(false);
         
-         currId.setText("ID: "+String.valueOf(currentId));
-       
+        currId.setText("ID: "+String.valueOf(currentId));
+        
+        jLabel10.setText("level:  "+level);
+        //admnOnly.setText(String.valueOf(currentId));
+        /*
+         if (level.matches("L0")) {
+            adminButton.setVisible(false);
+            System.out.println("User is not an admin");
+            
+        }else{
+            System.out.println("User classified asdas admin");
+       // adminButton.setVisible(false);
+        }
+      */
         //admnOnly.setText(String.valueOf(currentId));
         if (level.matches("L0")) {
             adminButton.setVisible(false);
             System.out.println("User is not an admin");
             
-        }else{
-            System.out.println("User classified as admin");
-       // adminButton.setVisible(false);
         }
+        System.out.println("______________");
         
       
         
@@ -78,18 +88,24 @@ public class jaratHome extends javax.swing.JFrame {
     }
 
     protected void setAdmnOnly(int currentId){
+        jLabel10.setText("level:  "+level);
+        if (level.matches("O5") || level.matches("L4")) {
+            adminButton.setVisible(true);
+        }
+        System.out.println("home starting: " + level);
         currId.setText("ID: "+String.valueOf(currentId));
        
-        //admnOnly.setText(String.valueOf(currentId));
-        if (level.matches("L0")) {
+         if (level.matches("L0")) {
             adminButton.setVisible(false);
-            System.out.println("User is not an admin");
+            
             
         }else{
             System.out.println("User classified as admin");
        // adminButton.setVisible(false);
         }
-        
+      
+        //admnOnly.setText(String.valueOf(currentId));
+       
     }
 
     /**
@@ -107,6 +123,7 @@ public class jaratHome extends javax.swing.JFrame {
         jPanel9 = new javax.swing.JPanel();
         closeB = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -170,6 +187,8 @@ public class jaratHome extends javax.swing.JFrame {
             }
         });
 
+        jLabel10.setText("jLabel10");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -179,9 +198,11 @@ public class jaratHome extends javax.swing.JFrame {
                 .addComponent(cru)
                 .addGap(18, 18, 18)
                 .addComponent(currId)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 709, Short.MAX_VALUE)
+                .addGap(270, 270, 270)
+                .addComponent(jLabel10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 489, Short.MAX_VALUE)
                 .addComponent(jLabel9)
-                .addGap(108, 108, 108)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -192,7 +213,8 @@ public class jaratHome extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cru)
                     .addComponent(currId)
-                    .addComponent(jLabel9))
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel10))
                 .addContainerGap(12, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -537,6 +559,7 @@ public class jaratHome extends javax.swing.JFrame {
     private javax.swing.JLabel cru;
     private javax.swing.JLabel currId;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

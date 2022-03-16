@@ -302,9 +302,9 @@ public class JaratLogin extends javax.swing.JFrame{
               System.out.println("Current User_Id: " + currentId);
               level=rs.getString("clearance");
               System.out.println("User clearance level: " + level);
-             name.setCru(currentUser);
-             name.setAdmnOnly(currentId);
-            dispose();
+              name.setCru(currentUser);
+              name.setAdmnOnly(currentId);
+              dispose();
              
           }else{
               JOptionPane.showMessageDialog(this,"Név vagy jelszó rossz");
