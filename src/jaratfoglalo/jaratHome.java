@@ -58,7 +58,7 @@ public class jaratHome extends javax.swing.JFrame {
         
         currId.setText("ID: "+String.valueOf(currentId));
         
-        jLabel10.setText("level:  "+level);
+       // jLabel10.setText("level:  "+level);
         //admnOnly.setText(String.valueOf(currentId));
         /*
          if (level.matches("L0")) {
@@ -88,7 +88,7 @@ public class jaratHome extends javax.swing.JFrame {
     }
 
     protected void setAdmnOnly(int currentId){
-        jLabel10.setText("level:  "+level);
+        //jLabel10.setText("level:  "+level);
         if (level.matches("O5") || level.matches("L4")) {
             adminButton.setVisible(true);
         }
@@ -123,7 +123,6 @@ public class jaratHome extends javax.swing.JFrame {
         jPanel9 = new javax.swing.JPanel();
         closeB = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -181,13 +180,12 @@ public class jaratHome extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Log Out");
+        jLabel9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel9MouseClicked(evt);
             }
         });
-
-        jLabel10.setText("jLabel10");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -198,9 +196,7 @@ public class jaratHome extends javax.swing.JFrame {
                 .addComponent(cru)
                 .addGap(18, 18, 18)
                 .addComponent(currId)
-                .addGap(270, 270, 270)
-                .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 489, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 799, Short.MAX_VALUE)
                 .addComponent(jLabel9)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -213,8 +209,7 @@ public class jaratHome extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cru)
                     .addComponent(currId)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel10))
+                    .addComponent(jLabel9))
                 .addContainerGap(12, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -559,7 +554,6 @@ public class jaratHome extends javax.swing.JFrame {
     private javax.swing.JLabel cru;
     private javax.swing.JLabel currId;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
