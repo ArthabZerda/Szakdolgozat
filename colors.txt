@@ -1,0 +1,3 @@
+dark green: [96,115,101]
+ligth green: [212,223,208]
+button blue: [51,114,135]

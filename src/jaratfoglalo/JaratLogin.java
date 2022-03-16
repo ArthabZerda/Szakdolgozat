@@ -154,7 +154,7 @@ public class JaratLogin extends javax.swing.JFrame{
             .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jPanel3.setBackground(new java.awt.Color(96, 115, 101));
+        jPanel3.setBackground(new java.awt.Color(51, 114, 135));
 
         jButton2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
