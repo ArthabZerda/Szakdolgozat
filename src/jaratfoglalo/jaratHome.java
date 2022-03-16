@@ -34,17 +34,17 @@ public class jaratHome extends javax.swing.JFrame {
      */
     public jaratHome() {
         initComponents();
-        jButton1.setOpaque(false);
-        jButton1.setContentAreaFilled(false);
-        jButton1.setBorderPainted(false);
+        ticB.setOpaque(false);
+        ticB.setContentAreaFilled(false);
+        ticB.setBorderPainted(false);
         
-        jButton2.setOpaque(false);
-        jButton2.setContentAreaFilled(false);
-        jButton2.setBorderPainted(false);
+        routesB.setOpaque(false);
+        routesB.setContentAreaFilled(false);
+        routesB.setBorderPainted(false);
         
-        jButton3.setOpaque(false);
-        jButton3.setContentAreaFilled(false);
-        jButton3.setBorderPainted(false);
+        wallB.setOpaque(false);
+        wallB.setContentAreaFilled(false);
+        wallB.setBorderPainted(false);
         
         adminButton.setOpaque(false);
         adminButton.setContentAreaFilled(false);
@@ -105,18 +105,17 @@ public class jaratHome extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jPanel13 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
+        routesB = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
+        wallB = new javax.swing.JButton();
         jPanel10 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        ticB = new javax.swing.JButton();
         jPanel11 = new javax.swing.JPanel();
         adminButton = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1012, 564));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -246,12 +245,12 @@ public class jaratHome extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(51, 114, 135));
 
-        jButton2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Routes");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        routesB.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        routesB.setForeground(new java.awt.Color(255, 255, 255));
+        routesB.setText("Routes");
+        routesB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                routesBActionPerformed(evt);
             }
         });
 
@@ -261,22 +260,22 @@ public class jaratHome extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(routesB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+            .addComponent(routesB, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
         );
 
         jPanel5.setBackground(new java.awt.Color(51, 114, 135));
 
-        jButton3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("My wallet");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        wallB.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        wallB.setForeground(new java.awt.Color(255, 255, 255));
+        wallB.setText("My wallet");
+        wallB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                wallBActionPerformed(evt);
             }
         });
 
@@ -286,22 +285,22 @@ public class jaratHome extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(wallB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+            .addComponent(wallB, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
         );
 
         jPanel10.setBackground(new java.awt.Color(51, 114, 135));
 
-        jButton1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("My Tickets");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        ticB.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        ticB.setForeground(new java.awt.Color(255, 255, 255));
+        ticB.setText("My Tickets");
+        ticB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                ticBActionPerformed(evt);
             }
         });
 
@@ -311,12 +310,12 @@ public class jaratHome extends javax.swing.JFrame {
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(ticB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+            .addComponent(ticB, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
         );
 
         jPanel11.setBackground(new java.awt.Color(51, 114, 135));
@@ -435,28 +434,28 @@ public class jaratHome extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_adminButtonActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void routesBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_routesBActionPerformed
         JaratRoutes jr = new JaratRoutes();
         jr.setLocationRelativeTo(null);
         jr.show();
         dispose();
             // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_routesBActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void wallBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wallBActionPerformed
         JaratWallet jw = new JaratWallet(); 
         jw.setLocationRelativeTo(null);
         jw.show();
         dispose();
         
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_wallBActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void ticBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ticBActionPerformed
         JaratMyTickets jmt = new JaratMyTickets();
         jmt.setLocationRelativeTo(null);
         jmt.show();
         dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_ticBActionPerformed
 
     private void closeBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeBActionPerformed
         dispose();
@@ -504,12 +503,6 @@ public class jaratHome extends javax.swing.JFrame {
     private javax.swing.JButton closeB;
     private javax.swing.JLabel cru;
     private javax.swing.JLabel currId;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -527,10 +520,10 @@ public class jaratHome extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JButton routesB;
+    private javax.swing.JButton ticB;
+    private javax.swing.JButton wallB;
     // End of variables declaration//GEN-END:variables
 
 

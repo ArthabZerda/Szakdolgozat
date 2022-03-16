@@ -1,3 +1,4 @@
 dark green: [96,115,101]
 ligth green: [212,223,208]
+brigth green: [180,224,166]
 button blue: [51,114,135]
