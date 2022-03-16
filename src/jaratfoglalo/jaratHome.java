@@ -49,12 +49,14 @@ public class jaratHome extends javax.swing.JFrame {
         adminButton.setOpaque(false);
         adminButton.setContentAreaFilled(false);
         adminButton.setBorderPainted(false);
-        
-        jPanel1.setOpaque(false);
-        
+       
         closeB.setOpaque(false);
         closeB.setContentAreaFilled(false);
         closeB.setBorderPainted(false);
+        
+        jPanel1.setOpaque(false);
+        
+        
       
         
     }
