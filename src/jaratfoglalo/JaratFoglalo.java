@@ -48,8 +48,10 @@ public static int numberOfSystems=0;
             result[i] = strAsByteArray[strAsByteArray.length - i - 1];
  
         System.out.println(new String(result));
-        JaratLogin lg = new JaratLogin();
-        lg.show();
+          JaratLogin jl = new JaratLogin();
+        jl.setLocationRelativeTo(null);
+        jl.show();
+        
         
         JaratFoglalo newO = new JaratFoglalo();
         newO.adder("adada");

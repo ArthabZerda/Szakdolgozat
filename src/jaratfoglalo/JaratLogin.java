@@ -80,7 +80,7 @@ public class JaratLogin extends javax.swing.JFrame{
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(26, 26, 26));
-        setLocation(new java.awt.Point(400, 250));
+        setLocation(new java.awt.Point(0, 0));
         setUndecorated(true);
         setResizable(false);
 
@@ -292,9 +292,8 @@ public class JaratLogin extends javax.swing.JFrame{
           
           
           if (rs.next()) {
-            jaratHome name=new jaratHome();
-            name.setVisible(true);
-            name.setLocationRelativeTo(null);
+              
+            
             
             currentUser=rs.getString("userfield");
             currentId=rs.getInt("id");
@@ -302,8 +301,19 @@ public class JaratLogin extends javax.swing.JFrame{
               System.out.println("Current User_Id: " + currentId);
               level=rs.getString("clearance");
               System.out.println("User clearance level: " + level);
-              name.setCru(currentUser);
-              name.setAdmnOnly(currentId);
+              if (!level.matches("banned")) {
+                  jaratHome name = new jaratHome();
+                  name.setVisible(true);
+                  name.setLocationRelativeTo(null);
+                  name.setCru(currentUser);
+                  name.setAdmnOnly(currentId);
+              } else {
+                  JaratAppeal a = new JaratAppeal();
+                  a.setVisible(true);
+                  a.setLocationRelativeTo(null);
+              }
+
+              
               dispose();
              
           }else{

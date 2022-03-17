@@ -127,6 +127,11 @@ public class JaratAddJarat extends javax.swing.JFrame {
                 shipBoxItemStateChanged(evt);
             }
         });
+        shipBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                shipBoxActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Add Route");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -410,10 +415,7 @@ public class JaratAddJarat extends javax.swing.JFrame {
 
             Statement stm = con.createStatement();
             ResultSet rs = stm.executeQuery("SELECT * FROM shuttles WHERE shipName LIKE '" + selectedShip + "'");
-            // ResultSet rs2 = stm.executeQuery("SELECT `systemName`,`starportName`,`solDistance` FROM `systems` WHERE systemName='"+selectedFrom+"'" );
-            //SELECT systems.systemName , systems.starportName, systems.solDistance, shuttles.shipName, shuttles.maxFuel, shuttles.eSeats, shuttles.bSeats, shuttles.fSeats FROM shuttles , systems WHERE shuttles.shipName LIKE 'mamba' AND systems.systemName LIKE 'ys'
-
-            //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
+            
             while (rs.next()) {
                 selShip = rs.getString("shipName");
                 selFuel = rs.getInt("maxFuel");
@@ -487,6 +489,10 @@ public class JaratAddJarat extends javax.swing.JFrame {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void shipBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_shipBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_shipBoxActionPerformed
 
     /**
      * @param args the command line arguments

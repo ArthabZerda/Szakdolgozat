@@ -5,7 +5,6 @@
  */
 package jaratfoglalo;
 
-
 import static jaratfoglalo.JaratFoglalo.currentUser;
 import static jaratfoglalo.JaratFoglalo.testerInt;
 import java.sql.Connection;
@@ -22,7 +21,9 @@ import javax.swing.JOptionPane;
  * @author Bakcsányi Dominik
  */
 public class JaratAddAdmin extends javax.swing.JFrame {
-protected static int userNumList;
+
+    protected static int userNumList;
+
     /**
      * Creates new form JaratAddAdmin
      */
@@ -31,6 +32,8 @@ protected static int userNumList;
         numFix();
         userNumList--;
         listaFeltoltes();
+        bnd();
+        appeals();
     }
 
     /**
@@ -42,19 +45,82 @@ protected static int userNumList;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel3 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jLabel1 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setLocation(new java.awt.Point(590, 500));
 
-        jButton1.setText("jButton1");
+        jPanel3.setBackground(new java.awt.Color(212, 223, 208));
+
+        jPanel1.setBackground(new java.awt.Color(96, 115, 101));
+
+        jButton1.setText("Add as L4 admin");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+
+        jButton3.setText("Ban user");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Hire/Ban users");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                        .addComponent(jButton1))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(32, 32, 32)
+                    .addComponent(jLabel2)
+                    .addContainerGap(171, Short.MAX_VALUE)))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(56, 56, 56)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addGap(18, 18, 18)
+                .addComponent(jButton3)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(31, 31, 31)
+                    .addComponent(jLabel2)
+                    .addContainerGap(419, Short.MAX_VALUE)))
+        );
 
         jButton2.setText("Return");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -63,58 +129,127 @@ protected static int userNumList;
             }
         });
 
+        jPanel2.setBackground(new java.awt.Color(212, 223, 208));
+
+        jComboBox2.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox2ItemStateChanged(evt);
+            }
+        });
+        jComboBox2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jComboBox2MouseClicked(evt);
+            }
+        });
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Appeals");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 465, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(28, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(18, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        jButton4.setText("Unban");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton2))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addContainerGap())))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton4)
+                        .addGap(40, 40, 40))))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(63, 63, 63)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                        .addComponent(jButton2)
+                        .addGap(24, 24, 24))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2)))
-                .addGap(45, 45, 45))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 194, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try{
-           
-          Class.forName("com.mysql.cj.jdbc.Driver");
-          Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok","root","");
-          
-          String addAdmin = jComboBox1.getItemAt(jComboBox1.getSelectedIndex());          
-          
-          Statement stm = con.createStatement();
-          
-          stm.executeUpdate("UPDATE `users` SET `clearance` = 'L4' WHERE `users`.`userfield` = '"+addAdmin+"';");
-          JOptionPane.showMessageDialog(this,"Sikeres törlés"); 
-          
+        try {
+
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
+
+            String selectedUser = jComboBox1.getItemAt(jComboBox1.getSelectedIndex());
+
+            Statement stm = con.createStatement();
+
+            stm.executeUpdate("UPDATE `users` SET `clearance` = 'L4' WHERE `users`.`userfield` = '" + selectedUser + "';");
+            JOptionPane.showMessageDialog(this, "You succesfully added " + selectedUser + " to admins");
+
             // System.out.println("Hajó törölve: " + shipDeletion);
-             
-          
-          //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
-          
-          
-      } catch (ClassNotFoundException ex) {
+            //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
+        } catch (ClassNotFoundException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
@@ -126,8 +261,99 @@ protected static int userNumList;
         jr.setLocationRelativeTo(null);
         jr.show();
         dispose();
-        
+
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        try {
+
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
+
+            String selectedUser = jComboBox1.getItemAt(jComboBox1.getSelectedIndex());
+
+            Statement stm = con.createStatement();
+
+            stm.executeUpdate("UPDATE `users` SET `clearance` = 'banned' WHERE `users`.`userfield` = '" + selectedUser + "';");
+            JOptionPane.showMessageDialog(this, "You have Banned " + selectedUser);
+            countBanned++;
+            appeals();
+            // System.out.println("Hajó törölve: " + shipDeletion);
+            //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jComboBox2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBox2MouseClicked
+      
+    }//GEN-LAST:event_jComboBox2MouseClicked
+protected int slId=0;
+    private void jComboBox2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox2ItemStateChanged
+         try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
+
+            String selectedUser = jComboBox2.getItemAt(jComboBox2.getSelectedIndex());
+
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery("SELECT * FROM users WHERE userfield LIKE '" + selectedUser + "'");
+            
+            while (rs.next()) {
+                slId=rs.getInt("id");
+            }
+           
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         
+          try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
+
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery("SELECT `reason` FROM appeals WHERE user_id = " + slId + "");
+            String flt="";
+            while (rs.next()) {
+                flt=rs.getString("reason");
+            }
+              jTextArea1.setText(flt);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         
+    }//GEN-LAST:event_jComboBox2ItemStateChanged
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        try {
+
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
+
+            String selectedUser = jComboBox2.getItemAt(jComboBox2.getSelectedIndex());
+
+            Statement stm = con.createStatement();
+            
+            stm.executeUpdate("UPDATE `users` SET `clearance` = 'L0' WHERE `users`.`userfield` = '" + selectedUser + "';");
+            JOptionPane.showMessageDialog(this, "You have unbanned " + selectedUser);
+            
+            countBanned--;
+            appeals();
+            bnd();
+            // System.out.println("Hajó törölve: " + shipDeletion);
+            //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -163,72 +389,133 @@ protected static int userNumList;
             }
         });
     }
-    private void numFix(){
-    try{
-            
+
+    private void numFix() {
+        try {
+
             Class.forName("com.mysql.cj.jdbc.Driver");
-          Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok","root","");
-          
-          Statement stm = con.createStatement();
-          String sql = "SELECT * FROM users WHERE 1";
-          ResultSet rs = stm.executeQuery(sql);
-          
-          userNumList = testerInt;
-          
-          while(rs.next()){
-              if (rs.getString("clearance").matches("L4") || rs.getString("clearance").matches("O5")) {
-                  userNumList--;
-              }
-              
-              
-          }
-        System.out.println("None admin users: " + userNumList);
-            
-          
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
+
+            Statement stm = con.createStatement();
+            String sql = "SELECT * FROM users WHERE 1";
+            ResultSet rs = stm.executeQuery(sql);
+
+            userNumList = testerInt;
+
+            while (rs.next()) {
+                if (rs.getString("clearance").matches("L4") || rs.getString("clearance").matches("O5")) {
+                    userNumList--;
+                }
+
+            }
+            System.out.println("None admin users: " + userNumList);
+
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
-        } 
+        }
+        countBanned--;
+        bnd();
+        appeals();
+       
     }
-    
-    private void listaFeltoltes(){
-        try{
+
+    private void listaFeltoltes() {
+        try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-          Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok","root","");
-          
-          Statement stm = con.createStatement();
-          String sql = "SELECT * FROM users WHERE 1";
-          ResultSet rs = stm.executeQuery(sql);
-          
-          String mezon = "userfield";
-           
-                
-            
-          String [] record = new String[userNumList];
-            
-          int index=0;
-          while (rs.next()) {
-              
-              if (currentUser.matches(rs.getString("userfield"))) {
-                  System.out.println("Not listing current user");
-              }else if(rs.getString("clearance").matches("L4") || rs.getString("clearance").matches("O5") ){
-                  System.out.println("Not listing: " + rs.getString("userfield") + "-" + rs.getString("clearance"));
-              }else{
-                record[index++]=rs.getString(mezon);
-              }
-          }
-          jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(record));
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
+
+            Statement stm = con.createStatement();
+            String sql = "SELECT * FROM users WHERE 1";
+            ResultSet rs = stm.executeQuery(sql);
+
+            String mezon = "userfield";
+
+            String[] record = new String[userNumList];
+
+            int index = 0;
+            while (rs.next()) {
+
+                if (currentUser.matches(rs.getString("userfield"))) {
+                    System.out.println("Not listing current user");
+                } else if (rs.getString("clearance").matches("L4") || rs.getString("clearance").matches("O5")) {
+                    System.out.println("Not listing: " + rs.getString("userfield") + "-" + rs.getString("clearance"));
+                } else {
+                    record[index++] = rs.getString(mezon);
+                }
+            }
+            jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(record));
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
-        }   
+        }
+    }
+    protected int countBanned;
+
+    private void bnd() {
+         countBanned=0;
+        try {
+            
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
+
+            Statement stm = con.createStatement();
+            String sql = "SELECT * FROM users WHERE 1";
+            ResultSet rs = stm.executeQuery(sql);
+
+            while (rs.next()) {
+                if (rs.getString("clearance").matches("banned")) {
+                    countBanned++;
+                }
+
+            }
+            System.out.println("number of banned people: " + countBanned);
+
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void appeals() {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
+
+            Statement stm = con.createStatement();
+            String sql = "SELECT * FROM users WHERE clearance LIKE 'banned'";
+            ResultSet rs = stm.executeQuery(sql);
+            String mezon = "userfield";
+            String[] record = new String[countBanned];
+
+            int index = 0;
+            while (rs.next()) {
+                record[index++] = rs.getString(mezon);
+            }
+            jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(record));
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }
