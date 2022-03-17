@@ -12,8 +12,11 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import static jaratfoglalo.JaratFoglalo.currentId;
 import static jaratfoglalo.JaratFoglalo.currentUser;
+import java.awt.Desktop;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -23,7 +26,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.table.DefaultTableModel;
-
 
 /**
  *
@@ -190,88 +192,89 @@ public class JaratMyTickets extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 protected String selected;
-protected String usrId;
-protected String dep;
-protected String des;
-protected String ship;
-protected String date;
-protected String seat;
-protected String usr;
+    protected String usrId;
+    protected String dep;
+    protected String des;
+    protected String ship;
+    protected String date;
+    protected String seat;
+    protected String usr;
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         int column = 0;
         int row = jTable1.getSelectedRow();
         selected = jTable1.getModel().getValueAt(row, column).toString();
-        
-         try {
+
+        try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
 
             Statement stm = con.createStatement();
-            ResultSet rs = stm.executeQuery("SELECT * FROM `tickets` WHERE `ticketId`='"+selected+"'");
-            
+            ResultSet rs = stm.executeQuery("SELECT * FROM `tickets` WHERE `ticketId`='" + selected + "'");
+
             while (rs.next()) {
-                
-                usrId=rs.getString("user_id");
-                dep=rs.getString("departure");
-                des=rs.getString("destination");
-                ship=rs.getString("ship");
-                date=rs.getString("date");
-                seat=rs.getString("seat");
+
+                usrId = rs.getString("user_id");
+                dep = rs.getString("departure");
+                des = rs.getString("destination");
+                ship = rs.getString("ship");
+                date = rs.getString("date");
+                seat = rs.getString("seat");
             }
-            
+
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
-          try {
+        try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
 
             Statement stm = con.createStatement();
-            ResultSet rs = stm.executeQuery("SELECT `userfield` FROM `users` WHERE `id`='"+usrId+"'");
-            
+            ResultSet rs = stm.executeQuery("SELECT `userfield` FROM `users` WHERE `id`='" + usrId + "'");
+
             while (rs.next()) {
-               usr=rs.getString("userfield");
+                usr = rs.getString("userfield");
             }
-            
+
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
-         
+
 
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        jaratHome jr= new jaratHome();
+        jaratHome jr = new jaratHome();
         jr.setLocationRelativeTo(null);
         jr.show();
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
-    protected String tester ="asd";
+    protected String tester = "asd";
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-         Document document = new Document();
-      try
-      {
-         PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(selected+"_ID_Ticket.pdf"));
-         document.open();
-         
-         document.add(new Paragraph("\tTicket ID: "+selected+"\nTicket owner: " +usr));
-         document.add(new Paragraph("Ship departures from: " + dep + "\nArrives to: " + des +"\nDeparture date: " + date));
-         
-         document.close();
-         writer.close();
-         jLabel4.setText("Successfully exported ticket!");
-      } catch (DocumentException e)
-      {
-         e.printStackTrace();
-      } catch (FileNotFoundException e)
-      {
-         e.printStackTrace();
-      }
-      //táblázatos pdf teszt
+        Document document = new Document();
+        try {
+            PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(selected + "_ID_Ticket.pdf"));
+            document.open();
+
+            document.add(new Paragraph("\tTicket ID: " + selected + "\nTicket owner: " + usr));
+            document.add(new Paragraph("Ship departures from: " + dep + "\nArrives to: " + des + "\nDeparture date: " + date));
+
+            document.close();
+            writer.close();
+            jLabel4.setText("Successfully exported ticket!");
+            File openPdf = new File(selected + "_ID_Ticket.pdf");
+            Desktop.getDesktop().open(openPdf);
+        } catch (DocumentException e) {
+            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException ex) {
+            Logger.getLogger(JaratMyTickets.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //táblázatos pdf teszt
         /*   String pt="";
        JFileChooser j = new JFileChooser();
        j.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
@@ -341,13 +344,14 @@ protected String usr;
             }
         });
     }
-    protected void tickets(){
-         try {
+
+    protected void tickets() {
+        try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
 
             Statement stm = con.createStatement();
-            String sql = "SELECT `ticketId`,`user_id`,`departure`,`destination`,`date` FROM `tickets` WHERE `user_id`="+currentId+"";
+            String sql = "SELECT `ticketId`,`user_id`,`departure`,`destination`,`date` FROM `tickets` WHERE `user_id`=" + currentId + "";
             ResultSet rs = stm.executeQuery(sql);
             Object rowData[] = new Object[4];
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
@@ -357,7 +361,7 @@ protected String usr;
                 rowData[1] = rs.getString("departure");
                 rowData[2] = rs.getString("destination");
                 rowData[3] = rs.getString("date");
-                
+
                 model.addRow(rowData);
 
             }
@@ -369,7 +373,7 @@ protected String usr;
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-   
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
