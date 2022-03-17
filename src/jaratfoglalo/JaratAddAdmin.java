@@ -288,11 +288,11 @@ public class JaratAddAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jComboBox2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBox2MouseClicked
-      
+
     }//GEN-LAST:event_jComboBox2MouseClicked
-protected int slId=0;
+    protected int slId;
     private void jComboBox2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox2ItemStateChanged
-         try {
+        try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
 
@@ -300,38 +300,58 @@ protected int slId=0;
 
             Statement stm = con.createStatement();
             ResultSet rs = stm.executeQuery("SELECT * FROM users WHERE userfield LIKE '" + selectedUser + "'");
-            
+
             while (rs.next()) {
-                slId=rs.getInt("id");
+                slId = rs.getInt("id");
             }
-           
+
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
-         
-          try {
+
+        try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
 
             Statement stm = con.createStatement();
             ResultSet rs = stm.executeQuery("SELECT `reason` FROM appeals WHERE user_id = " + slId + "");
-            String flt="";
+            String flt = "";
             while (rs.next()) {
-                flt=rs.getString("reason");
+                flt = rs.getString("reason");
             }
-              jTextArea1.setText(flt);
+            jTextArea1.setText(flt);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
-         
-    }//GEN-LAST:event_jComboBox2ItemStateChanged
 
+    }//GEN-LAST:event_jComboBox2ItemStateChanged
+    protected int appealDeletion;
+    protected String aplD;
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        try {
+       try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
+
+            String selectedUser = jComboBox2.getItemAt(jComboBox2.getSelectedIndex());
+
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery("SELECT * FROM users WHERE userfield LIKE '" + selectedUser + "'");
+
+            while (rs.next()) {
+                appealDeletion = rs.getInt("id");
+                aplD=rs.getString("userfield");
+            }
+            System.out.println( aplD+":1:" + appealDeletion);
+
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+        } try {
 
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
@@ -339,10 +359,10 @@ protected int slId=0;
             String selectedUser = jComboBox2.getItemAt(jComboBox2.getSelectedIndex());
 
             Statement stm = con.createStatement();
-            
+
             stm.executeUpdate("UPDATE `users` SET `clearance` = 'L0' WHERE `users`.`userfield` = '" + selectedUser + "';");
             JOptionPane.showMessageDialog(this, "You have unbanned " + selectedUser);
-            
+
             countBanned--;
             appeals();
             bnd();
@@ -353,6 +373,26 @@ protected int slId=0;
         } catch (SQLException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        try {
+
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
+
+            String selectedUser = jComboBox2.getItemAt(jComboBox2.getSelectedIndex());
+
+            Statement stm = con.createStatement();
+            System.out.println("AWOGA:2:" + appealDeletion);
+            stm.executeUpdate("DELETE FROM appeals WHERE `user_id` = " + appealDeletion + "");
+
+            // System.out.println("Hajó törölve: " + shipDeletion);
+            //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
@@ -418,7 +458,7 @@ protected int slId=0;
         countBanned--;
         bnd();
         appeals();
-       
+
     }
 
     private void listaFeltoltes() {
@@ -455,9 +495,9 @@ protected int slId=0;
     protected int countBanned;
 
     private void bnd() {
-         countBanned=0;
+        countBanned = 0;
         try {
-            
+
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
 
