@@ -392,7 +392,7 @@ public class JaratAddAdmin extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
