@@ -67,7 +67,10 @@ public class JaratRoutes extends javax.swing.JFrame {
         wallB.setOpaque(false);
         wallB.setContentAreaFilled(false);
         wallB.setBorderPainted(false);
-      
+        
+        jTable1.getColumnModel().getColumn(0).setMinWidth(0);
+        jTable1.getColumnModel().getColumn(0).setMaxWidth(0);
+        jTable1.getColumnModel().getColumn(0).setWidth(0);
     }
 
     /**

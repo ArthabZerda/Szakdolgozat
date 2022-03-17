@@ -40,6 +40,9 @@ public class JaratMyTickets extends javax.swing.JFrame {
         initComponents();
         tickets();
         jLabel1.setText(currentUser);
+        jTable1.getColumnModel().getColumn(0).setMinWidth(0);
+    jTable1.getColumnModel().getColumn(0).setMaxWidth(0);
+    jTable1.getColumnModel().getColumn(0).setWidth(0);
         //routeList();
     }
 
@@ -242,7 +245,7 @@ protected String selected;
         } catch (SQLException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
 
     }//GEN-LAST:event_jTable1MouseClicked
 
