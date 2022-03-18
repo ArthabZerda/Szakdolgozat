@@ -5,6 +5,7 @@
  */
 package jaratfoglalo;
 
+import static jaratfoglalo.JaratFoglalo.testerInt;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -162,6 +163,7 @@ public class JaratRegister extends javax.swing.JFrame {
                             dispose();
                             JaratLogin lg = new JaratLogin();
                             lg.show();
+                            testerInt++;
                             //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
                         }
                     }
