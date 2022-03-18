@@ -76,7 +76,7 @@ public class jaratHome extends javax.swing.JFrame {
             System.out.println("User is not an admin");
             
         }
-        System.out.println("______________");
+        
         
       
         
