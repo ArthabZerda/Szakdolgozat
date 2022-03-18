@@ -44,7 +44,7 @@ public class JaratAddSystem extends javax.swing.JFrame {
         StarportName = new javax.swing.JTextField();
         DFS = new javax.swing.JTextField();
         FSS = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        AddSystemButton = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -58,10 +58,10 @@ public class JaratAddSystem extends javax.swing.JFrame {
 
         jLabel4.setText("Number Of Bodies:");
 
-        jButton1.setText("Add System");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        AddSystemButton.setText("Add System");
+        AddSystemButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                AddSystemButtonActionPerformed(evt);
             }
         });
 
@@ -92,7 +92,7 @@ public class JaratAddSystem extends javax.swing.JFrame {
                             .addComponent(DFS)
                             .addComponent(FSS)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(AddSystemButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton2)))
                 .addContainerGap(20, Short.MAX_VALUE))
@@ -118,7 +118,7 @@ public class JaratAddSystem extends javax.swing.JFrame {
                     .addComponent(FSS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(AddSystemButton)
                     .addComponent(jButton2))
                 .addContainerGap())
         );
@@ -126,7 +126,7 @@ public class JaratAddSystem extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void AddSystemButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddSystemButtonActionPerformed
          try{
           Class.forName("com.mysql.cj.jdbc.Driver");
           Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok","root","");
@@ -156,7 +156,7 @@ public class JaratAddSystem extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         }     
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_AddSystemButtonActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         JaratMegtekint jm = new JaratMegtekint(); 
@@ -200,11 +200,11 @@ public class JaratAddSystem extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AddSystemButton;
     private javax.swing.JTextField DFS;
     private javax.swing.JTextField FSS;
     private javax.swing.JTextField StarportName;
     private javax.swing.JTextField SystemName;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
