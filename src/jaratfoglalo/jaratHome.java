@@ -33,6 +33,8 @@ public class jaratHome extends javax.swing.JFrame {
      * Creates new form jaratHome
      */
     public jaratHome() {
+        
+        
         initComponents();
         ticB.setOpaque(false);
         ticB.setContentAreaFilled(false);
@@ -55,9 +57,9 @@ public class jaratHome extends javax.swing.JFrame {
         closeB.setBorderPainted(false);
         
         jPanel1.setOpaque(false);
-        
-        currId.setText("ID: "+String.valueOf(currentId));
-        
+ 
+       currId.setText("ID: "+String.valueOf(currentId));
+       cru.setText("CMDR " + currentUser.replaceAll("[╗]", "'"));
        // jLabel10.setText("level:  "+level);
         //admnOnly.setText(String.valueOf(currentId));
         /*
@@ -82,12 +84,13 @@ public class jaratHome extends javax.swing.JFrame {
         
     }
     
-    
+    /*
     protected void setCru(String currentUser){
         
         cru.setText("CMDR " + currentUser.replaceAll("[╗]", "'"));
+        cru.setText("Username: " + currentUser.replaceAll("[╗]", "'"));
     }
-
+*/
     protected void setAdmnOnly(int currentId){
         //jLabel10.setText("level:  "+level);
         if (level.matches("O5") || level.matches("L4")) {
@@ -152,8 +155,12 @@ public class jaratHome extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(96, 115, 101));
 
+        cru.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        cru.setForeground(new java.awt.Color(255, 255, 255));
         cru.setText("Username:");
 
+        currId.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        currId.setForeground(new java.awt.Color(255, 255, 255));
         currId.setText("ID:");
 
         jPanel9.setBackground(new java.awt.Color(51, 114, 135));
@@ -197,7 +204,7 @@ public class jaratHome extends javax.swing.JFrame {
                 .addComponent(cru)
                 .addGap(18, 18, 18)
                 .addComponent(currId)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 799, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 773, Short.MAX_VALUE)
                 .addComponent(jLabel9)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)

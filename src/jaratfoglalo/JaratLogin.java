@@ -310,9 +310,9 @@ public class JaratLogin extends javax.swing.JFrame{
                   jaratHome name = new jaratHome();
                   name.setVisible(true);
                   name.setLocationRelativeTo(null);
-                  name.setCru(currentUser);
+                  currentUser=rs.getString("userfield");
                   currentUser.replaceAll("[╗]", "'");
-                  name.setAdmnOnly(currentId);
+                  currentId=rs.getInt("id");
               } else {
                   JaratAppeal a = new JaratAppeal();
                   a.setVisible(true);
