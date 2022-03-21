@@ -130,14 +130,18 @@ public class JaratAddSystem extends javax.swing.JFrame {
          try{
           Class.forName("com.mysql.cj.jdbc.Driver");
           Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok","root","");
-          
+         
           String system = SystemName.getText();
+          system = system.replaceAll("[']", "╗");
+             System.out.println(system);
           String starport = StarportName.getText();
+          starport = starport.replaceAll("[']", "╗");
           String dfs = DFS.getText();
           String fss= FSS.getText();
          
           
           Statement stm = con.createStatement();
+          System.out.println(system);
           String sql = "INSERT INTO `systems` (`id`, `systemName`, `starportName`, `solDistance`, `numOfBodies`) VALUES (NULL, '"+system+"', '"+starport+"', '"+dfs+"', '"+fss+"')";
           stm.executeUpdate(sql);
           JOptionPane.showMessageDialog(this,"Sikeres feltöltés!'"); 
@@ -197,6 +201,14 @@ public class JaratAddSystem extends javax.swing.JFrame {
                 new JaratAddSystem().setVisible(true);
             }
         });
+    }
+    
+    private void converter(){
+        String system = SystemName.getText();
+          system = system.replaceAll("[']", "╗");
+             System.out.println(system);
+          String starport = StarportName.getText();
+          starport = starport.replaceAll("[']", "╗");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

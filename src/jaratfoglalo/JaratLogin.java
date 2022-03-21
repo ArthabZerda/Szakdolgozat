@@ -277,16 +277,21 @@ public class JaratLogin extends javax.swing.JFrame{
           Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok","root","");
           
           String username = usernameField.getText();
+          username = username.replaceAll("[']", "╗");
+          username = username.replaceAll("[`]", "╗");
+          username = username.replaceAll("[;]", "╗");
           String password = passwordField.getText();
-            if (password.contains("passwordfield") || username.contains("userfield")) {
-                JaratBRUH XD = new JaratBRUH(); XD.show(); dispose();
-            }else{
+          password = password.replaceAll("[']", "╗");
+          password = password.replaceAll("[`]", "╗");
+          password = password.replaceAll("[;]", "╗");
+          
           
           Statement stm = con.createStatement();
           String sql = "SELECT * FROM users WHERE userfield='"+username+"' and passwordfield='"+password+"'";
+          //System.err.println(sql);
           ResultSet rs = stm.executeQuery(sql);
             
-            
+            //'; Delete from users where id=3; Select * from users where userfield like '%
           
           //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
           
@@ -321,7 +326,7 @@ public class JaratLogin extends javax.swing.JFrame{
               usernameField.setText("");
               passwordField.setText("");
           }
-           }
+           
       } catch (ClassNotFoundException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {

@@ -640,8 +640,7 @@ public class JaratAddShuttle extends javax.swing.JFrame {
                         .addComponent(jLabel12))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(55, 55, 55)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
@@ -650,14 +649,12 @@ public class JaratAddShuttle extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPanel4Layout.createSequentialGroup()
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(31, 31, 31)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel12)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel11))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -672,7 +669,7 @@ public class JaratAddShuttle extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 530, Short.MAX_VALUE)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -814,8 +811,12 @@ public class JaratAddShuttle extends javax.swing.JFrame {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok","root","");
 
-            String system = SystemName.getText();
-            String starport = StarportName.getText();
+            
+          String system = SystemName.getText();
+          system = system.replaceAll("[']", "╗");
+             System.out.println(system);
+          String starport = StarportName.getText();
+          starport = starport.replaceAll("[']", "╗");
             String dfs = DFS.getText();
             String fss= FSS.getText();
 
@@ -889,11 +890,15 @@ public class JaratAddShuttle extends javax.swing.JFrame {
           String sql = "SELECT `shipname` FROM shuttles WHERE 1";
           ResultSet rs = stm.executeQuery(sql);
           String mezon = "shipname";
+         
+          
+         
           String [] record = new String[numberOfShips];
           int index=0;
           while (rs.next()) {
+                
                 record[index++]=rs.getString(mezon);
-              
+                
           }
           jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(record));
         } catch (ClassNotFoundException ex) {
@@ -912,11 +917,13 @@ public class JaratAddShuttle extends javax.swing.JFrame {
           String sql = "SELECT `systemName` FROM systems WHERE 1";
           ResultSet rs = stm.executeQuery(sql);
           String mezon = "systemName";
+          
           String [] record = new String[numberOfSystems];
           int index=0;
           while (rs.next()) {
+              mezon = mezon.replaceAll("[╗]", "'");
                 record[index++]=rs.getString(mezon);
-              
+                
           }
           jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(record));
         } catch (ClassNotFoundException ex) {
@@ -974,9 +981,6 @@ public class JaratAddShuttle extends javax.swing.JFrame {
     private javax.swing.JButton addR;
     private javax.swing.JButton addSyst;
     private javax.swing.JLabel bsh;
-    private javax.swing.JButton closeB;
-    private javax.swing.JButton closeB1;
-    private javax.swing.JButton closeB2;
     private javax.swing.JLabel esh;
     private javax.swing.JLabel fcsh;
     private javax.swing.JButton jButton1;
@@ -1000,16 +1004,10 @@ public class JaratAddShuttle extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
-    private javax.swing.JPanel jPanel12;
-    private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
-    private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel18;
-    private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel20;
     private javax.swing.JPanel jPanel21;
@@ -1018,8 +1016,6 @@ public class JaratAddShuttle extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JTextField manufacturers;
     private javax.swing.JLabel mfh;
     private javax.swing.JLabel mh;
