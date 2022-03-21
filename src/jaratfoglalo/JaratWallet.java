@@ -46,7 +46,7 @@ public class JaratWallet extends javax.swing.JFrame {
         
       
       
-        jLabel3.setText("Username: " + currentUser);
+        jLabel3.setText("Username: " + currentUser.replaceAll("[╗]", "'"));
         raiden();
          ticB.setOpaque(false);
         ticB.setContentAreaFilled(false);

@@ -32,32 +32,31 @@ public class JaratAddShuttle extends javax.swing.JFrame {
         jButton1.setOpaque(false);
         jButton1.setContentAreaFilled(false);
         jButton1.setBorderPainted(false);
-        
+
         jButton2.setOpaque(false);
         jButton2.setContentAreaFilled(false);
         jButton2.setBorderPainted(false);
-        
+
         jButton3.setOpaque(false);
         jButton3.setContentAreaFilled(false);
         jButton3.setBorderPainted(false);
-        
+
         jButton4.setOpaque(false);
         jButton4.setContentAreaFilled(false);
         jButton4.setBorderPainted(false);
-        
-        
+
         jButton5.setOpaque(false);
         jButton5.setContentAreaFilled(false);
         jButton5.setBorderPainted(false);
-        
+
         addR.setOpaque(false);
         addR.setContentAreaFilled(false);
         addR.setBorderPainted(false);
-        
+
         addSyst.setOpaque(false);
         addSyst.setContentAreaFilled(false);
         addSyst.setBorderPainted(false);
-    
+
         AddSystemButton.setOpaque(false);
         AddSystemButton.setContentAreaFilled(false);
         AddSystemButton.setBorderPainted(false);
@@ -676,86 +675,83 @@ public class JaratAddShuttle extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         try{
-          Class.forName("com.mysql.cj.jdbc.Driver");
-          Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok","root","");
-          
-          String sN = SN_Field.getText();
-          String mf = manufacturers.getText();
-          String maxFu = MF_Field.getText();
-          String es = ES_Field.getText();
-          String bs = BS_Field.getText();
-          String fs = FCS_Field.getText();
-            
-             
-             
-          
-             if (sN.matches("") || mf.matches("") || maxFu.matches("") || es.matches("") || bs.matches("") || fs.matches("")) {
-                 System.out.println("Hiányzó textField");
-                 //Hiba.setText("Az összes mező kitöltése kötelező");
-                 if (sN.matches("")) {
-                 snh.setText("*");
-             }else{
-                 snh.setText("");
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
+
+            String sN = SN_Field.getText();
+            String mf = manufacturers.getText();
+            String maxFu = MF_Field.getText();
+            String es = ES_Field.getText();
+            String bs = BS_Field.getText();
+            String fs = FCS_Field.getText();
+
+            if (sN.matches("") || mf.matches("") || maxFu.matches("") || es.matches("") || bs.matches("") || fs.matches("")) {
+                System.out.println("Hiányzó textField");
+                //Hiba.setText("Az összes mező kitöltése kötelező");
+                if (sN.matches("")) {
+                    snh.setText("*");
+                } else {
+                    snh.setText("");
+                }
+                if (mf.matches("")) {
+                    mh.setText("*");
+                } else {
+                    mh.setText("");
+                }
+                if (maxFu.matches("")) {
+                    mfh.setText("*");
+                } else {
+                    mfh.setText("");
+                }
+                if (es.matches("")) {
+                    esh.setText("*");
+                } else {
+                    esh.setText("");
+                }
+                if (bs.matches("")) {
+                    bsh.setText("*");
+                } else {
+                    bsh.setText("");
+                }
+                if (fs.matches("")) {
+                    fcsh.setText("*");
+                } else {
+                    fcsh.setText("");
+                }
+            } else {
+                // Hiba.setText("");
+
+                Statement stm = con.createStatement();
+                String sql = "INSERT INTO `shuttles` (`id`, `manufacturer`,`shipName`, `maxFuel`, `eSeats`, `bSeats`, `fSeats`) VALUES (NULL, '" + mf + "','" + sN + "', '" + maxFu + "', '" + es + "', '" + bs + "', '" + fs + "')";
+                stm.executeUpdate(sql);
+                JOptionPane.showMessageDialog(this, "Sikeres feltöltés!'");
+                numberOfShips++;
+                System.out.println("Number of ships in database has changed to: " + numberOfShips);
+                System.out.println("Feltöltve: " + "\nManufacturer: " + mf + "\nShip Name: " + sN + "\nMaxFuel: " + maxFu + "\nEconomy Seats" + es + "\nBusiness Seats: " + bs + "\nFirst Class Seats: " + fs);
+                shipListaTorol();
+                SN_Field.setText("");
+                manufacturers.setText("");
+                MF_Field.setText("");
+                ES_Field.setText("");
+                BS_Field.setText("");
+                FCS_Field.setText("");
+                //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
             }
-             if (mf.matches("")) {
-                 mh.setText("*");
-             }else{
-                 mh.setText("");
-            }
-             if (maxFu.matches("")) {
-                 mfh.setText("*");
-             }else{
-                 mfh.setText("");
-            }
-             if (es.matches("")) {
-                 esh.setText("*");
-             }else{
-                 esh.setText("");
-            }
-             if (bs.matches("")) {
-                 bsh.setText("*");
-             }else{
-                 bsh.setText("");
-            }
-             if (fs.matches("")) {
-                 fcsh.setText("*");
-             }else{
-                 fcsh.setText("");
-            }
-             }else{
-          // Hiba.setText("");
-           
-          Statement stm = con.createStatement();
-          String sql = "INSERT INTO `shuttles` (`id`, `manufacturer`,`shipName`, `maxFuel`, `eSeats`, `bSeats`, `fSeats`) VALUES (NULL, '"+mf+"','"+sN+"', '"+maxFu+"', '"+es+"', '"+bs+"', '"+fs+"')";
-          stm.executeUpdate(sql);
-          JOptionPane.showMessageDialog(this,"Sikeres feltöltés!'"); 
-          numberOfShips++;
-                 System.out.println("Number of ships in database has changed to: " + numberOfShips);
-          System.out.println("Feltöltve: " + "\nManufacturer: " +mf+ "\nShip Name: "+sN+ "\nMaxFuel: "+maxFu+ "\nEconomy Seats"+es+ "\nBusiness Seats: "+bs+ "\nFirst Class Seats: "+fs);
-          shipListaTorol();
-          SN_Field.setText("");
-          manufacturers.setText("");
-          MF_Field.setText("");
-          ES_Field.setText("");
-          BS_Field.setText("");
-          FCS_Field.setText("");
-          //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
-         } 
-          
-      } catch (ClassNotFoundException ex) {
+
+        } catch (ClassNotFoundException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(this,"Invalid values were given!"); 
-            
-          MF_Field.setText("");
-          ES_Field.setText("");
-          BS_Field.setText("");
-          FCS_Field.setText("");
-        }       
-         
+            JOptionPane.showMessageDialog(this, "Invalid values were given!");
+
+            MF_Field.setText("");
+            ES_Field.setText("");
+            BS_Field.setText("");
+            FCS_Field.setText("");
+        }
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void BS_FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BS_FieldActionPerformed
@@ -771,27 +767,25 @@ public class JaratAddShuttle extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-         try{
-           
-          Class.forName("com.mysql.cj.jdbc.Driver");
-          Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok","root","");
-          
-          String shipDeletion = jComboBox1.getItemAt(jComboBox1.getSelectedIndex());          
-          
-          Statement stm = con.createStatement();
-          
-          stm.executeUpdate("DELETE FROM `shuttles` WHERE `shuttles`.`shipname` = '"+shipDeletion+"'");
-         numberOfShips--; 
-         JOptionPane.showMessageDialog(this,"Sikeres törlés"); 
-          shipListaTorol();
-             System.out.println("Hajó törölve: " + shipDeletion);
-             
-             System.out.println("Number of ships in the database has changed to: " + numberOfShips);
-          
-          //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
-          
-          
-      } catch (ClassNotFoundException ex) {
+        try {
+
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
+
+            String shipDeletion = jComboBox1.getItemAt(jComboBox1.getSelectedIndex());
+
+            Statement stm = con.createStatement();
+
+            stm.executeUpdate("DELETE FROM `shuttles` WHERE `shuttles`.`shipname` = '" + shipDeletion + "'");
+            numberOfShips--;
+            JOptionPane.showMessageDialog(this, "Sikeres törlés");
+            shipListaTorol();
+            System.out.println("Hajó törölve: " + shipDeletion);
+
+            System.out.println("Number of ships in the database has changed to: " + numberOfShips);
+
+            //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
+        } catch (ClassNotFoundException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
@@ -799,31 +793,30 @@ public class JaratAddShuttle extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        JaratMegtekint jm = new JaratMegtekint(); 
+        JaratMegtekint jm = new JaratMegtekint();
         jm.setLocationRelativeTo(null);
-        jm.show(); 
-        
+        jm.show();
+
         dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void AddSystemButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddSystemButtonActionPerformed
-        try{
+        try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok","root","");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
 
-            
-          String system = SystemName.getText();
-          system = system.replaceAll("[']", "╗");
-             System.out.println(system);
-          String starport = StarportName.getText();
-          starport = starport.replaceAll("[']", "╗");
+            String system = SystemName.getText();
+            system = system.replaceAll("[']", "╗");
+            System.out.println(system);
+            String starport = StarportName.getText();
+            starport = starport.replaceAll("[']", "╗");
             String dfs = DFS.getText();
-            String fss= FSS.getText();
+            String fss = FSS.getText();
 
             Statement stm = con.createStatement();
-            String sql = "INSERT INTO `systems` (`id`, `systemName`, `starportName`, `solDistance`, `numOfBodies`) VALUES (NULL, '"+system+"', '"+starport+"', '"+dfs+"', '"+fss+"')";
+            String sql = "INSERT INTO `systems` (`id`, `systemName`, `starportName`, `solDistance`, `numOfBodies`) VALUES (NULL, '" + system + "', '" + starport + "', '" + dfs + "', '" + fss + "')";
             stm.executeUpdate(sql);
-            JOptionPane.showMessageDialog(this,"Sikeres feltöltés!'");
+            JOptionPane.showMessageDialog(this, "Sikeres feltöltés!'");
             SystemName.setText("");
             StarportName.setText("");
             DFS.setText("");
@@ -832,7 +825,6 @@ public class JaratAddShuttle extends javax.swing.JFrame {
             numberOfSystems++;
 
             //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
-
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -841,22 +833,21 @@ public class JaratAddShuttle extends javax.swing.JFrame {
     }//GEN-LAST:event_AddSystemButtonActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        try{
-           
-          Class.forName("com.mysql.cj.jdbc.Driver");
-          Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok","root","");
-          
-          String selectedSyst = jComboBox2.getItemAt(jComboBox2.getSelectedIndex());          
-          
-          Statement stm = con.createStatement();
-          
-          stm.executeUpdate("DELETE FROM `systems` WHERE `systems`.`systemName` = '"+selectedSyst+"'");
-          JOptionPane.showMessageDialog(this,"Successfully removed system from the database"); 
-         numberOfSystems--;
-         systemListDelete();
-             
-            
-      } catch (ClassNotFoundException ex) {
+        try {
+
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
+
+            String selectedSyst = jComboBox2.getItemAt(jComboBox2.getSelectedIndex());
+
+            Statement stm = con.createStatement();
+
+            stm.executeUpdate("DELETE FROM `systems` WHERE `systems`.`systemName` = '" + selectedSyst + "'");
+            JOptionPane.showMessageDialog(this, "Successfully removed system from the database");
+            numberOfSystems--;
+            systemListDelete();
+
+        } catch (ClassNotFoundException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
@@ -881,57 +872,55 @@ public class JaratAddShuttle extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_addRActionPerformed
 
-    private void shipListaTorol(){
-        try{
+    private void shipListaTorol() {
+        try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-          Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok","root","");
-          
-          Statement stm = con.createStatement();
-          String sql = "SELECT `shipname` FROM shuttles WHERE 1";
-          ResultSet rs = stm.executeQuery(sql);
-          String mezon = "shipname";
-         
-          
-         
-          String [] record = new String[numberOfShips];
-          int index=0;
-          while (rs.next()) {
-                
-                record[index++]=rs.getString(mezon);
-                
-          }
-          jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(record));
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
+
+            Statement stm = con.createStatement();
+            String sql = "SELECT `shipname` FROM shuttles WHERE 1";
+            ResultSet rs = stm.executeQuery(sql);
+            String mezon = "shipname";
+
+            String[] record = new String[numberOfShips];
+            int index = 0;
+            while (rs.next()) {
+
+                record[index++] = rs.getString(mezon);
+
+            }
+            jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(record));
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
-        }   
+        }
     }
-    
-    private void systemListDelete(){
-    try{
+
+    private void systemListDelete() {
+        try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-          Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok","root","");
-          
-          Statement stm = con.createStatement();
-          String sql = "SELECT `systemName` FROM systems WHERE 1";
-          ResultSet rs = stm.executeQuery(sql);
-          String mezon = "systemName";
-          
-          String [] record = new String[numberOfSystems];
-          int index=0;
-          while (rs.next()) {
-              mezon = mezon.replaceAll("[╗]", "'");
-                record[index++]=rs.getString(mezon);
-                
-          }
-          jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(record));
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
+
+            Statement stm = con.createStatement();
+            String sql = "SELECT `systemName` FROM systems WHERE 1";
+            ResultSet rs = stm.executeQuery(sql);
+            String mezon = "systemName";
+
+            String[] record = new String[numberOfSystems];
+            int index = 0;
+            while (rs.next()) {
+                record[index++] = rs.getString(mezon);
+            }
+            
+            jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(record));
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
-        }   
+        }
     }
+
     /**
      * @param args the command line arguments
      */

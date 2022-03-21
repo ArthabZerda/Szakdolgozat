@@ -84,7 +84,8 @@ public class jaratHome extends javax.swing.JFrame {
     
     
     protected void setCru(String currentUser){
-        cru.setText("CMDR " + currentUser);
+        
+        cru.setText("CMDR " + currentUser.replaceAll("[╗]", "'"));
     }
 
     protected void setAdmnOnly(int currentId){

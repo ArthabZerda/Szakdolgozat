@@ -126,6 +126,7 @@ public class JaratRegister extends javax.swing.JFrame {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
 
             String registerName = regUsername.getText();
+            registerName = registerName.replaceAll("[']", "╗");
             String registerPass = registerPassword2.getText();
             String rgel = registerPassword1.getText();
             String registerEmail = emailField.getText();
