@@ -34,7 +34,7 @@ public class JaratRoutes extends javax.swing.JFrame {
         initComponents();
         lista();
         myWallet();
-        jLabel1.setText("User: " + currentUser);
+        jLabel1.setText("User: " + currentUser.replaceAll("[╗]", "'"));
         jLabel2.setText("My wallet: " + String.valueOf(wal));
         jButton1.setOpaque(false);
         jButton1.setContentAreaFilled(false);

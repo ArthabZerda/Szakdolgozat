@@ -311,6 +311,7 @@ public class JaratLogin extends javax.swing.JFrame{
                   name.setVisible(true);
                   name.setLocationRelativeTo(null);
                   name.setCru(currentUser);
+                  currentUser.replaceAll("[╗]", "'");
                   name.setAdmnOnly(currentId);
               } else {
                   JaratAppeal a = new JaratAppeal();

@@ -906,13 +906,18 @@ public class JaratAddShuttle extends javax.swing.JFrame {
             String sql = "SELECT `systemName` FROM systems WHERE 1";
             ResultSet rs = stm.executeQuery(sql);
             String mezon = "systemName";
-
+            System.out.println(mezon);
             String[] record = new String[numberOfSystems];
             int index = 0;
             while (rs.next()) {
-                record[index++] = rs.getString(mezon);
+                if(rs.getString("systemName").contains("╗")) {
+                    System.err.println(rs.getString("systemName").replaceAll("[╗]", "'"));
+                }
+                mezon=rs.getString("systemName");
+                mezon=mezon.replaceAll("[╗]", "'");
+                record[index++] = mezon;
+                
             }
-            
             jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(record));
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);

@@ -39,7 +39,7 @@ public class JaratMyTickets extends javax.swing.JFrame {
     public JaratMyTickets() {
         initComponents();
         tickets();
-        jLabel1.setText(currentUser);
+        jLabel1.setText(currentUser.replaceAll("[╗]", "'"));
         jTable1.getColumnModel().getColumn(0).setMinWidth(0);
     jTable1.getColumnModel().getColumn(0).setMaxWidth(0);
     jTable1.getColumnModel().getColumn(0).setWidth(0);

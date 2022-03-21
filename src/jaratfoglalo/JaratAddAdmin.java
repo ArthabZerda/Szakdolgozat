@@ -672,7 +672,10 @@ public class JaratAddAdmin extends javax.swing.JFrame {
                     System.out.println("Not listing current user");
                 } else if (rs.getString("clearance").matches("L4") || rs.getString("clearance").matches("O5")) {
                     System.out.println("Not listing: " + rs.getString("userfield") + "-" + rs.getString("clearance"));
-                } else {
+                } else if(rs.getString("userfield").contains("╗")){
+                    //System.err.println(rs.getString("userfield").replaceAll("[╗]", "'"));
+                    
+                }else {
                     record[index++] = rs.getString(mezon);
                 }
             }
