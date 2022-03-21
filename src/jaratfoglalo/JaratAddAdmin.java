@@ -676,7 +676,9 @@ public class JaratAddAdmin extends javax.swing.JFrame {
                     //System.err.println(rs.getString("userfield").replaceAll("[╗]", "'"));
                     
                 }else {
-                    record[index++] = rs.getString(mezon);
+                mezon=rs.getString("userfield");
+                mezon=mezon.replaceAll("[╗]", "'");
+                record[index++] = mezon;
                 }
             }
             jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(record));
@@ -795,7 +797,9 @@ public class JaratAddAdmin extends javax.swing.JFrame {
                 } else if (currentUser.matches(rs.getString("userfield"))) {
                     System.out.println("Can't list current user");
                 } else {
-                    record[index++] = rs.getString(mezon);
+                mezon=rs.getString("userfield");
+                mezon=mezon.replaceAll("[╗]", "'");
+                record[index++] = mezon;
                 }
             }
             jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(record));

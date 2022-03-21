@@ -53,9 +53,9 @@ public class JaratAddShuttle extends javax.swing.JFrame {
         addR.setContentAreaFilled(false);
         addR.setBorderPainted(false);
 
-        addSyst.setOpaque(false);
-        addSyst.setContentAreaFilled(false);
-        addSyst.setBorderPainted(false);
+        manageUser.setOpaque(false);
+        manageUser.setContentAreaFilled(false);
+        manageUser.setBorderPainted(false);
 
         AddSystemButton.setOpaque(false);
         AddSystemButton.setContentAreaFilled(false);
@@ -119,7 +119,7 @@ public class JaratAddShuttle extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jPanel15 = new javax.swing.JPanel();
-        addSyst = new javax.swing.JButton();
+        manageUser = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         addR = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
@@ -545,12 +545,12 @@ public class JaratAddShuttle extends javax.swing.JFrame {
 
         jPanel15.setBackground(new java.awt.Color(51, 114, 135));
 
-        addSyst.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        addSyst.setForeground(new java.awt.Color(255, 255, 255));
-        addSyst.setText("Manage Users");
-        addSyst.addActionListener(new java.awt.event.ActionListener() {
+        manageUser.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        manageUser.setForeground(new java.awt.Color(255, 255, 255));
+        manageUser.setText("Manage Users");
+        manageUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addSystActionPerformed(evt);
+                manageUserActionPerformed(evt);
             }
         });
 
@@ -560,12 +560,12 @@ public class JaratAddShuttle extends javax.swing.JFrame {
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel15Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(addSyst, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(manageUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel15Layout.setVerticalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(addSyst, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+            .addComponent(manageUser, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
         jPanel7.setBackground(new java.awt.Color(51, 114, 135));
@@ -858,12 +858,12 @@ public class JaratAddShuttle extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void addSystActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addSystActionPerformed
+    private void manageUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageUserActionPerformed
         JaratAddAdmin jaa = new JaratAddAdmin();
         jaa.setLocationRelativeTo(null);
         jaa.show();
         dispose();
-    }//GEN-LAST:event_addSystActionPerformed
+    }//GEN-LAST:event_manageUserActionPerformed
 
     private void addRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addRActionPerformed
         JaratAddJarat jaj = new JaratAddJarat();
@@ -910,13 +910,10 @@ public class JaratAddShuttle extends javax.swing.JFrame {
             String[] record = new String[numberOfSystems];
             int index = 0;
             while (rs.next()) {
-                if(rs.getString("systemName").contains("╗")) {
-                    System.err.println(rs.getString("systemName").replaceAll("[╗]", "'"));
-                }
-                mezon=rs.getString("systemName");
-                mezon=mezon.replaceAll("[╗]", "'");
+                mezon = rs.getString("systemName");
+                mezon = mezon.replaceAll("[╗]", "'");
                 record[index++] = mezon;
-                
+
             }
             jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(record));
         } catch (ClassNotFoundException ex) {
@@ -973,7 +970,6 @@ public class JaratAddShuttle extends javax.swing.JFrame {
     private javax.swing.JTextField StarportName;
     private javax.swing.JTextField SystemName;
     private javax.swing.JButton addR;
-    private javax.swing.JButton addSyst;
     private javax.swing.JLabel bsh;
     private javax.swing.JLabel esh;
     private javax.swing.JLabel fcsh;
@@ -1010,6 +1006,7 @@ public class JaratAddShuttle extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JButton manageUser;
     private javax.swing.JTextField manufacturers;
     private javax.swing.JLabel mfh;
     private javax.swing.JLabel mh;

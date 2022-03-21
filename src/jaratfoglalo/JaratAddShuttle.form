@@ -835,19 +835,19 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="addSyst" max="32767" attributes="0"/>
+                          <Component id="manageUser" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="addSyst" alignment="0" pref="50" max="32767" attributes="0"/>
+                      <Component id="manageUser" alignment="0" pref="50" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JButton" name="addSyst">
+                <Component class="javax.swing.JButton" name="manageUser">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="14" style="1"/>
@@ -858,7 +858,7 @@
                     <Property name="text" type="java.lang.String" value="Manage Users"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addSystActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="manageUserActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>
