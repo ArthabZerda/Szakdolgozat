@@ -438,7 +438,7 @@ protected String selected;
             PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(selected + "_ID_Ticket.pdf"));
             document.open();
 
-            document.add(new Paragraph("\tTicket ID: " + selected + "\nTicket owner: " + usr));
+            document.add(new Paragraph("\tTicket ID: " + selected + "\nTicket owner: " + usr.replaceAll("[╗]", "'")));
             document.add(new Paragraph("Ship departures from: " + dep.replaceAll("[╗]", "'") + "\nArrives to: " + des.replaceAll("[╗]", "'") + "\nDeparture date: " + date));
 
             document.close();
