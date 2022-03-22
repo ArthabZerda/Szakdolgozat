@@ -839,7 +839,7 @@ public class JaratAddShuttle extends javax.swing.JFrame {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
 
             String selectedSyst = jComboBox2.getItemAt(jComboBox2.getSelectedIndex());
-
+            selectedSyst = selectedSyst.replaceAll("[']", "╗");
             Statement stm = con.createStatement();
 
             stm.executeUpdate("DELETE FROM `systems` WHERE `systems`.`systemName` = '" + selectedSyst + "'");
