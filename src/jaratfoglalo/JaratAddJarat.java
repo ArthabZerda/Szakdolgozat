@@ -821,11 +821,19 @@ public class JaratAddJarat extends javax.swing.JFrame {
             ResultSet rs = stm.executeQuery(sql);
             Object rowData[] = new Object[4];
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-
+            String dep="";
+            String arr="";
             while (rs.next()) {
+                
+                dep = rs.getString("fromS");
+                dep = dep.replaceAll("[╗]", "'");
+                System.out.println(dep);
+                arr = rs.getString("toS");
+                arr = arr.replaceAll("[╗]", "'");
+                System.out.println(arr);
                 rowData[0] = rs.getString("id");
-                rowData[1] = rs.getString("fromS");
-                rowData[2] = rs.getString("toS");
+                rowData[1] = dep;
+                rowData[2] = arr;
                 rowData[3] = rs.getString("date");
 
                 model.addRow(rowData);

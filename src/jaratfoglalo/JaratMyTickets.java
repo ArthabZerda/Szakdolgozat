@@ -439,7 +439,7 @@ protected String selected;
             document.open();
 
             document.add(new Paragraph("\tTicket ID: " + selected + "\nTicket owner: " + usr));
-            document.add(new Paragraph("Ship departures from: " + dep + "\nArrives to: " + des + "\nDeparture date: " + date));
+            document.add(new Paragraph("Ship departures from: " + dep.replaceAll("[╗]", "'") + "\nArrives to: " + des.replaceAll("[╗]", "'") + "\nDeparture date: " + date));
 
             document.close();
             writer.close();
@@ -552,11 +552,20 @@ protected String selected;
             ResultSet rs = stm.executeQuery(sql);
             Object rowData[] = new Object[4];
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-
+            String dep="";
+            String arr="";
             while (rs.next()) {
+                
+                dep = rs.getString("departure");
+                dep = dep.replaceAll("[╗]", "'");
+                System.out.println(dep);
+                arr = rs.getString("destination");
+                arr = arr.replaceAll("[╗]", "'");
+                System.out.println(arr);
+              
                 rowData[0] = rs.getString("ticketId");
-                rowData[1] = rs.getString("departure");
-                rowData[2] = rs.getString("destination");
+                rowData[1] = dep;
+                rowData[2] = arr;
                 rowData[3] = rs.getString("date");
 
                 model.addRow(rowData);
