@@ -597,7 +597,7 @@ public class JaratRoutes extends javax.swing.JFrame {
     protected String selectedClass = "none";
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
-        int input = JOptionPane.showConfirmDialog(null, "Do you confirm your purchase for " + bPrice + "?", "Confirmation",
+        int input = JOptionPane.showConfirmDialog(null, "Do you confirm your purchase for " + ePrice + "?", "Confirmation",
                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         System.out.println(input);
         if (input == 0) {
@@ -743,7 +743,7 @@ public class JaratRoutes extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 
-        int input = JOptionPane.showConfirmDialog(null, "Do you confirm your purchase for " + bPrice + "?", "Confirmation",
+        int input = JOptionPane.showConfirmDialog(null, "Do you confirm your purchase for " + fPrice + "?", "Confirmation",
                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         System.out.println(input);
         if (input == 0) {

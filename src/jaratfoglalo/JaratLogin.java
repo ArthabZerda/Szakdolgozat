@@ -336,8 +336,10 @@ public class JaratLogin extends javax.swing.JFrame{
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        new JaratRegister().setVisible(true);
-              dispose();
+        JaratRegister jr = new JaratRegister();
+        jr.setVisible(true);
+        jr.setLocationRelativeTo(null);
+        dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void passwordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFieldActionPerformed
