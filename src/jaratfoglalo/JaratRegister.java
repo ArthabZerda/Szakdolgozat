@@ -29,7 +29,11 @@ public class JaratRegister extends javax.swing.JFrame {
         registerButton.setOpaque(false);
         registerButton.setContentAreaFilled(false);
         registerButton.setBorderPainted(false);
-
+        
+        jButton1.setOpaque(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setBorderPainted(false);
+        
         jButton2.setOpaque(false);
         jButton2.setContentAreaFilled(false);
         jButton2.setBorderPainted(false);

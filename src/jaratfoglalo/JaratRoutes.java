@@ -615,7 +615,7 @@ public class JaratRoutes extends javax.swing.JFrame {
         } else {
             int input = JOptionPane.showConfirmDialog(null, "Do you confirm your purchase for " + fAmount * ePrice + "?", "Confirmation",
                     JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-            System.out.println(input);
+
             if (input == 0) {
                 setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
 
@@ -631,6 +631,8 @@ public class JaratRoutes extends javax.swing.JFrame {
                 } else if (eSeat < fAmount) {
                     JOptionPane.showMessageDialog(this, "No available seats!");
                 } else {
+                    eSeat -= fAmount;
+                    jLabel8.setText("Available seats: " + String.valueOf(eSeat));
                     try {
                         Class.forName("com.mysql.cj.jdbc.Driver");
                         Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
@@ -665,13 +667,12 @@ public class JaratRoutes extends javax.swing.JFrame {
                     }
                     int counter = 0;
                     while (counter != fAmount) {
-                        eSeat -= fAmount;
-                        jLabel8.setText("Available seats: " + String.valueOf(eSeat));
+
                         try {
                             counter++;
                             System.err.print(" ▓ ");
                             if (counter % 10 == 0) {
-                                System.out.println("\n");
+                                System.out.print("\n");
                             }
                             Thread.sleep(1000);
 
@@ -702,7 +703,11 @@ public class JaratRoutes extends javax.swing.JFrame {
                 jLabel2.setText("My wallet: " + String.valueOf(wal));
                 jp.dispose();
                 setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
+                System.out.println("");
+                 for (int i = 0; i < fAmount; i++) {
+                System.out.print("___");
+                }
+                System.out.println("");
             } else {
                 JOptionPane.showMessageDialog(this, "You have canceled this purchase");
             }
@@ -715,7 +720,7 @@ public class JaratRoutes extends javax.swing.JFrame {
 
         int input = JOptionPane.showConfirmDialog(null, "Do you confirm your purchase for " + fAmount * bPrice + "?", "Confirmation",
                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-        System.out.println(input);
+
         if (input == 0) {
             setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
             JaratProcessing jp = new JaratProcessing();
@@ -728,6 +733,8 @@ public class JaratRoutes extends javax.swing.JFrame {
             } else if (bSeat < fAmount) {
                 JOptionPane.showMessageDialog(this, "No available seats!");
             } else {
+                bSeat -= fAmount;
+                jLabel9.setText("Available seats: " + String.valueOf(bSeat));
                 try {
                     Class.forName("com.mysql.cj.jdbc.Driver");
                     Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
@@ -738,7 +745,6 @@ public class JaratRoutes extends javax.swing.JFrame {
                     stm.executeUpdate(sql);
                     JOptionPane.showMessageDialog(this, "Successfull purchase!");
 
-                    //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
                 } catch (ClassNotFoundException ex) {
                     Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (SQLException ex) {
@@ -754,7 +760,6 @@ public class JaratRoutes extends javax.swing.JFrame {
 
                     stm.executeUpdate(sql);
 
-                    //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
                 } catch (ClassNotFoundException ex) {
                     Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (SQLException ex) {
@@ -762,13 +767,12 @@ public class JaratRoutes extends javax.swing.JFrame {
                 }
                 int counter = 0;
                 while (counter != fAmount) {
-                    bSeat -= fAmount;
-                    jLabel9.setText("Available seats: " + String.valueOf(bSeat));
+
                     try {
                         counter++;
                         System.err.print(" ▓ ");
                         if (counter % 10 == 0) {
-                            System.out.println("\n");
+                            System.out.print("\n");
                         }
                         Thread.sleep(1000);
 
@@ -781,7 +785,6 @@ public class JaratRoutes extends javax.swing.JFrame {
 
                             stm.executeUpdate(sql);
 
-                            //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
                         } catch (ClassNotFoundException ex) {
                             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
                         } catch (SQLException ex) {
@@ -799,7 +802,11 @@ public class JaratRoutes extends javax.swing.JFrame {
             jLabel2.setText("My wallet: " + String.valueOf(wal));
             jp.dispose();
             setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
+            System.out.println("");
+            for (int i = 0; i < fAmount; i++) {
+                System.out.print("___");
+            }
+            System.out.println("");
         } else {
             JOptionPane.showMessageDialog(this, "You have canceled this purchase");
         }
@@ -811,7 +818,7 @@ public class JaratRoutes extends javax.swing.JFrame {
 
         int input = JOptionPane.showConfirmDialog(null, "Do you confirm your purchase for " + fAmount * fPrice + "?", "Confirmation",
                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-        System.out.println(input);
+
         if (input == 0) {
             setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
             JaratProcessing jp = new JaratProcessing();
@@ -836,7 +843,6 @@ public class JaratRoutes extends javax.swing.JFrame {
                     stm.executeUpdate(sql);
                     JOptionPane.showMessageDialog(this, "Successfull purchase!");
 
-                    //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
                 } catch (ClassNotFoundException ex) {
                     Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (SQLException ex) {
@@ -852,7 +858,6 @@ public class JaratRoutes extends javax.swing.JFrame {
 
                     stm.executeUpdate(sql);
 
-                    //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
                 } catch (ClassNotFoundException ex) {
                     Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (SQLException ex) {
@@ -864,7 +869,7 @@ public class JaratRoutes extends javax.swing.JFrame {
                         counter++;
                         System.err.print(" ▓ ");
                         if (counter % 10 == 0) {
-                            System.out.println("\n");
+                            System.out.print("\n");
                         }
                         Thread.sleep(1000);
 
@@ -877,7 +882,6 @@ public class JaratRoutes extends javax.swing.JFrame {
 
                             stm.executeUpdate(sql);
 
-                            //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
                         } catch (ClassNotFoundException ex) {
                             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
                         } catch (SQLException ex) {
@@ -895,7 +899,11 @@ public class JaratRoutes extends javax.swing.JFrame {
             jLabel2.setText("My wallet: " + String.valueOf(wal));
             jp.dispose();
             setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
+            System.out.println("");
+            for (int i = 0; i < fAmount; i++) {
+                System.out.print("___");
+            }
+            System.out.println("");
         } else {
             JOptionPane.showMessageDialog(this, "You have canceled this purchase");
         }
@@ -971,10 +979,10 @@ public class JaratRoutes extends javax.swing.JFrame {
             while (rs.next()) {
                 dep = rs.getString("fromS");
                 dep = dep.replaceAll("[╗]", "'");
-                System.out.println(dep);
+                
                 arr = rs.getString("toS");
                 arr = arr.replaceAll("[╗]", "'");
-                System.out.println(arr);
+                
                 rowData[0] = rs.getString("id");
                 rowData[1] = dep;
                 rowData[2] = arr;
