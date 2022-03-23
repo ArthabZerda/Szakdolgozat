@@ -34,6 +34,7 @@ public static int testerInt=0;
 public static int numberOfShips=0;
 public static String level="";
 public static int numberOfSystems=0;
+public static int fLoad = 0;
     
     
     public static void main(String[] args) {
