@@ -38,6 +38,9 @@ public class JaratRoutes extends javax.swing.JFrame {
         initComponents();
         lista();
         myWallet();
+        jSpinner1.setValue(1);
+        jSpinner2.setValue(1);
+        jSpinner3.setValue(1);
         jLabel1.setText("User: " + currentUser.replaceAll("[╗]", "'"));
         jLabel2.setText("My wallet: " + String.valueOf(wal));
         jButton1.setOpaque(false);
@@ -121,7 +124,6 @@ public class JaratRoutes extends javax.swing.JFrame {
         ticB = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         jSpinner1 = new javax.swing.JSpinner();
-        jLabel11 = new javax.swing.JLabel();
         jSpinner2 = new javax.swing.JSpinner();
         jSpinner3 = new javax.swing.JSpinner();
 
@@ -486,9 +488,6 @@ public class JaratRoutes extends javax.swing.JFrame {
 
         jPanel2.add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 260, 560));
         jPanel2.add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 240, 50, -1));
-
-        jLabel11.setText("jLabel11");
-        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 490, -1, -1));
         jPanel2.add(jSpinner2, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 320, 50, -1));
         jPanel2.add(jSpinner3, new org.netbeans.lib.awtextra.AbsoluteConstraints(669, 400, 50, -1));
 
@@ -611,11 +610,14 @@ public class JaratRoutes extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         int fAmount = (Integer) jSpinner1.getValue();
         fLoad = fAmount;
-
+        if(fAmount<1){
+            JOptionPane.showMessageDialog(this, "Please enter a number above 0");
+        }else{
         int input = JOptionPane.showConfirmDialog(null, "Do you confirm your purchase for " + fAmount * ePrice + "?", "Confirmation",
                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         System.out.println(input);
         if (input == 0) {
+            setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
 
             JaratProcessing jp = new JaratProcessing();
             jp.setLocationRelativeTo(null);
@@ -665,7 +667,10 @@ public class JaratRoutes extends javax.swing.JFrame {
                 while (counter != fAmount) {
                     try {
                         counter++;
-                        System.out.println(counter);
+                        System.err.print(" ▓ ");
+                       if (counter%10==0) {
+                            System.out.println("\n");
+                        }
                         Thread.sleep(1000);
 
                         try {
@@ -694,8 +699,14 @@ public class JaratRoutes extends javax.swing.JFrame {
 
             jLabel2.setText("My wallet: " + String.valueOf(wal));
             jp.dispose();
+            setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+            eSeat-=fAmount;
+            jLabel8.setText("Available seats: " + String.valueOf(eSeat));
+            
+            
         } else {
             JOptionPane.showMessageDialog(this, "You have canceled this purchase");
+        }
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -707,7 +718,7 @@ public class JaratRoutes extends javax.swing.JFrame {
                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         System.out.println(input);
         if (input == 0) {
-
+            setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
             JaratProcessing jp = new JaratProcessing();
             jp.setLocationRelativeTo(null);
             jp.show();
@@ -754,7 +765,10 @@ public class JaratRoutes extends javax.swing.JFrame {
                 while (counter != fAmount) {
                     try {
                         counter++;
-                        System.out.println(counter);
+                       System.err.print(" ▓ ");
+                        if (counter%10==0) {
+                            System.out.println("\n");
+                        }
                         Thread.sleep(1000);
 
                         try {
@@ -783,6 +797,9 @@ public class JaratRoutes extends javax.swing.JFrame {
 
             jLabel2.setText("My wallet: " + String.valueOf(wal));
             jp.dispose();
+            setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+            bSeat-=fAmount;
+            jLabel9.setText("Available seats: " + String.valueOf(bSeat));
         } else {
             JOptionPane.showMessageDialog(this, "You have canceled this purchase");
         }
@@ -796,7 +813,7 @@ int fAmount = (Integer) jSpinner3.getValue();
                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         System.out.println(input);
         if (input == 0) {
-
+            setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
             JaratProcessing jp = new JaratProcessing();
             jp.setLocationRelativeTo(null);
             jp.show();
@@ -843,7 +860,10 @@ int fAmount = (Integer) jSpinner3.getValue();
                 while (counter != fAmount) {
                     try {
                         counter++;
-                        System.out.println(counter);
+                        System.err.print(" ▓ ");
+                        if (counter%10==0) {
+                            System.out.println("\n");
+                        }
                         Thread.sleep(1000);
 
                         try {
@@ -872,6 +892,9 @@ int fAmount = (Integer) jSpinner3.getValue();
 
             jLabel2.setText("My wallet: " + String.valueOf(wal));
             jp.dispose();
+            setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+            fSeat-=fAmount;
+            jLabel10.setText("Available seats: " + String.valueOf(fSeat));
         } else {
             JOptionPane.showMessageDialog(this, "You have canceled this purchase");
         }
@@ -1002,7 +1025,6 @@ int fAmount = (Integer) jSpinner3.getValue();
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
