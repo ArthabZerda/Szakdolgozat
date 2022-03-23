@@ -13,6 +13,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -118,6 +119,7 @@ public class JaratRoutes extends javax.swing.JFrame {
         jPanel11 = new javax.swing.JPanel();
         ticB = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
+        jSpinner1 = new javax.swing.JSpinner();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -479,6 +481,7 @@ public class JaratRoutes extends javax.swing.JFrame {
         );
 
         jPanel2.add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 260, 560));
+        jPanel2.add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 240, 50, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -596,7 +599,8 @@ public class JaratRoutes extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
     protected String selectedClass = "none";
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
+    int fAmount = (Integer) jSpinner1.getValue();
+        //System.out.println(fAmount);
         int input = JOptionPane.showConfirmDialog(null, "Do you confirm your purchase for " + ePrice + "?", "Confirmation",
                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         System.out.println(input);
@@ -625,7 +629,7 @@ public class JaratRoutes extends javax.swing.JFrame {
                 } catch (SQLException ex) {
                     Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
                 }
-
+                
                 try {
                     Class.forName("com.mysql.cj.jdbc.Driver");
                     Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
@@ -641,8 +645,13 @@ public class JaratRoutes extends javax.swing.JFrame {
                 } catch (SQLException ex) {
                     Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
                 }
-
-                try {
+                int counter=0;
+                while(counter!=fAmount){
+                    try {
+                        counter++;
+                        System.out.println(counter);
+                        Thread.sleep(1000);
+                        try {
                     Class.forName("com.mysql.cj.jdbc.Driver");
                     Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
 
@@ -657,6 +666,12 @@ public class JaratRoutes extends javax.swing.JFrame {
                 } catch (SQLException ex) {
                     Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(JaratRoutes.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                }
+                
             }
             myWallet();
 
@@ -955,6 +970,7 @@ public class JaratRoutes extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
