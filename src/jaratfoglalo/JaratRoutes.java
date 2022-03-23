@@ -610,103 +610,102 @@ public class JaratRoutes extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         int fAmount = (Integer) jSpinner1.getValue();
         fLoad = fAmount;
-        if(fAmount<1){
+        if (fAmount < 1) {
             JOptionPane.showMessageDialog(this, "Please enter a number above 0");
-        }else{
-        int input = JOptionPane.showConfirmDialog(null, "Do you confirm your purchase for " + fAmount * ePrice + "?", "Confirmation",
-                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-        System.out.println(input);
-        if (input == 0) {
-            setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
+        } else {
+            int input = JOptionPane.showConfirmDialog(null, "Do you confirm your purchase for " + fAmount * ePrice + "?", "Confirmation",
+                    JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            System.out.println(input);
+            if (input == 0) {
+                setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
 
-            JaratProcessing jp = new JaratProcessing();
-            jp.setLocationRelativeTo(null);
-            jp.show();
+                JaratProcessing jp = new JaratProcessing();
+                jp.setLocationRelativeTo(null);
+                jp.show();
 
-            selectedClass = "economy";
+                selectedClass = "economy";
 
-            type = "Economy";
-            if (wal < fAmount*ePrice) {
-                JOptionPane.showMessageDialog(this, "Unsuficient credits!");
-            } else if (eSeat < fAmount) {
-                JOptionPane.showMessageDialog(this, "No available seats!");
-            } else {
-                try {
-                    Class.forName("com.mysql.cj.jdbc.Driver");
-                    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
-
-                    Statement stm = con.createStatement();
-                    String sql = "UPDATE `users` SET `wallet` = wallet-'" + fAmount * ePrice + "' WHERE `users`.`id` = " + currentId + ";";
-
-                    stm.executeUpdate(sql);
-                    JOptionPane.showMessageDialog(this, "Successfull purchase!");
-
-                    //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (SQLException ex) {
-                    Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
-                try {
-                    Class.forName("com.mysql.cj.jdbc.Driver");
-                    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
-
-                    Statement stm = con.createStatement();
-                    String sql = "UPDATE `routes` SET `economy` = economy-'" + fAmount + "' WHERE `routes`.`id` = " + selel + ";";
-
-                    stm.executeUpdate(sql);
-
-                    //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (SQLException ex) {
-                    Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                int counter = 0;
-                while (counter != fAmount) {
+                type = "Economy";
+                if (wal < fAmount * ePrice) {
+                    JOptionPane.showMessageDialog(this, "Unsuficient credits!");
+                } else if (eSeat < fAmount) {
+                    JOptionPane.showMessageDialog(this, "No available seats!");
+                } else {
                     try {
-                        counter++;
-                        System.err.print(" ▓ ");
-                       if (counter%10==0) {
-                            System.out.println("\n");
-                        }
-                        Thread.sleep(1000);
+                        Class.forName("com.mysql.cj.jdbc.Driver");
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
 
+                        Statement stm = con.createStatement();
+                        String sql = "UPDATE `users` SET `wallet` = wallet-'" + fAmount * ePrice + "' WHERE `users`.`id` = " + currentId + ";";
+
+                        stm.executeUpdate(sql);
+                        JOptionPane.showMessageDialog(this, "Successfull purchase!");
+
+                        //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
+                    } catch (ClassNotFoundException ex) {
+                        Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+                    try {
+                        Class.forName("com.mysql.cj.jdbc.Driver");
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
+
+                        Statement stm = con.createStatement();
+                        String sql = "UPDATE `routes` SET `economy` = economy-'" + fAmount + "' WHERE `routes`.`id` = " + selel + ";";
+
+                        stm.executeUpdate(sql);
+
+                        //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
+                    } catch (ClassNotFoundException ex) {
+                        Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    int counter = 0;
+                    while (counter != fAmount) {
+                        eSeat -= fAmount;
+                        jLabel8.setText("Available seats: " + String.valueOf(eSeat));
                         try {
-                            Class.forName("com.mysql.cj.jdbc.Driver");
-                            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
+                            counter++;
+                            System.err.print(" ▓ ");
+                            if (counter % 10 == 0) {
+                                System.out.println("\n");
+                            }
+                            Thread.sleep(1000);
 
-                            Statement stm = con.createStatement();
-                            String sql = "INSERT INTO `tickets` (`ticketId`,`user_id`, `departure`, `destination`, `ship`, `date`, `seat`) VALUES (NULL,'" + currentId + "', '" + dp + "', '" + ds + "', '" + sp + "' , '" + dt + "', '" + type + "')";
+                            try {
+                                Class.forName("com.mysql.cj.jdbc.Driver");
+                                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
 
-                            stm.executeUpdate(sql);
+                                Statement stm = con.createStatement();
+                                String sql = "INSERT INTO `tickets` (`ticketId`,`user_id`, `departure`, `destination`, `ship`, `date`, `seat`) VALUES (NULL,'" + currentId + "', '" + dp + "', '" + ds + "', '" + sp + "' , '" + dt + "', '" + type + "')";
 
-                            //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
-                        } catch (ClassNotFoundException ex) {
-                            Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
-                        } catch (SQLException ex) {
-                            Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+                                stm.executeUpdate(sql);
+
+                                //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
+                            } catch (ClassNotFoundException ex) {
+                                Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+                            } catch (SQLException ex) {
+                                Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                        } catch (InterruptedException ex) {
+                            Logger.getLogger(JaratRoutes.class.getName()).log(Level.SEVERE, null, ex);
                         }
-                    } catch (InterruptedException ex) {
-                        Logger.getLogger(JaratRoutes.class.getName()).log(Level.SEVERE, null, ex);
+
                     }
 
                 }
+                myWallet();
 
+                jLabel2.setText("My wallet: " + String.valueOf(wal));
+                jp.dispose();
+                setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+            } else {
+                JOptionPane.showMessageDialog(this, "You have canceled this purchase");
             }
-            myWallet();
-
-            jLabel2.setText("My wallet: " + String.valueOf(wal));
-            jp.dispose();
-            setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-            eSeat-=fAmount;
-            jLabel8.setText("Available seats: " + String.valueOf(eSeat));
-            
-            
-        } else {
-            JOptionPane.showMessageDialog(this, "You have canceled this purchase");
-        }
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -724,7 +723,7 @@ public class JaratRoutes extends javax.swing.JFrame {
             jp.show();
 
             type = "Business";
-            if (wal < fAmount*bPrice) {
+            if (wal < fAmount * bPrice) {
                 JOptionPane.showMessageDialog(this, "Unsuficient credits!");
             } else if (bSeat < fAmount) {
                 JOptionPane.showMessageDialog(this, "No available seats!");
@@ -763,10 +762,12 @@ public class JaratRoutes extends javax.swing.JFrame {
                 }
                 int counter = 0;
                 while (counter != fAmount) {
+                    bSeat -= fAmount;
+                    jLabel9.setText("Available seats: " + String.valueOf(bSeat));
                     try {
                         counter++;
-                       System.err.print(" ▓ ");
-                        if (counter%10==0) {
+                        System.err.print(" ▓ ");
+                        if (counter % 10 == 0) {
                             System.out.println("\n");
                         }
                         Thread.sleep(1000);
@@ -798,15 +799,14 @@ public class JaratRoutes extends javax.swing.JFrame {
             jLabel2.setText("My wallet: " + String.valueOf(wal));
             jp.dispose();
             setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-            bSeat-=fAmount;
-            jLabel9.setText("Available seats: " + String.valueOf(bSeat));
+
         } else {
             JOptionPane.showMessageDialog(this, "You have canceled this purchase");
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-int fAmount = (Integer) jSpinner3.getValue();
+        int fAmount = (Integer) jSpinner3.getValue();
         fLoad = fAmount;
 
         int input = JOptionPane.showConfirmDialog(null, "Do you confirm your purchase for " + fAmount * fPrice + "?", "Confirmation",
@@ -819,11 +819,13 @@ int fAmount = (Integer) jSpinner3.getValue();
             jp.show();
 
             type = "First Class";
-            if (wal < fAmount*fPrice) {
+            if (wal < fAmount * fPrice) {
                 JOptionPane.showMessageDialog(this, "Unsuficient credits!");
             } else if (fSeat < fAmount) {
                 JOptionPane.showMessageDialog(this, "No available seats!");
             } else {
+                fSeat -= fAmount;
+                jLabel10.setText("Available seats: " + String.valueOf(fSeat));
                 try {
                     Class.forName("com.mysql.cj.jdbc.Driver");
                     Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
@@ -861,7 +863,7 @@ int fAmount = (Integer) jSpinner3.getValue();
                     try {
                         counter++;
                         System.err.print(" ▓ ");
-                        if (counter%10==0) {
+                        if (counter % 10 == 0) {
                             System.out.println("\n");
                         }
                         Thread.sleep(1000);
@@ -893,8 +895,7 @@ int fAmount = (Integer) jSpinner3.getValue();
             jLabel2.setText("My wallet: " + String.valueOf(wal));
             jp.dispose();
             setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-            fSeat-=fAmount;
-            jLabel10.setText("Available seats: " + String.valueOf(fSeat));
+
         } else {
             JOptionPane.showMessageDialog(this, "You have canceled this purchase");
         }
