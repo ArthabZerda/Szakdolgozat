@@ -122,6 +122,8 @@ public class JaratRoutes extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jSpinner1 = new javax.swing.JSpinner();
         jLabel11 = new javax.swing.JLabel();
+        jSpinner2 = new javax.swing.JSpinner();
+        jSpinner3 = new javax.swing.JSpinner();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -487,6 +489,8 @@ public class JaratRoutes extends javax.swing.JFrame {
 
         jLabel11.setText("jLabel11");
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 490, -1, -1));
+        jPanel2.add(jSpinner2, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 320, 50, -1));
+        jPanel2.add(jSpinner3, new org.netbeans.lib.awtextra.AbsoluteConstraints(669, 400, 50, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -608,7 +612,6 @@ public class JaratRoutes extends javax.swing.JFrame {
         int fAmount = (Integer) jSpinner1.getValue();
         fLoad = fAmount;
 
-        //System.out.println(fAmount);
         int input = JOptionPane.showConfirmDialog(null, "Do you confirm your purchase for " + fAmount * ePrice + "?", "Confirmation",
                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         System.out.println(input);
@@ -621,9 +624,9 @@ public class JaratRoutes extends javax.swing.JFrame {
             selectedClass = "economy";
 
             type = "Economy";
-            if (wal < ePrice) {
+            if (wal < fAmount*ePrice) {
                 JOptionPane.showMessageDialog(this, "Unsuficient credits!");
-            } else if (eSeat < 1) {
+            } else if (eSeat < fAmount) {
                 JOptionPane.showMessageDialog(this, "No available seats!");
             } else {
                 try {
@@ -697,16 +700,22 @@ public class JaratRoutes extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        type = "Business Class";
+        int fAmount = (Integer) jSpinner2.getValue();
+        fLoad = fAmount;
 
-        int input = JOptionPane.showConfirmDialog(null, "Do you confirm your purchase for " + bPrice + "?", "Confirmation",
+        int input = JOptionPane.showConfirmDialog(null, "Do you confirm your purchase for " + fAmount * bPrice + "?", "Confirmation",
                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         System.out.println(input);
         if (input == 0) {
 
-            if (wal < 1) {
+            JaratProcessing jp = new JaratProcessing();
+            jp.setLocationRelativeTo(null);
+            jp.show();
+
+            type = "Business";
+            if (wal < fAmount*bPrice) {
                 JOptionPane.showMessageDialog(this, "Unsuficient credits!");
-            } else if (bSeat < 1) {
+            } else if (bSeat < fAmount) {
                 JOptionPane.showMessageDialog(this, "No available seats!");
             } else {
                 try {
@@ -714,10 +723,26 @@ public class JaratRoutes extends javax.swing.JFrame {
                     Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
 
                     Statement stm = con.createStatement();
-                    String sql = "UPDATE `users` SET `wallet` = wallet-'" + bPrice + "' WHERE `users`.`id` = " + currentId + ";";
+                    String sql = "UPDATE `users` SET `wallet` = wallet-'" + fAmount * bPrice + "' WHERE `users`.`id` = " + currentId + ";";
 
                     stm.executeUpdate(sql);
                     JOptionPane.showMessageDialog(this, "Successfull purchase!");
+
+                    //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                try {
+                    Class.forName("com.mysql.cj.jdbc.Driver");
+                    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
+
+                    Statement stm = con.createStatement();
+                    String sql = "UPDATE `routes` SET `business` = business-'" + fAmount + "' WHERE `routes`.`id` = " + selel + ";";
+
+                    stm.executeUpdate(sql);
 
                     //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
                 } catch (ClassNotFoundException ex) {
@@ -726,61 +751,60 @@ public class JaratRoutes extends javax.swing.JFrame {
                     Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 int counter = 0;
+                while (counter != fAmount) {
+                    try {
+                        counter++;
+                        System.out.println(counter);
+                        Thread.sleep(1000);
 
-                try {
-                    Class.forName("com.mysql.cj.jdbc.Driver");
-                    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
+                        try {
+                            Class.forName("com.mysql.cj.jdbc.Driver");
+                            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
 
-                    Statement stm = con.createStatement();
+                            Statement stm = con.createStatement();
+                            String sql = "INSERT INTO `tickets` (`ticketId`,`user_id`, `departure`, `destination`, `ship`, `date`, `seat`) VALUES (NULL,'" + currentId + "', '" + dp + "', '" + ds + "', '" + sp + "' , '" + dt + "', '" + type + "')";
 
-                    String sql = "UPDATE `routes` SET `business` = business-'" + 1 + "' WHERE `routes`.`id` = " + selel + ";";
-                    stm.executeUpdate(sql);
-                    counter++;
-                    System.out.println(counter);
+                            stm.executeUpdate(sql);
 
-                    //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (SQLException ex) {
-                    Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+                            //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
+                        } catch (ClassNotFoundException ex) {
+                            Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+                        } catch (SQLException ex) {
+                            Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(JaratRoutes.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
                 }
 
-                int ticketCounter = 1;
-
-                try {
-                    Class.forName("com.mysql.cj.jdbc.Driver");
-                    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
-
-                    Statement stm = con.createStatement();
-                    String sql = "INSERT INTO `tickets` (`ticketId`,`user_id`, `departure`, `destination`, `ship`, `date`, `seat`) VALUES (NULL,'" + currentId + "', '" + dp + "', '" + ds + "', '" + sp + "' , '" + dt + "', '" + type + "')";
-
-                    stm.executeUpdate(sql);
-
-                    //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (SQLException ex) {
-                    Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
-                }
             }
-
             myWallet();
+
             jLabel2.setText("My wallet: " + String.valueOf(wal));
+            jp.dispose();
         } else {
             JOptionPane.showMessageDialog(this, "You have canceled this purchase");
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+int fAmount = (Integer) jSpinner3.getValue();
+        fLoad = fAmount;
 
-        int input = JOptionPane.showConfirmDialog(null, "Do you confirm your purchase for " + fPrice + "?", "Confirmation",
+        int input = JOptionPane.showConfirmDialog(null, "Do you confirm your purchase for " + fAmount * fPrice + "?", "Confirmation",
                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         System.out.println(input);
         if (input == 0) {
+
+            JaratProcessing jp = new JaratProcessing();
+            jp.setLocationRelativeTo(null);
+            jp.show();
+
             type = "First Class";
-            if (wal < fPrice) {
+            if (wal < fAmount*fPrice) {
                 JOptionPane.showMessageDialog(this, "Unsuficient credits!");
-            } else if (fSeat < 1) {
+            } else if (fSeat < fAmount) {
                 JOptionPane.showMessageDialog(this, "No available seats!");
             } else {
                 try {
@@ -788,7 +812,7 @@ public class JaratRoutes extends javax.swing.JFrame {
                     Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
 
                     Statement stm = con.createStatement();
-                    String sql = "UPDATE `users` SET `wallet` = wallet-'" + fPrice + "' WHERE `users`.`id` = " + currentId + ";";
+                    String sql = "UPDATE `users` SET `wallet` = wallet-'" + fAmount * fPrice + "' WHERE `users`.`id` = " + currentId + ";";
 
                     stm.executeUpdate(sql);
                     JOptionPane.showMessageDialog(this, "Successfull purchase!");
@@ -805,7 +829,7 @@ public class JaratRoutes extends javax.swing.JFrame {
                     Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
 
                     Statement stm = con.createStatement();
-                    String sql = "UPDATE `routes` SET `first` = first-'" + 1 + "' WHERE `routes`.`id` = " + selel + ";";
+                    String sql = "UPDATE `routes` SET `first` = first-'" + fAmount + "' WHERE `routes`.`id` = " + selel + ";";
 
                     stm.executeUpdate(sql);
 
@@ -815,25 +839,39 @@ public class JaratRoutes extends javax.swing.JFrame {
                 } catch (SQLException ex) {
                     Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                int counter = 0;
+                while (counter != fAmount) {
+                    try {
+                        counter++;
+                        System.out.println(counter);
+                        Thread.sleep(1000);
 
-                try {
-                    Class.forName("com.mysql.cj.jdbc.Driver");
-                    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
+                        try {
+                            Class.forName("com.mysql.cj.jdbc.Driver");
+                            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
 
-                    Statement stm = con.createStatement();
-                    String sql = "INSERT INTO `tickets` (`ticketId`,`user_id`, `departure`, `destination`, `ship`, `date`, `seat`) VALUES (NULL,'" + currentId + "', '" + dp + "', '" + ds + "', '" + sp + "' , '" + dt + "', '" + type + "')";
+                            Statement stm = con.createStatement();
+                            String sql = "INSERT INTO `tickets` (`ticketId`,`user_id`, `departure`, `destination`, `ship`, `date`, `seat`) VALUES (NULL,'" + currentId + "', '" + dp + "', '" + ds + "', '" + sp + "' , '" + dt + "', '" + type + "')";
 
-                    stm.executeUpdate(sql);
+                            stm.executeUpdate(sql);
 
-                    //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (SQLException ex) {
-                    Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+                            //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
+                        } catch (ClassNotFoundException ex) {
+                            Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+                        } catch (SQLException ex) {
+                            Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(JaratRoutes.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
                 }
+
             }
             myWallet();
+
             jLabel2.setText("My wallet: " + String.valueOf(wal));
+            jp.dispose();
         } else {
             JOptionPane.showMessageDialog(this, "You have canceled this purchase");
         }
@@ -987,6 +1025,8 @@ public class JaratRoutes extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSpinner jSpinner1;
+    private javax.swing.JSpinner jSpinner2;
+    private javax.swing.JSpinner jSpinner3;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
