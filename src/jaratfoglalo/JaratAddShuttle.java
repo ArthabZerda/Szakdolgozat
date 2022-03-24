@@ -48,6 +48,10 @@ public class JaratAddShuttle extends javax.swing.JFrame {
         jButton5.setOpaque(false);
         jButton5.setContentAreaFilled(false);
         jButton5.setBorderPainted(false);
+        
+        jButton6.setOpaque(false);
+        jButton6.setContentAreaFilled(false);
+        jButton6.setBorderPainted(false);
 
         addR.setOpaque(false);
         addR.setContentAreaFilled(false);

@@ -137,11 +137,29 @@ public class JaratRoutes extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel3.setText("From:");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 70, -1, -1));
+
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField1KeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField1KeyReleased(evt);
+            }
+        });
         jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 70, 123, -1));
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel4.setText("To:");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 70, -1, -1));
+
+        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField2KeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField2KeyReleased(evt);
+            }
+        });
         jPanel2.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 70, 130, -1));
 
         jTable1.setBackground(new java.awt.Color(212, 223, 208));
@@ -537,6 +555,10 @@ public class JaratRoutes extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        jTable1.getColumnModel().getColumn(0).setMinWidth(0);
+        jTable1.getColumnModel().getColumn(0).setMaxWidth(0);
+        jTable1.getColumnModel().getColumn(0).setWidth(0);
     }//GEN-LAST:event_jButton1ActionPerformed
     protected int ePrice;
     protected int bPrice;
@@ -933,6 +955,91 @@ public class JaratRoutes extends javax.swing.JFrame {
         jmt.show();
         dispose();
     }//GEN-LAST:event_ticBActionPerformed
+
+    private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
+         
+    }//GEN-LAST:event_jTextField1KeyPressed
+
+    private void jTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyPressed
+        
+    }//GEN-LAST:event_jTextField2KeyPressed
+
+    private void jTextField2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyReleased
+        
+        try {
+            jTable1.setModel(new DefaultTableModel(null, new String[]{"id", "Departure", "Destination", "Launch Date"}));
+
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
+
+            String dep = jTextField1.getText();
+            String arri = jTextField2.getText();
+            Statement stm = con.createStatement();
+            String sql = "SELECT `id`,`fromS`,`toS`,`date` FROM `routes` WHERE `fromS` LIKE '%" + dep + "%' AND `toS` LIKE '%" + arri + "%'";
+            ResultSet rs = stm.executeQuery(sql);
+            Object rowData[] = new Object[4];
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+
+            while (rs.next()) {
+                rowData[0] = rs.getString("id");
+                rowData[1] = rs.getString("fromS");
+                rowData[2] = rs.getString("toS");
+                rowData[3] = rs.getString("date");
+
+                model.addRow(rowData);
+
+            }
+            con.close();
+
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        jTable1.getColumnModel().getColumn(0).setMinWidth(0);
+        jTable1.getColumnModel().getColumn(0).setMaxWidth(0);
+        jTable1.getColumnModel().getColumn(0).setWidth(0);
+    }//GEN-LAST:event_jTextField2KeyReleased
+
+    private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
+        
+       
+        try {
+            jTable1.setModel(new DefaultTableModel(null, new String[]{"id", "Departure", "Destination", "Launch Date"}));
+
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
+
+            String dep = jTextField1.getText();
+            String arri = jTextField2.getText();
+            Statement stm = con.createStatement();
+            String sql = "SELECT `id`,`fromS`,`toS`,`date` FROM `routes` WHERE `fromS` LIKE '%" + dep + "%' AND `toS` LIKE '%" + arri + "%'";
+            ResultSet rs = stm.executeQuery(sql);
+            Object rowData[] = new Object[4];
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+
+            while (rs.next()) {
+                rowData[0] = rs.getString("id");
+                rowData[1] = rs.getString("fromS");
+                rowData[2] = rs.getString("toS");
+                rowData[3] = rs.getString("date");
+
+                model.addRow(rowData);
+
+            }
+            con.close();
+
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        jTable1.getColumnModel().getColumn(0).setMinWidth(0);
+        jTable1.getColumnModel().getColumn(0).setMaxWidth(0);
+        jTable1.getColumnModel().getColumn(0).setWidth(0);
+    }//GEN-LAST:event_jTextField1KeyReleased
 
     /**
      * @param args the command line arguments
