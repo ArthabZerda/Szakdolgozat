@@ -7,6 +7,7 @@ package jaratfoglalo;
 
 import static jaratfoglalo.JaratFoglalo.adminCount;
 import static jaratfoglalo.JaratFoglalo.currentUser;
+import static jaratfoglalo.JaratFoglalo.level;
 import static jaratfoglalo.JaratFoglalo.testerInt;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -37,6 +38,11 @@ public class JaratAddAdmin extends javax.swing.JFrame {
         appeals();
         startR();
         admins();
+        if (level.matches("L4")) {
+            jComboBox3.setVisible(false);
+            jButton1.setVisible(false);
+            jButton5.setVisible(false);
+        }
         //userListF();
         closeB.setOpaque(false);
         closeB.setContentAreaFilled(false);
@@ -288,7 +294,7 @@ public class JaratAddAdmin extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(162, 105, -1, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, -1, -1));
 
         jButton3.setText("Ban user");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -296,7 +302,7 @@ public class JaratAddAdmin extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(162, 146, 111, -1));
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 111, -1));
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -797,7 +803,8 @@ public class JaratAddAdmin extends javax.swing.JFrame {
 
                 if (currentUser.matches(rs.getString("userfield"))) {
                     System.out.println("Not listing current user");
-                } else if (rs.getString("clearance").matches("L0") || rs.getString("clearance").matches("banned")) {
+                    
+                } else if (rs.getString("clearance").matches("L0") || rs.getString("clearance").matches("banned") || rs.getString("clearance").matches("O5")) {
                     System.out.println("Not listing: " + rs.getString("userfield") + "-" + rs.getString("clearance"));
                 } else if(rs.getString("userfield").contains("╗")){
                     
