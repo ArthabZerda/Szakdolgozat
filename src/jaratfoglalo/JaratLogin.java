@@ -18,6 +18,8 @@ import static jaratfoglalo.JaratFoglalo.currentId;
 import static jaratfoglalo.JaratFoglalo.testerInt;
 import static jaratfoglalo.JaratFoglalo.level;
 import java.awt.Color;
+import java.io.File;
+import java.io.IOException;
 import javax.swing.JFrame;
 /**
  *
@@ -313,6 +315,9 @@ public class JaratLogin extends javax.swing.JFrame{
                   currentUser=rs.getString("userfield");
                   currentUser.replaceAll("[╗]", "'");
                   currentId=rs.getInt("id");
+                  
+                 
+                  
               } else {
                   JaratAppeal a = new JaratAppeal();
                   a.setVisible(true);
