@@ -24,39 +24,37 @@ import javax.swing.JOptionPane;
 public class JaratWallet extends javax.swing.JFrame {
 
     protected int wal = 0;
-    protected boolean data=false;
-    protected boolean date=false;
+    protected boolean data = false;
+    protected boolean date = false;
+
     /**
      * Creates new form JaratWallet
      */
     public JaratWallet() {
         initComponents();
-        
+
         jButton1.setOpaque(false);
         jButton1.setContentAreaFilled(false);
         jButton1.setBorderPainted(false);
-        
+
         jButton2.setOpaque(false);
         jButton2.setContentAreaFilled(false);
         jButton2.setBorderPainted(false);
-      
+
         jButton3.setOpaque(false);
         jButton3.setContentAreaFilled(false);
         jButton3.setBorderPainted(false);
-        
-      
-      
+
         jLabel3.setText("Username: " + currentUser.replaceAll("[╗]", "'"));
         raiden();
-         ticB.setOpaque(false);
+        ticB.setOpaque(false);
         ticB.setContentAreaFilled(false);
         ticB.setBorderPainted(false);
-        
+
         routesB.setOpaque(false);
         routesB.setContentAreaFilled(false);
         routesB.setBorderPainted(false);
-        
-       
+
         closeB.setOpaque(false);
         closeB.setContentAreaFilled(false);
         closeB.setBorderPainted(false);
@@ -399,21 +397,20 @@ protected int cvc = 0;
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         cvc = Integer.parseInt(jTextField4.getText());
         int value = Integer.parseInt(jTextField5.getText());
-        String emptyName=jTextField3.getText();
-        String emptyCr=jTextField3.getText();
+        String emptyName = jTextField3.getText();
+        String emptyCr = jTextField3.getText();
         System.out.println(value);
 
-        
         if (cvc < 100 || cvc > 1000) {
             JOptionPane.showMessageDialog(this, "Please enter valid card details!");
-        } else if(emptyName.matches("")){
-            System.out.println("sdf:("+emptyCr+")");
+        } else if (emptyName.matches("")) {
+            System.out.println("sdf:(" + emptyCr + ")");
             JOptionPane.showMessageDialog(this, "Please enter valid card details!");
-        }else if(value<0 || emptyName.matches("")){
+        } else if (value < 0 || emptyName.matches("")) {
             JOptionPane.showMessageDialog(this, "Please enter valid amount");
-        }else if(data==false || date==false){
-        JOptionPane.showMessageDialog(this, "Please enter valid card details!");
-        }else{
+        } else if (data == false || date == false) {
+            JOptionPane.showMessageDialog(this, "Please enter valid card details!");
+        } else {
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
@@ -438,40 +435,39 @@ protected int cvc = 0;
 
     protected String seged = "";
     private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
-       
+
 
     }//GEN-LAST:event_jTextField1KeyReleased
     protected String dat;
     protected int datCount = 0;
-       
+
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
 
-         String wa = jTextField1.getText();
-        
-        count++;
-        
-        System.out.println(count);
+        String wa = jTextField1.getText();
+        String waCounter=wa.replaceAll("[-]", "");
 
-        if (count % 4 == 0) {
+        System.out.println(waCounter.length());
+
+        if (waCounter.length() % 4 == 0) {
 
             wa = wa + "-";
             if (wa.substring(0).matches("-")) {
-               wa = "" + wa.substring(1); 
+                wa = "" + wa.substring(1);
             }
-            
-            if (count < 16) {
+
+            if (waCounter.length() < 16) {
                 jTextField1.setText(wa);
             }
-            if (count >= 16) {
+            if (waCounter.length() >= 16) {
                 wa = wa.substring(0, wa.length() - 1);
 
             }
         }
-        if (count == 16) {
+        if (waCounter.length() == 16) {
             seged = wa;
             jTextField1.setText(seged);
             jTextField1.setEditable(false);
-            data=true;
+            data = true;
 
         }
     }//GEN-LAST:event_jTextField1KeyPressed
@@ -492,7 +488,7 @@ protected int cvc = 0;
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        jaratHome jr= new jaratHome();
+        jaratHome jr = new jaratHome();
         jr.setLocationRelativeTo(null);
         jr.show();
         dispose();
@@ -519,16 +515,16 @@ protected int cvc = 0;
 
     private void jTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyPressed
         dat = jTextField2.getText();
-        
+
         if (dat.length() == 2) {
             dat = dat + " / ";
             jTextField2.setText(dat);
         }
         System.out.println(dat.length());
         if (dat.length() == 7) {
-            
+
             jTextField2.setEditable(false);
-            date=true;
+            date = true;
         }
     }//GEN-LAST:event_jTextField2KeyPressed
 
