@@ -103,7 +103,6 @@ public class JaratWallet extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1020, 530));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -182,6 +181,9 @@ public class JaratWallet extends javax.swing.JFrame {
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField2KeyPressed(evt);
+            }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextField2KeyReleased(evt);
             }
@@ -386,7 +388,7 @@ public class JaratWallet extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(147, 147, 147)
+                .addGap(0, 0, 0)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -432,19 +434,31 @@ protected int cvc = 0;
             }
     }//GEN-LAST:event_jButton1ActionPerformed
     }
-    protected int count = 0;
+    protected int count = -1;
 
     protected String seged = "";
     private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
-        String wa = jTextField1.getText();
+       
 
+    }//GEN-LAST:event_jTextField1KeyReleased
+    protected String dat;
+    protected int datCount = 0;
+       
+    private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
+
+         String wa = jTextField1.getText();
+        
         count++;
-
+        
         System.out.println(count);
 
         if (count % 4 == 0) {
 
             wa = wa + "-";
+            if (wa.substring(0).matches("-")) {
+               wa = "" + wa.substring(1); 
+            }
+            
             if (count < 16) {
                 jTextField1.setText(wa);
             }
@@ -460,28 +474,11 @@ protected int cvc = 0;
             data=true;
 
         }
-
-    }//GEN-LAST:event_jTextField1KeyReleased
-    protected String dat;
-    protected int datCount = 0;
-
-    private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
-
     }//GEN-LAST:event_jTextField1KeyPressed
 
     private void jTextField2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyReleased
         // TODO add your handling code here:datCount++;
 
-        dat = jTextField2.getText();
-        datCount++;
-        if (datCount == 2) {
-            dat = dat + " / ";
-            jTextField2.setText(dat);
-        }
-        if (datCount == 4) {
-            jTextField2.setEditable(false);
-            date=true;
-        }
     }//GEN-LAST:event_jTextField2KeyReleased
 
 
@@ -490,8 +487,8 @@ protected int cvc = 0;
         jTextField2.setText("");
         jTextField2.setEditable(true);
         jTextField1.setEditable(true);
-        count = 0;
-        datCount = 0;
+        count = -1;
+        datCount = -1;
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -519,6 +516,21 @@ protected int cvc = 0;
         jmt.show();
         dispose();
     }//GEN-LAST:event_ticBActionPerformed
+
+    private void jTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyPressed
+        dat = jTextField2.getText();
+        
+        if (dat.length() == 2) {
+            dat = dat + " / ";
+            jTextField2.setText(dat);
+        }
+        System.out.println(dat.length());
+        if (dat.length() == 7) {
+            
+            jTextField2.setEditable(false);
+            date=true;
+        }
+    }//GEN-LAST:event_jTextField2KeyPressed
 
     /**
      * @param args the command line arguments

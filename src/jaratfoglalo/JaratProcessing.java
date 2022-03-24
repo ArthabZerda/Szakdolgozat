@@ -21,6 +21,8 @@ public class JaratProcessing extends javax.swing.JFrame {
     public JaratProcessing() {
         initComponents();
         int counter = 0;
+       
+        
         
     }
 

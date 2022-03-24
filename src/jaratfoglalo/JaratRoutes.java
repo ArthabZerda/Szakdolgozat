@@ -704,8 +704,8 @@ public class JaratRoutes extends javax.swing.JFrame {
                 jp.dispose();
                 setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
                 System.out.println("");
-                 for (int i = 0; i < fAmount; i++) {
-                System.out.print("___");
+                for (int i = 0; i < fAmount; i++) {
+                    System.out.print("___");
                 }
                 System.out.println("");
             } else {
@@ -717,195 +717,201 @@ public class JaratRoutes extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         int fAmount = (Integer) jSpinner2.getValue();
         fLoad = fAmount;
+        if (fAmount < 1) {
+            JOptionPane.showMessageDialog(this, "Please enter a number above 0");
+        } else {
+            int input = JOptionPane.showConfirmDialog(null, "Do you confirm your purchase for " + fAmount * bPrice + "?", "Confirmation",
+                    JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 
-        int input = JOptionPane.showConfirmDialog(null, "Do you confirm your purchase for " + fAmount * bPrice + "?", "Confirmation",
-                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if (input == 0) {
+                setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
+                JaratProcessing jp = new JaratProcessing();
+                jp.setLocationRelativeTo(null);
+                jp.show();
 
-        if (input == 0) {
-            setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
-            JaratProcessing jp = new JaratProcessing();
-            jp.setLocationRelativeTo(null);
-            jp.show();
+                type = "Business";
+                if (wal < fAmount * bPrice) {
+                    JOptionPane.showMessageDialog(this, "Unsuficient credits!");
+                } else if (bSeat < fAmount) {
+                    JOptionPane.showMessageDialog(this, "No available seats!");
+                } else {
+                    bSeat -= fAmount;
+                    jLabel9.setText("Available seats: " + String.valueOf(bSeat));
+                    try {
+                        Class.forName("com.mysql.cj.jdbc.Driver");
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
 
-            type = "Business";
-            if (wal < fAmount * bPrice) {
-                JOptionPane.showMessageDialog(this, "Unsuficient credits!");
-            } else if (bSeat < fAmount) {
-                JOptionPane.showMessageDialog(this, "No available seats!");
-            } else {
-                bSeat -= fAmount;
-                jLabel9.setText("Available seats: " + String.valueOf(bSeat));
-                try {
-                    Class.forName("com.mysql.cj.jdbc.Driver");
-                    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
+                        Statement stm = con.createStatement();
+                        String sql = "UPDATE `users` SET `wallet` = wallet-'" + fAmount * bPrice + "' WHERE `users`.`id` = " + currentId + ";";
 
-                    Statement stm = con.createStatement();
-                    String sql = "UPDATE `users` SET `wallet` = wallet-'" + fAmount * bPrice + "' WHERE `users`.`id` = " + currentId + ";";
+                        stm.executeUpdate(sql);
+                        JOptionPane.showMessageDialog(this, "Successfull purchase!");
 
-                    stm.executeUpdate(sql);
-                    JOptionPane.showMessageDialog(this, "Successfull purchase!");
-
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (SQLException ex) {
-                    Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
-                try {
-                    Class.forName("com.mysql.cj.jdbc.Driver");
-                    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
-
-                    Statement stm = con.createStatement();
-                    String sql = "UPDATE `routes` SET `business` = business-'" + fAmount + "' WHERE `routes`.`id` = " + selel + ";";
-
-                    stm.executeUpdate(sql);
-
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (SQLException ex) {
-                    Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                int counter = 0;
-                while (counter != fAmount) {
+                    } catch (ClassNotFoundException ex) {
+                        Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+                    }
 
                     try {
-                        counter++;
-                        System.err.print(" ▓ ");
-                        if (counter % 10 == 0) {
-                            System.out.print("\n");
-                        }
-                        Thread.sleep(1000);
+                        Class.forName("com.mysql.cj.jdbc.Driver");
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
+
+                        Statement stm = con.createStatement();
+                        String sql = "UPDATE `routes` SET `business` = business-'" + fAmount + "' WHERE `routes`.`id` = " + selel + ";";
+
+                        stm.executeUpdate(sql);
+
+                    } catch (ClassNotFoundException ex) {
+                        Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    int counter = 0;
+                    while (counter != fAmount) {
 
                         try {
-                            Class.forName("com.mysql.cj.jdbc.Driver");
-                            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
+                            counter++;
+                            System.err.print(" ▓ ");
+                            if (counter % 10 == 0) {
+                                System.out.print("\n");
+                            }
+                            Thread.sleep(1000);
 
-                            Statement stm = con.createStatement();
-                            String sql = "INSERT INTO `tickets` (`ticketId`,`user_id`, `departure`, `destination`, `ship`, `date`, `seat`) VALUES (NULL,'" + currentId + "', '" + dp + "', '" + ds + "', '" + sp + "' , '" + dt + "', '" + type + "')";
+                            try {
+                                Class.forName("com.mysql.cj.jdbc.Driver");
+                                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
 
-                            stm.executeUpdate(sql);
+                                Statement stm = con.createStatement();
+                                String sql = "INSERT INTO `tickets` (`ticketId`,`user_id`, `departure`, `destination`, `ship`, `date`, `seat`) VALUES (NULL,'" + currentId + "', '" + dp + "', '" + ds + "', '" + sp + "' , '" + dt + "', '" + type + "')";
 
-                        } catch (ClassNotFoundException ex) {
-                            Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
-                        } catch (SQLException ex) {
-                            Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+                                stm.executeUpdate(sql);
+
+                            } catch (ClassNotFoundException ex) {
+                                Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+                            } catch (SQLException ex) {
+                                Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                        } catch (InterruptedException ex) {
+                            Logger.getLogger(JaratRoutes.class.getName()).log(Level.SEVERE, null, ex);
                         }
-                    } catch (InterruptedException ex) {
-                        Logger.getLogger(JaratRoutes.class.getName()).log(Level.SEVERE, null, ex);
+
                     }
 
                 }
+                myWallet();
 
+                jLabel2.setText("My wallet: " + String.valueOf(wal));
+                jp.dispose();
+                setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+                System.out.println("");
+                for (int i = 0; i < fAmount; i++) {
+                    System.out.print("___");
+                }
+                System.out.println("");
+            } else {
+                JOptionPane.showMessageDialog(this, "You have canceled this purchase");
             }
-            myWallet();
-
-            jLabel2.setText("My wallet: " + String.valueOf(wal));
-            jp.dispose();
-            setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-            System.out.println("");
-            for (int i = 0; i < fAmount; i++) {
-                System.out.print("___");
-            }
-            System.out.println("");
-        } else {
-            JOptionPane.showMessageDialog(this, "You have canceled this purchase");
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         int fAmount = (Integer) jSpinner3.getValue();
         fLoad = fAmount;
+        if (fAmount < 1) {
+            JOptionPane.showMessageDialog(this, "Please enter a number above 0");
+        } else {
+            int input = JOptionPane.showConfirmDialog(null, "Do you confirm your purchase for " + fAmount * fPrice + "?", "Confirmation",
+                    JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 
-        int input = JOptionPane.showConfirmDialog(null, "Do you confirm your purchase for " + fAmount * fPrice + "?", "Confirmation",
-                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if (input == 0) {
+                setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
+                JaratProcessing jp = new JaratProcessing();
+                jp.setLocationRelativeTo(null);
+                jp.show();
 
-        if (input == 0) {
-            setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
-            JaratProcessing jp = new JaratProcessing();
-            jp.setLocationRelativeTo(null);
-            jp.show();
-
-            type = "First Class";
-            if (wal < fAmount * fPrice) {
-                JOptionPane.showMessageDialog(this, "Unsuficient credits!");
-            } else if (fSeat < fAmount) {
-                JOptionPane.showMessageDialog(this, "No available seats!");
-            } else {
-                fSeat -= fAmount;
-                jLabel10.setText("Available seats: " + String.valueOf(fSeat));
-                try {
-                    Class.forName("com.mysql.cj.jdbc.Driver");
-                    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
-
-                    Statement stm = con.createStatement();
-                    String sql = "UPDATE `users` SET `wallet` = wallet-'" + fAmount * fPrice + "' WHERE `users`.`id` = " + currentId + ";";
-
-                    stm.executeUpdate(sql);
-                    JOptionPane.showMessageDialog(this, "Successfull purchase!");
-
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (SQLException ex) {
-                    Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
-                try {
-                    Class.forName("com.mysql.cj.jdbc.Driver");
-                    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
-
-                    Statement stm = con.createStatement();
-                    String sql = "UPDATE `routes` SET `first` = first-'" + fAmount + "' WHERE `routes`.`id` = " + selel + ";";
-
-                    stm.executeUpdate(sql);
-
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (SQLException ex) {
-                    Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                int counter = 0;
-                while (counter != fAmount) {
+                type = "First Class";
+                if (wal < fAmount * fPrice) {
+                    JOptionPane.showMessageDialog(this, "Unsuficient credits!");
+                } else if (fSeat < fAmount) {
+                    JOptionPane.showMessageDialog(this, "No available seats!");
+                } else {
+                    fSeat -= fAmount;
+                    jLabel10.setText("Available seats: " + String.valueOf(fSeat));
                     try {
-                        counter++;
-                        System.err.print(" ▓ ");
-                        if (counter % 10 == 0) {
-                            System.out.print("\n");
-                        }
-                        Thread.sleep(1000);
+                        Class.forName("com.mysql.cj.jdbc.Driver");
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
 
+                        Statement stm = con.createStatement();
+                        String sql = "UPDATE `users` SET `wallet` = wallet-'" + fAmount * fPrice + "' WHERE `users`.`id` = " + currentId + ";";
+
+                        stm.executeUpdate(sql);
+                        JOptionPane.showMessageDialog(this, "Successfull purchase!");
+
+                    } catch (ClassNotFoundException ex) {
+                        Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+                    try {
+                        Class.forName("com.mysql.cj.jdbc.Driver");
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
+
+                        Statement stm = con.createStatement();
+                        String sql = "UPDATE `routes` SET `first` = first-'" + fAmount + "' WHERE `routes`.`id` = " + selel + ";";
+
+                        stm.executeUpdate(sql);
+
+                    } catch (ClassNotFoundException ex) {
+                        Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    int counter = 0;
+                    while (counter != fAmount) {
                         try {
-                            Class.forName("com.mysql.cj.jdbc.Driver");
-                            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
+                            counter++;
+                            System.err.print(" ▓ ");
+                            if (counter % 10 == 0) {
+                                System.out.print("\n");
+                            }
+                            Thread.sleep(1000);
 
-                            Statement stm = con.createStatement();
-                            String sql = "INSERT INTO `tickets` (`ticketId`,`user_id`, `departure`, `destination`, `ship`, `date`, `seat`) VALUES (NULL,'" + currentId + "', '" + dp + "', '" + ds + "', '" + sp + "' , '" + dt + "', '" + type + "')";
+                            try {
+                                Class.forName("com.mysql.cj.jdbc.Driver");
+                                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
 
-                            stm.executeUpdate(sql);
+                                Statement stm = con.createStatement();
+                                String sql = "INSERT INTO `tickets` (`ticketId`,`user_id`, `departure`, `destination`, `ship`, `date`, `seat`) VALUES (NULL,'" + currentId + "', '" + dp + "', '" + ds + "', '" + sp + "' , '" + dt + "', '" + type + "')";
 
-                        } catch (ClassNotFoundException ex) {
-                            Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
-                        } catch (SQLException ex) {
-                            Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+                                stm.executeUpdate(sql);
+
+                            } catch (ClassNotFoundException ex) {
+                                Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+                            } catch (SQLException ex) {
+                                Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                        } catch (InterruptedException ex) {
+                            Logger.getLogger(JaratRoutes.class.getName()).log(Level.SEVERE, null, ex);
                         }
-                    } catch (InterruptedException ex) {
-                        Logger.getLogger(JaratRoutes.class.getName()).log(Level.SEVERE, null, ex);
+
                     }
 
                 }
+                myWallet();
 
+                jLabel2.setText("My wallet: " + String.valueOf(wal));
+                jp.dispose();
+                setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+                System.out.println("");
+                for (int i = 0; i < fAmount; i++) {
+                    System.out.print("___");
+                }
+                System.out.println("");
+            } else {
+                JOptionPane.showMessageDialog(this, "You have canceled this purchase");
             }
-            myWallet();
-
-            jLabel2.setText("My wallet: " + String.valueOf(wal));
-            jp.dispose();
-            setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-            System.out.println("");
-            for (int i = 0; i < fAmount; i++) {
-                System.out.print("___");
-            }
-            System.out.println("");
-        } else {
-            JOptionPane.showMessageDialog(this, "You have canceled this purchase");
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -979,10 +985,10 @@ public class JaratRoutes extends javax.swing.JFrame {
             while (rs.next()) {
                 dep = rs.getString("fromS");
                 dep = dep.replaceAll("[╗]", "'");
-                
+
                 arr = rs.getString("toS");
                 arr = arr.replaceAll("[╗]", "'");
-                
+
                 rowData[0] = rs.getString("id");
                 rowData[1] = dep;
                 rowData[2] = arr;

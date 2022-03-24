@@ -44,12 +44,18 @@ public class JaratAppeal extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jTextArea1.setColumns(20);
         jTextArea1.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jTextArea1.setRows(5);
+        jTextArea1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextArea1KeyPressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTextArea1);
 
         jButton1.setText("Send");
@@ -71,6 +77,8 @@ public class JaratAppeal extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setText("0/1999 characters");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -88,8 +96,10 @@ public class JaratAppeal extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jButton1)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel3)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -101,10 +111,15 @@ public class JaratAppeal extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addGap(17, 17, 17)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addComponent(jButton2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton1)))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
@@ -112,10 +127,14 @@ public class JaratAppeal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if (amount>=2000) {
+             JOptionPane.showMessageDialog(this, "Your appeal message is too long");
+        }else{
         try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
                 String app=jTextArea1.getText();
+                app = app.replaceAll("[']", "╗");
                 Statement stm = con.createStatement();
                 String sql = "INSERT INTO `appeals` (`id`, `user_id`, `reason`) VALUES (NULL, '"+currentId+"', '"+app+"');";
                 stm.executeUpdate(sql);
@@ -130,7 +149,7 @@ public class JaratAppeal extends javax.swing.JFrame {
             }
             jTextArea1.setEditable(false);
            jButton1.setVisible(false);
-            jTextArea1.setText("You have already sent an appeal.\nPlease be patient while our moderators review your appeal.");
+            jTextArea1.setText("You have already sent an appeal.\nPlease be patient while our moderators review your appeal.");}
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -139,6 +158,19 @@ public class JaratAppeal extends javax.swing.JFrame {
         jl.show();
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+protected int amount;
+    private void jTextArea1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea1KeyPressed
+        String tp = jTextArea1.getText();
+        amount=tp.length()+1;
+        if (amount>=2000) {
+            
+            jLabel3.setForeground(new java.awt.Color(255, 0, 0));
+        }else{
+            jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        }
+        
+        jLabel3.setText(String.valueOf(amount)+"/1999 characters");
+    }//GEN-LAST:event_jTextArea1KeyPressed
 
     protected void bnd(){
     try {
@@ -209,6 +241,7 @@ public class JaratAppeal extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables

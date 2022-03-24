@@ -769,6 +769,7 @@ public class JaratAddAdmin extends javax.swing.JFrame {
             while (rs.next()) {
                 flt = rs.getString("reason");
             }
+            flt = flt.replaceAll("[']", "╗");
             jTextArea1.setText(flt);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
