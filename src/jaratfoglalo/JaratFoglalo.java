@@ -29,7 +29,7 @@ public class JaratFoglalo extends Tester{
 public static String bruh="nem jó";
 public static String currentUser="no conn";
 public static int currentId=0;
-
+public static int adminCount=0;
 public static int testerInt=0;
 public static int numberOfShips=0;
 public static String level="";
@@ -113,6 +113,32 @@ public static int fLoad = 0;
           }
          
             System.out.println("Number of systems in the database is: " + numberOfSystems);
+            
+          
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        
+        
+        
+        
+         try{
+            
+            Class.forName("com.mysql.cj.jdbc.Driver");
+          Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok","root","");
+          
+          Statement stm = con.createStatement();
+          String sql = "SELECT `userfield` FROM `users` WHERE `clearance` LIKE \"L4\";";
+          ResultSet rs = stm.executeQuery(sql);
+          
+          while(rs.next()){
+              adminCount++;
+              
+          }
+         adminCount++;
+            System.out.println("Number of Admins in the database is: " + adminCount);
             
           
         } catch (ClassNotFoundException ex) {

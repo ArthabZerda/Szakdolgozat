@@ -5,6 +5,7 @@
  */
 package jaratfoglalo;
 
+import static jaratfoglalo.JaratFoglalo.adminCount;
 import static jaratfoglalo.JaratFoglalo.currentUser;
 import static jaratfoglalo.JaratFoglalo.testerInt;
 import java.sql.Connection;
@@ -35,7 +36,8 @@ public class JaratAddAdmin extends javax.swing.JFrame {
         bnd();
         appeals();
         startR();
-        userListF();
+        admins();
+        //userListF();
         closeB.setOpaque(false);
         closeB.setContentAreaFilled(false);
         closeB.setBorderPainted(false);
@@ -278,7 +280,7 @@ public class JaratAddAdmin extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(212, 223, 208));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 106, 146, -1));
+        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 146, -1));
 
         jButton1.setText("Add as L4 admin");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -301,25 +303,20 @@ public class JaratAddAdmin extends javax.swing.JFrame {
         jLabel2.setText("Hire/Ban users");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 70, -1, -1));
 
-        jComboBox3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jComboBox3MouseClicked(evt);
-            }
-        });
         jComboBox3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox3ActionPerformed(evt);
             }
         });
-        jPanel1.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 140, -1));
+        jPanel1.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 146, -1));
 
-        jButton5.setText("Delete User");
+        jButton5.setText("Demote");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 240, -1, -1));
+        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 240, -1, -1));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -394,6 +391,10 @@ public class JaratAddAdmin extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
+        adminCount++;
+        admins();
+        userNumList--;
+        listaFeltoltes();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -555,12 +556,8 @@ public class JaratAddAdmin extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_addRActionPerformed
 
-    private void jComboBox3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBox3MouseClicked
-
-    }//GEN-LAST:event_jComboBox3MouseClicked
-
     private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
-
+        // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -569,21 +566,24 @@ public class JaratAddAdmin extends javax.swing.JFrame {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
 
-            String usereDeletion = jComboBox2.getItemAt(jComboBox2.getSelectedIndex());
+            String selectedUser = jComboBox3.getItemAt(jComboBox3.getSelectedIndex());
 
             Statement stm = con.createStatement();
 
-            stm.executeUpdate("DELETE FROM `users` WHERE `users`.`userfield` = '" + usereDeletion + "'");
-            JOptionPane.showMessageDialog(this, "Sikeres törlés");
-            testerInt--;
-            userListF();
-            
+            stm.executeUpdate("UPDATE `users` SET `clearance` = 'L0' WHERE `users`.`userfield` = '" + selectedUser + "';");
+            JOptionPane.showMessageDialog(this, "You have demoted " + selectedUser + " from admins");
+
+            // System.out.println("Hajó törölve: " + shipDeletion);
             //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
+        adminCount--;
+        admins();
+        userNumList++;
+        listaFeltoltes();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
@@ -777,7 +777,45 @@ public class JaratAddAdmin extends javax.swing.JFrame {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    protected void admins(){
+    
+    try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
 
+            Statement stm = con.createStatement();
+            String sql = "SELECT * FROM users WHERE 1";
+            ResultSet rs = stm.executeQuery(sql);
+
+            String mezon = "userfield";
+
+            String[] record = new String[adminCount-1];
+
+            int index = 0;
+            while (rs.next()) {
+
+                if (currentUser.matches(rs.getString("userfield"))) {
+                    System.out.println("Not listing current user");
+                } else if (rs.getString("clearance").matches("L0") || rs.getString("clearance").matches("banned")) {
+                    System.out.println("Not listing: " + rs.getString("userfield") + "-" + rs.getString("clearance"));
+                } else if(rs.getString("userfield").contains("╗")){
+                    
+                    
+                }else {
+                mezon=rs.getString("userfield");
+                mezon=mezon.replaceAll("[╗]", "'");
+                record[index++] = mezon;
+                }
+            }
+            jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(record));
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+/*
     private void userListF() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -810,7 +848,7 @@ public class JaratAddAdmin extends javax.swing.JFrame {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addR;
@@ -832,7 +870,6 @@ public class JaratAddAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
