@@ -538,11 +538,18 @@ public class JaratRoutes extends javax.swing.JFrame {
             ResultSet rs = stm.executeQuery(sql);
             Object rowData[] = new Object[4];
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-
+            String depa = "";
+            String arr = "";
             while (rs.next()) {
+                depa = rs.getString("fromS");
+                depa = depa.replaceAll("[╗]", "'");
+
+                arr = rs.getString("toS");
+                arr = arr.replaceAll("[╗]", "'");
+
                 rowData[0] = rs.getString("id");
-                rowData[1] = rs.getString("fromS");
-                rowData[2] = rs.getString("toS");
+                rowData[1] = depa;
+                rowData[2] = arr;
                 rowData[3] = rs.getString("date");
 
                 model.addRow(rowData);
@@ -979,11 +986,18 @@ public class JaratRoutes extends javax.swing.JFrame {
             ResultSet rs = stm.executeQuery(sql);
             Object rowData[] = new Object[4];
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-
+            String depa = "";
+            String arr = "";
             while (rs.next()) {
+                depa = rs.getString("fromS");
+                depa = depa.replaceAll("[╗]", "'");
+
+                arr = rs.getString("toS");
+                arr = arr.replaceAll("[╗]", "'");
+
                 rowData[0] = rs.getString("id");
-                rowData[1] = rs.getString("fromS");
-                rowData[2] = rs.getString("toS");
+                rowData[1] = depa;
+                rowData[2] = arr;
                 rowData[3] = rs.getString("date");
 
                 model.addRow(rowData);
@@ -1018,11 +1032,18 @@ public class JaratRoutes extends javax.swing.JFrame {
             ResultSet rs = stm.executeQuery(sql);
             Object rowData[] = new Object[4];
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-
+            String depa = "";
+            String arr = "";
             while (rs.next()) {
+                depa = rs.getString("fromS");
+                depa = depa.replaceAll("[╗]", "'");
+
+                arr = rs.getString("toS");
+                arr = arr.replaceAll("[╗]", "'");
+
                 rowData[0] = rs.getString("id");
-                rowData[1] = rs.getString("fromS");
-                rowData[2] = rs.getString("toS");
+                rowData[1] = depa;
+                rowData[2] = arr;
                 rowData[3] = rs.getString("date");
 
                 model.addRow(rowData);
