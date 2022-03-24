@@ -95,7 +95,7 @@ public class JaratAddAdmin extends javax.swing.JFrame {
         setLocation(new java.awt.Point(590, 500));
         setUndecorated(true);
 
-        jPanel3.setBackground(new java.awt.Color(212, 223, 208));
+        jPanel3.setBackground(new java.awt.Color(255, 153, 153));
 
         jButton2.setText("Return");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -104,11 +104,11 @@ public class JaratAddAdmin extends javax.swing.JFrame {
             }
         });
 
-        jPanel8.setBackground(new java.awt.Color(96, 115, 101));
+        jPanel8.setBackground(new java.awt.Color(204, 0, 0));
         jPanel8.setAlignmentX(0.0F);
         jPanel8.setAlignmentY(0.0F);
 
-        jPanel9.setBackground(new java.awt.Color(51, 114, 135));
+        jPanel9.setBackground(new java.awt.Color(0, 0, 0));
 
         closeB.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         closeB.setForeground(new java.awt.Color(255, 255, 255));
@@ -143,7 +143,7 @@ public class JaratAddAdmin extends javax.swing.JFrame {
             .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        jPanel2.setBackground(new java.awt.Color(212, 223, 208));
+        jPanel2.setBackground(new java.awt.Color(255, 153, 153));
 
         jComboBox2.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -205,9 +205,9 @@ public class JaratAddAdmin extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel4.setBackground(new java.awt.Color(180, 224, 166));
+        jPanel4.setBackground(new java.awt.Color(255, 0, 0));
 
-        jPanel5.setBackground(new java.awt.Color(51, 114, 135));
+        jPanel5.setBackground(new java.awt.Color(0, 0, 0));
 
         addSyst.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         addSyst.setForeground(new java.awt.Color(255, 255, 255));
@@ -232,7 +232,7 @@ public class JaratAddAdmin extends javax.swing.JFrame {
             .addComponent(addSyst, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        jPanel7.setBackground(new java.awt.Color(51, 114, 135));
+        jPanel7.setBackground(new java.awt.Color(0, 0, 0));
 
         addR.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         addR.setForeground(new java.awt.Color(255, 255, 255));
@@ -257,7 +257,7 @@ public class JaratAddAdmin extends javax.swing.JFrame {
             .addComponent(addR, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jaratfoglalo/Empire_insignia_simple_small.jpg"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jaratfoglalo/red.jpg"))); // NOI18N
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -283,7 +283,7 @@ public class JaratAddAdmin extends javax.swing.JFrame {
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
-        jPanel1.setBackground(new java.awt.Color(212, 223, 208));
+        jPanel1.setBackground(new java.awt.Color(255, 153, 153));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 146, -1));

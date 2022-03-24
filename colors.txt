@@ -3,3 +3,7 @@ ligth green: [212,223,208]
 brigth green: [180,224,166]
 button blue: [51,114,135]
 Preffered Size: 1020, 530
+
+ligth red: 255,153,153
+red: 255,0,0
+dark red:204,0,0

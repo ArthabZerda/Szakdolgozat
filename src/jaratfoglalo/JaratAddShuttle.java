@@ -142,11 +142,11 @@ public class JaratAddShuttle extends javax.swing.JFrame {
         setUndecorated(true);
         setResizable(false);
 
-        jPanel4.setBackground(new java.awt.Color(212, 223, 208));
+        jPanel4.setBackground(new java.awt.Color(255, 153, 153));
         jPanel4.setPreferredSize(new java.awt.Dimension(1020, 530));
         jPanel4.setRequestFocusEnabled(false);
 
-        jPanel3.setBackground(new java.awt.Color(212, 223, 208));
+        jPanel3.setBackground(new java.awt.Color(255, 153, 153));
 
         jLabel3.setText("Economy seats:");
 
@@ -190,7 +190,7 @@ public class JaratAddShuttle extends javax.swing.JFrame {
             }
         });
 
-        jPanel18.setBackground(new java.awt.Color(51, 114, 135));
+        jPanel18.setBackground(new java.awt.Color(0, 0, 0));
 
         jButton3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
@@ -215,7 +215,7 @@ public class JaratAddShuttle extends javax.swing.JFrame {
             .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
         );
 
-        jPanel20.setBackground(new java.awt.Color(51, 114, 135));
+        jPanel20.setBackground(new java.awt.Color(0, 0, 0));
 
         jButton2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
@@ -240,7 +240,7 @@ public class JaratAddShuttle extends javax.swing.JFrame {
             .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
         );
 
-        jPanel21.setBackground(new java.awt.Color(51, 114, 135));
+        jPanel21.setBackground(new java.awt.Color(0, 0, 0));
 
         jButton1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
@@ -388,7 +388,7 @@ public class JaratAddShuttle extends javax.swing.JFrame {
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Add New Ship");
 
-        jPanel1.setBackground(new java.awt.Color(212, 223, 208));
+        jPanel1.setBackground(new java.awt.Color(255, 153, 153));
 
         jLabel7.setText("System Name:");
 
@@ -414,7 +414,7 @@ public class JaratAddShuttle extends javax.swing.JFrame {
             }
         });
 
-        jPanel14.setBackground(new java.awt.Color(51, 114, 135));
+        jPanel14.setBackground(new java.awt.Color(0, 0, 0));
 
         jButton4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
@@ -439,7 +439,7 @@ public class JaratAddShuttle extends javax.swing.JFrame {
             .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
         );
 
-        jPanel17.setBackground(new java.awt.Color(51, 114, 135));
+        jPanel17.setBackground(new java.awt.Color(0, 0, 0));
 
         AddSystemButton.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         AddSystemButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -472,7 +472,7 @@ public class JaratAddShuttle extends javax.swing.JFrame {
 
         jLabel17.setText("System Name:");
 
-        jPanel8.setBackground(new java.awt.Color(51, 114, 135));
+        jPanel8.setBackground(new java.awt.Color(0, 0, 0));
 
         jButton6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jButton6.setForeground(new java.awt.Color(255, 255, 255));
@@ -602,9 +602,9 @@ public class JaratAddShuttle extends javax.swing.JFrame {
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Add New System");
 
-        jPanel2.setBackground(new java.awt.Color(96, 115, 101));
+        jPanel2.setBackground(new java.awt.Color(204, 0, 0));
 
-        jPanel5.setBackground(new java.awt.Color(51, 114, 135));
+        jPanel5.setBackground(new java.awt.Color(0, 0, 0));
 
         jButton5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
@@ -639,9 +639,9 @@ public class JaratAddShuttle extends javax.swing.JFrame {
             .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        jPanel6.setBackground(new java.awt.Color(180, 224, 166));
+        jPanel6.setBackground(new java.awt.Color(255, 0, 0));
 
-        jPanel15.setBackground(new java.awt.Color(51, 114, 135));
+        jPanel15.setBackground(new java.awt.Color(0, 0, 0));
 
         manageUser.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         manageUser.setForeground(new java.awt.Color(255, 255, 255));
@@ -666,7 +666,7 @@ public class JaratAddShuttle extends javax.swing.JFrame {
             .addComponent(manageUser, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        jPanel7.setBackground(new java.awt.Color(51, 114, 135));
+        jPanel7.setBackground(new java.awt.Color(0, 0, 0));
 
         addR.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         addR.setForeground(new java.awt.Color(255, 255, 255));
@@ -691,7 +691,7 @@ public class JaratAddShuttle extends javax.swing.JFrame {
             .addComponent(addR, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jaratfoglalo/Empire_insignia_simple_small.jpg"))); // NOI18N
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jaratfoglalo/red.jpg"))); // NOI18N
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);

@@ -82,11 +82,11 @@ public class JaratMegtekint extends javax.swing.JFrame {
         setUndecorated(true);
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(212, 223, 208));
+        jPanel1.setBackground(new java.awt.Color(255, 153, 153));
 
-        jPanel4.setBackground(new java.awt.Color(180, 224, 166));
+        jPanel4.setBackground(new java.awt.Color(255, 0, 0));
 
-        jPanel5.setBackground(new java.awt.Color(51, 114, 135));
+        jPanel5.setBackground(new java.awt.Color(0, 0, 0));
 
         addSyst.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         addSyst.setForeground(new java.awt.Color(255, 255, 255));
@@ -111,7 +111,7 @@ public class JaratMegtekint extends javax.swing.JFrame {
             .addComponent(addSyst, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        jPanel7.setBackground(new java.awt.Color(51, 114, 135));
+        jPanel7.setBackground(new java.awt.Color(0, 0, 0));
 
         addR.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         addR.setForeground(new java.awt.Color(255, 255, 255));
@@ -136,9 +136,9 @@ public class JaratMegtekint extends javax.swing.JFrame {
             .addComponent(addR, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jaratfoglalo/Empire_insignia_simple_small.jpg"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jaratfoglalo/red.jpg"))); // NOI18N
 
-        jPanel6.setBackground(new java.awt.Color(51, 114, 135));
+        jPanel6.setBackground(new java.awt.Color(0, 0, 0));
 
         addRoute.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         addRoute.setForeground(new java.awt.Color(255, 255, 255));
@@ -191,7 +191,7 @@ public class JaratMegtekint extends javax.swing.JFrame {
                 .addGap(30, 30, 30))
         );
 
-        jPanel2.setBackground(new java.awt.Color(51, 114, 135));
+        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
 
         jButton7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jButton7.setForeground(new java.awt.Color(255, 255, 255));
@@ -216,11 +216,11 @@ public class JaratMegtekint extends javax.swing.JFrame {
             .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
-        jPanel8.setBackground(new java.awt.Color(96, 115, 101));
+        jPanel8.setBackground(new java.awt.Color(204, 0, 0));
         jPanel8.setAlignmentX(0.0F);
         jPanel8.setAlignmentY(0.0F);
 
-        jPanel9.setBackground(new java.awt.Color(51, 114, 135));
+        jPanel9.setBackground(new java.awt.Color(0, 0, 0));
 
         closeB.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         closeB.setForeground(new java.awt.Color(255, 255, 255));

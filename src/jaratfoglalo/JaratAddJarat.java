@@ -154,7 +154,7 @@ public class JaratAddJarat extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        jPanel1.setBackground(new java.awt.Color(212, 223, 208));
+        jPanel1.setBackground(new java.awt.Color(255, 153, 153));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -215,9 +215,9 @@ public class JaratAddJarat extends javax.swing.JFrame {
 
         jLabel1.setText("Choosen ship details:");
 
-        jPanel4.setBackground(new java.awt.Color(180, 224, 166));
+        jPanel4.setBackground(new java.awt.Color(255, 0, 0));
 
-        jPanel5.setBackground(new java.awt.Color(51, 114, 135));
+        jPanel5.setBackground(new java.awt.Color(0, 0, 0));
 
         addSyst.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         addSyst.setForeground(new java.awt.Color(255, 255, 255));
@@ -242,7 +242,7 @@ public class JaratAddJarat extends javax.swing.JFrame {
             .addComponent(addSyst, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        jPanel7.setBackground(new java.awt.Color(51, 114, 135));
+        jPanel7.setBackground(new java.awt.Color(0, 0, 0));
 
         manageUsers.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         manageUsers.setForeground(new java.awt.Color(255, 255, 255));
@@ -267,7 +267,7 @@ public class JaratAddJarat extends javax.swing.JFrame {
             .addComponent(manageUsers, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jaratfoglalo/Empire_insignia_simple_small.jpg"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jaratfoglalo/red.jpg"))); // NOI18N
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -279,7 +279,7 @@ public class JaratAddJarat extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -293,11 +293,11 @@ public class JaratAddJarat extends javax.swing.JFrame {
                 .addGap(30, 30, 30))
         );
 
-        jPanel8.setBackground(new java.awt.Color(96, 115, 101));
+        jPanel8.setBackground(new java.awt.Color(204, 0, 0));
         jPanel8.setAlignmentX(0.0F);
         jPanel8.setAlignmentY(0.0F);
 
-        jPanel9.setBackground(new java.awt.Color(51, 114, 135));
+        jPanel9.setBackground(new java.awt.Color(0, 0, 0));
 
         closeB.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         closeB.setForeground(new java.awt.Color(255, 255, 255));
@@ -333,7 +333,7 @@ public class JaratAddJarat extends javax.swing.JFrame {
             .addComponent(jPanel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        jPanel2.setBackground(new java.awt.Color(51, 114, 135));
+        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
 
         jButton3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
@@ -358,7 +358,7 @@ public class JaratAddJarat extends javax.swing.JFrame {
             .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jPanel6.setBackground(new java.awt.Color(51, 114, 135));
+        jPanel6.setBackground(new java.awt.Color(0, 0, 0));
 
         jButton1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
@@ -383,7 +383,7 @@ public class JaratAddJarat extends javax.swing.JFrame {
             .addComponent(jButton1)
         );
 
-        jPanel10.setBackground(new java.awt.Color(51, 114, 135));
+        jPanel10.setBackground(new java.awt.Color(0, 0, 0));
 
         jButton2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
@@ -866,7 +866,6 @@ public class JaratAddJarat extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
