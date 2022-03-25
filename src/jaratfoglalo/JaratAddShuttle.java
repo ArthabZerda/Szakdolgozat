@@ -215,10 +215,9 @@ public class JaratAddShuttle extends javax.swing.JFrame {
             .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
         );
 
-        jPanel20.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel20.setBackground(new java.awt.Color(204, 0, 0));
 
         jButton2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Delete Ship");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -414,10 +413,9 @@ public class JaratAddShuttle extends javax.swing.JFrame {
             }
         });
 
-        jPanel14.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel14.setBackground(new java.awt.Color(204, 0, 0));
 
         jButton4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setText("Delete System");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -986,12 +984,12 @@ protected int replaceId=0;
     private void jComboBox2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox2ItemStateChanged
         updateSytemList();
     }//GEN-LAST:event_jComboBox2ItemStateChanged
-
+protected String segedSystem="";
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
-
+            segedSystem = jComboBox2.getItemAt(jComboBox2.getSelectedIndex());
             String system = SystemName1.getText();
             system = system.replaceAll("[']", "╗");
             System.out.println(system);
@@ -1005,6 +1003,26 @@ protected int replaceId=0;
             stm.executeUpdate(sql);
             JOptionPane.showMessageDialog(this, "Sikeres feltöltés!'");
            systemListDelete();
+
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
+         try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
+
+            String system = SystemName1.getText();
+            system = system.replaceAll("[']", "╗");
+            
+            Statement stm = con.createStatement();
+            String sql = "UPDATE `routes` SET `fromS` = '"+system+"' WHERE `routes`.`fromS` LIKE '"+segedSystem+"'";
+            stm.executeUpdate(sql);
+            
 
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
