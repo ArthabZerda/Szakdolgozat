@@ -194,8 +194,9 @@ public class JaratAddJarat extends javax.swing.JFrame {
 
         jLabel5.setText("First class Seats: ");
 
-        shipBox.setBackground(new java.awt.Color(51, 114, 135));
-        shipBox.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        shipBox.setBackground(new java.awt.Color(0, 0, 0));
+        shipBox.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        shipBox.setForeground(new java.awt.Color(255, 255, 255));
         shipBox.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 shipBoxItemStateChanged(evt);
@@ -207,11 +208,13 @@ public class JaratAddJarat extends javax.swing.JFrame {
             }
         });
 
-        toBox.setBackground(new java.awt.Color(51, 114, 135));
-        toBox.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        toBox.setBackground(new java.awt.Color(0, 0, 0));
+        toBox.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        toBox.setForeground(new java.awt.Color(255, 255, 255));
 
-        fromBox.setBackground(new java.awt.Color(51, 114, 135));
-        fromBox.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        fromBox.setBackground(new java.awt.Color(0, 0, 0));
+        fromBox.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        fromBox.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setText("Choosen ship details:");
 
@@ -326,7 +329,7 @@ public class JaratAddJarat extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39))
+                .addGap(60, 60, 60))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -504,6 +507,8 @@ public class JaratAddJarat extends javax.swing.JFrame {
             String selectedShip = shipBox.getItemAt(shipBox.getSelectedIndex());
             String selectedFrom = fromBox.getItemAt(fromBox.getSelectedIndex());
             String selectedTo = toBox.getItemAt(toBox.getSelectedIndex());
+            selectedFrom=selectedFrom.replaceAll("[']", "╗");
+            selectedTo = selectedTo.replaceAll("[']", "╗");
             System.out.println("Selecteds ship is: " + selectedShip);
             System.out.println("Selecteds from is: " + selectedFrom);
             System.out.println("Selecteds to is: " + selectedTo);
@@ -513,7 +518,7 @@ public class JaratAddJarat extends javax.swing.JFrame {
             System.out.println("Departure date: " + selectedDate);
 
             Statement stm = con.createStatement();
-            ResultSet rs = stm.executeQuery("SELECT systems.systemName , systems.starportName, systems.solDistance, shuttles.shipName, shuttles.maxFuel, shuttles.eSeats, shuttles.bSeats, shuttles.fSeats FROM shuttles , systems WHERE shuttles.shipName LIKE '" + selectedShip + "' AND systems.systemName LIKE '" + selectedFrom + "'");
+            ResultSet rs = stm.executeQuery("SELECT systems.systemName , systems.starportName, systems.solDistance, shuttles.shipName, shuttles.maxFuel, shuttles.eSeats, shuttles.bSeats, shuttles.fSeats FROM shuttles , systems WHERE shuttles.shipName LIKE '" + selectedShip + "' AND systems.systemName LIKE '" + selectedFrom.replaceAll("[']", "╗") + "'");
             int segedc = 0;
             int currentUser;
             //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
@@ -546,7 +551,7 @@ public class JaratAddJarat extends javax.swing.JFrame {
 
             Statement stm = con.createStatement();
             String selectedTo = toBox.getItemAt(toBox.getSelectedIndex());
-            ResultSet rs = stm.executeQuery("SELECT `systemName` , `starportName` , `solDistance` FROM `systems` WHERE systemName LIKE '" + selectedTo + "'");
+            ResultSet rs = stm.executeQuery("SELECT `systemName` , `starportName` , `solDistance` FROM `systems` WHERE systemName LIKE '" + selectedTo.replaceAll("[']", "╗") + "'");
             int segedc = 0;
             int currentUser;
 
@@ -586,7 +591,7 @@ public class JaratAddJarat extends javax.swing.JFrame {
 
             } else {
                 System.out.println("asdffffffffffffffffffffffffffffffff: " + solD);
-                String sql = "INSERT INTO `routes` (`id`, `fromS`, `toS`, `ship`, `mfuel`, `date` ,`economy`, `business` , `first`, `distance`) VALUES (NULL, '" + selectedFr + "', '" + selTo + "', '" + selShip + "', '" + selFuel + "', '" + selectedDate + "', '" + seco + "', '" + sebu + "', '" + sefi + "', '" + solD + "')";
+                String sql = "INSERT INTO `routes` (`id`, `fromS`, `toS`, `ship`, `mfuel`, `date` ,`economy`, `business` , `first`, `distance`) VALUES (NULL, '" + selectedFr.replaceAll("[']", "╗") + "', '" + selTo.replaceAll("[']", "╗") + "', '" + selShip + "', '" + selFuel + "', '" + selectedDate + "', '" + seco + "', '" + sebu + "', '" + sefi + "', '" + solD + "')";
                 stm.executeUpdate(sql);
                 System.out.println("asdasdf: " + selFuel + ":::: " + solD);
             }
@@ -776,7 +781,9 @@ public class JaratAddJarat extends javax.swing.JFrame {
             String[] record = new String[numberOfSystems];
             int index = 0;
             while (rs.next()) {
-                record[index++] = rs.getString(mezon);
+                String sl = rs.getString("systemName");
+                sl = sl.replaceAll("[╗]", "'");
+                record[index++] = sl;
 
             }
             fromBox.setModel(new javax.swing.DefaultComboBoxModel<>(record));
@@ -799,7 +806,9 @@ public class JaratAddJarat extends javax.swing.JFrame {
             String[] record = new String[numberOfSystems];
             int index = 0;
             while (rs.next()) {
-                record[index++] = rs.getString(mezon);
+                String sl = rs.getString("systemName");
+                sl = sl.replaceAll("[╗]", "'");
+                record[index++] = sl;
 
             }
             toBox.setModel(new javax.swing.DefaultComboBoxModel<>(record));
