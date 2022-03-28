@@ -201,9 +201,10 @@ public class JaratRoutes extends javax.swing.JFrame {
             jTable1.getColumnModel().getColumn(1).setResizable(false);
             jTable1.getColumnModel().getColumn(2).setResizable(false);
             jTable1.getColumnModel().getColumn(3).setResizable(false);
+            jTable1.getColumnModel().getColumn(3).setPreferredWidth(120);
         }
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, 300, 400));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, 350, 400));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel9.setText("Available seats:");
@@ -719,7 +720,7 @@ public class JaratRoutes extends javax.swing.JFrame {
                                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
 
                                 Statement stm = con.createStatement();
-                                String sql = "INSERT INTO `tickets` (`ticketId`,`user_id`, `departure`, `destination`, `ship`, `date`, `seat`) VALUES (NULL,'" + currentId + "', '" + dp + "', '" + ds + "', '" + sp + "' , '" + dt + "', '" + type + "')";
+                                String sql = "INSERT INTO `tickets` (`ticketId`, `route_id`, `user_id`, `departure`, `destination`, `ship`, `date`, `seat`) VALUES (NULL,'" +selel+"', '" + currentId + "', '" + dp + "', '" + ds + "', '" + sp + "' , '" + dt + "', '" + type + "')";
 
                                 stm.executeUpdate(sql);
 
@@ -821,7 +822,7 @@ public class JaratRoutes extends javax.swing.JFrame {
                                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
 
                                 Statement stm = con.createStatement();
-                                String sql = "INSERT INTO `tickets` (`ticketId`,`user_id`, `departure`, `destination`, `ship`, `date`, `seat`) VALUES (NULL,'" + currentId + "', '" + dp + "', '" + ds + "', '" + sp + "' , '" + dt + "', '" + type + "')";
+                                String sql = "INSERT INTO `tickets` (`ticketId`, `route_id`, `user_id`, `departure`, `destination`, `ship`, `date`, `seat`) VALUES (NULL,'" +selel+"', '" + currentId + "', '" + dp + "', '" + ds + "', '" + sp + "' , '" + dt + "', '" + type + "')";
 
                                 stm.executeUpdate(sql);
 
@@ -921,7 +922,7 @@ public class JaratRoutes extends javax.swing.JFrame {
                                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
 
                                 Statement stm = con.createStatement();
-                                String sql = "INSERT INTO `tickets` (`ticketId`,`user_id`, `departure`, `destination`, `ship`, `date`, `seat`) VALUES (NULL,'" + currentId + "', '" + dp + "', '" + ds + "', '" + sp + "' , '" + dt + "', '" + type + "')";
+                                String sql = "INSERT INTO `tickets` (`ticketId`, `route_id`, `user_id`, `departure`, `destination`, `ship`, `date`, `seat`) VALUES (NULL,'" +selel+"', '" + currentId + "', '" + dp + "', '" + ds + "', '" + sp + "' , '" + dt + "', '" + type + "')";
 
                                 stm.executeUpdate(sql);
 

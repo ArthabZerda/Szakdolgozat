@@ -1000,7 +1000,7 @@ protected String segedSystem="";
             String fss = FSS1.getText();
 
             Statement stm = con.createStatement();
-            String sql = "UPDATE `systems` SET `systemName` = '"+system+"', `starportName` = '"+starport+"', `solDistance` = '"+dfs+"', `numOfBodies` = '"+fss+"' WHERE `systems`.`id` = "+replaceId+"";
+            String sql = "UPDATE `systems` SET `systemName` = '"+system.replaceAll("[']", "╗")+"', `starportName` = '"+starport+"', `solDistance` = '"+dfs+"', `numOfBodies` = '"+fss+"' WHERE `systems`.`id` = "+replaceId+"";
             stm.executeUpdate(sql);
             JOptionPane.showMessageDialog(this, "Sikeres feltöltés!'");
            systemListDelete();
@@ -1021,7 +1021,7 @@ protected String segedSystem="";
             system = system.replaceAll("[']", "╗");
             
             Statement stm = con.createStatement();
-            String sql = "UPDATE `routes` SET `fromS` = '"+system+"' WHERE `routes`.`fromS` LIKE '"+segedSystem+"'";
+            String sql = "UPDATE `routes` SET `fromS` = '"+system.replaceAll("[']", "╗")+"' WHERE `routes`.`fromS` LIKE '"+segedSystem.replaceAll("[']", "╗")+"'";
             stm.executeUpdate(sql);
             
 

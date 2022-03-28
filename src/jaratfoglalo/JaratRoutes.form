@@ -106,7 +106,7 @@
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="280" y="120" width="300" height="400"/>
+              <AbsoluteConstraints x="240" y="120" width="350" height="400"/>
             </Constraint>
           </Constraints>
 
@@ -145,7 +145,7 @@
                       <Editor/>
                       <Renderer/>
                     </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="120" resizable="false">
                       <Title/>
                       <Editor/>
                       <Renderer/>
