@@ -276,7 +276,7 @@ public class JaratRegister extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    private String result="";
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -294,9 +294,7 @@ public class JaratRegister extends javax.swing.JFrame {
             if (!registerEmail.contains("@") || !registerEmail.contains(".")) {
                 System.out.println("Invalid email");
                 JOptionPane.showMessageDialog(this, "Please enter a valid email");
-            } else {
-                if (registerName == "" || registerPass == "" || registerEmail == "") {
-                    System.out.println("All fields has to be filled out!");
+            }else if (registerName.matches("") || registerPass.matches("") || registerEmail.matches("")) {
                     JOptionPane.showMessageDialog(this, "All fields has to be filled out!");
                 } else {
                     if (!rgel.matches(registerPass)) {
@@ -315,7 +313,12 @@ public class JaratRegister extends javax.swing.JFrame {
                             registerPassword2.setText("");
                             emailField.setText("");
                         } else {
-                            String sql = "INSERT INTO `users` (`id`, `userfield`, `passwordfield`, `email`, `clearance`, `wallet`) VALUES (NULL, '" + registerName + "', '" + registerPass + "', '" + registerEmail + "' , 'L0', '0')";
+                            
+                            String rev = new StringBuilder(registerPass).reverse().toString();
+                            char f2 = rev.charAt(0);
+                            String result = f2 + rev + f2;
+                            
+                            String sql = "INSERT INTO `users` (`id`, `userfield`, `passwordfield`, `email`, `clearance`, `wallet`) VALUES (NULL, '" + registerName + "', '" + result + "', '" + registerEmail + "' , 'L0', '0')";
                             stm.executeUpdate(sql);
                             JOptionPane.showMessageDialog(this, "Registered Successfully");
                             
@@ -328,7 +331,7 @@ public class JaratRegister extends javax.swing.JFrame {
                         }
                     }
                 }
-            }
+            
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -352,6 +355,7 @@ public class JaratRegister extends javax.swing.JFrame {
          dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    
     /**
      * @param args the command line arguments
      */

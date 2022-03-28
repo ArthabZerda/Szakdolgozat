@@ -14,6 +14,10 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,6 +39,10 @@ public class JaratRoutes extends javax.swing.JFrame {
     protected static int selId = 1;
 
     public JaratRoutes() {
+        
+       
+        
+        
         initComponents();
         lista();
         myWallet();
@@ -1105,7 +1113,13 @@ public class JaratRoutes extends javax.swing.JFrame {
             }
         });
     }
-
+  
+    
+    
+    
+    
+    
+    
     private void lista() {
 
         try {
@@ -1142,7 +1156,7 @@ public class JaratRoutes extends javax.swing.JFrame {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+/*
     protected void constant() {
 
         try {
@@ -1173,7 +1187,7 @@ public class JaratRoutes extends javax.swing.JFrame {
         }
 
     }
-
+*/
     protected void myWallet() {
         try {
 

@@ -38,17 +38,29 @@ public static int fLoad = 0;
     
     
     public static void main(String[] args) {
-        String reverseTest="abc";
+        /*String reverseTest="abc";
         byte[] strAsByteArray = reverseTest.getBytes();
- 
         byte[] result = new byte[strAsByteArray.length];
- 
-        // Store result in reverse order into the
-        // result byte[]
-        for (int i = 0; i < strAsByteArray.length; i++)
+        for (int i = 0; i < strAsByteArray.length; i++){
             result[i] = strAsByteArray[strAsByteArray.length - i - 1];
- 
-        System.out.println(new String(result));
+        }
+        System.out.println(new String(result));*/
+        
+        
+        
+        
+        
+        
+        /*
+        String asd="admin";
+        String rev = new StringBuilder(asd).reverse().toString();
+        char f2= rev.charAt(0);
+        String result = f2+rev+f2;
+        System.out.println(result);
+        result = result.substring(1, result.length() - 1);
+        String encode = new StringBuilder(result).reverse().toString();
+        System.err.println(encode);
+        */
           JaratLogin jl = new JaratLogin();
         jl.setLocationRelativeTo(null);
         jl.show();
