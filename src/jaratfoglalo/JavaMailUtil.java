@@ -58,12 +58,15 @@ public class JavaMailUtil {
             message.setFrom(new InternetAddress(mailN));
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(recepient));
             message.setSubject("Athab Interstellar Transport (Password reset request)");
-            message.setText("Dear " +sendTo+"!\nYou requested a new password for Arthab Interstellar Transport\nYour new password is: " +newPass);
+            message.setText("Dear " +sendTo+"!\nYou requested a new password for Arthab Interstellar Transport\nYour new password is: " +newPass+"\n\tIf the new password didn't work, please send us an email to ait.arthab1022@gmail.com");
             return message;
         } catch (Exception ex) {
             Logger.getLogger(JavaMailUtil.class.getName()).log(Level.SEVERE, null, ex);
         }
+       
+        
         return null;
+        
         
     }
 /*

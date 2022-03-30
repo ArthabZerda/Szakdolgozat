@@ -211,7 +211,9 @@ public class JaratLogin extends javax.swing.JFrame{
                 .addContainerGap(103, Short.MAX_VALUE))
         );
 
-        jLabel7.setText("Forgot password");
+        jLabel7.setForeground(new java.awt.Color(0, 102, 255));
+        jLabel7.setText("Forgot your password? Request a new password here.");
+        jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel7MouseClicked(evt);
