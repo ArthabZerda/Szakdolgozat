@@ -37,7 +37,8 @@ public static int numberOfSystems=0;
 public static int fLoad = 0;
     
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+        
         /*String reverseTest="abc";
         byte[] strAsByteArray = reverseTest.getBytes();
         byte[] result = new byte[strAsByteArray.length];

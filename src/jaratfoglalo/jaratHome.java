@@ -127,6 +127,7 @@ public class jaratHome extends javax.swing.JFrame {
         jPanel9 = new javax.swing.JPanel();
         closeB = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -187,11 +188,19 @@ public class jaratHome extends javax.swing.JFrame {
 
         jLabel9.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("Log Out");
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jaratfoglalo/8679841_logout_box_r_line_icon.png"))); // NOI18N
         jLabel9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel9MouseClicked(evt);
+            }
+        });
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jaratfoglalo/3669250_settings_ic_icon.png"))); // NOI18N
+        jLabel10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel10MouseClicked(evt);
             }
         });
 
@@ -204,7 +213,9 @@ public class jaratHome extends javax.swing.JFrame {
                 .addComponent(cru)
                 .addGap(18, 18, 18)
                 .addComponent(currId)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 773, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel10)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel9)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -216,11 +227,13 @@ public class jaratHome extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cru)
-                    .addComponent(currId)
-                    .addComponent(jLabel9))
-                .addContainerGap(12, Short.MAX_VALUE))
+                    .addComponent(currId))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel10))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -519,6 +532,13 @@ public class jaratHome extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jLabel9MouseClicked
 
+    private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
+        UserSettings us = new UserSettings();
+        us.setLocationRelativeTo(null);
+        us.show();
+        dispose();
+    }//GEN-LAST:event_jLabel10MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -562,6 +582,7 @@ public class jaratHome extends javax.swing.JFrame {
     private javax.swing.JLabel cru;
     private javax.swing.JLabel currId;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
