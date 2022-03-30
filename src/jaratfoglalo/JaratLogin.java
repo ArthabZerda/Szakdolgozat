@@ -305,13 +305,11 @@ public class JaratLogin extends javax.swing.JFrame{
           password = password.replaceAll("[`]", "╗");
           password = password.replaceAll("[;]", "╗");
           
-          String rev = new StringBuilder(password).reverse().toString();
-          char f2 = rev.charAt(0);
-          String result = f2 + rev + f2;
+          
           
           Statement stm = con.createStatement();
-          String sql = "SELECT * FROM users WHERE userfield='"+username+"' and passwordfield='"+result+"'";
-          System.err.println(sql);
+          String sql = "SELECT * FROM users WHERE userfield='"+username+"' and passwordfield='"+password+"'";
+          //System.err.println(sql);
           ResultSet rs = stm.executeQuery(sql);
             
             //'; Delete from users where id=3; Select * from users where userfield like '%

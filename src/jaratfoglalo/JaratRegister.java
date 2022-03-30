@@ -313,12 +313,7 @@ public class JaratRegister extends javax.swing.JFrame {
                             registerPassword2.setText("");
                             emailField.setText("");
                         } else {
-                            
-                            String rev = new StringBuilder(registerPass).reverse().toString();
-                            char f2 = rev.charAt(0);
-                            String result = f2 + rev + f2;
-                            
-                            String sql = "INSERT INTO `users` (`id`, `userfield`, `passwordfield`, `email`, `clearance`, `wallet`) VALUES (NULL, '" + registerName + "', '" + result + "', '" + registerEmail + "' , 'L0', '0')";
+                            String sql = "INSERT INTO `users` (`id`, `userfield`, `passwordfield`, `email`, `clearance`, `wallet`) VALUES (NULL, '" + registerName + "', '" + registerPass + "', '" + registerEmail + "' , 'L0', '0')";
                             stm.executeUpdate(sql);
                             JOptionPane.showMessageDialog(this, "Registered Successfully");
                             
