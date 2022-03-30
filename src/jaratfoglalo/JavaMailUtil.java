@@ -81,7 +81,7 @@ public class JavaMailUtil {
                         "ait.arthab1022@gmail.com", emailPass);
             }
         });
-
+        //
         Message message = prepareMessage(session, mailN, recepient);
         Transport.send(message);
 
