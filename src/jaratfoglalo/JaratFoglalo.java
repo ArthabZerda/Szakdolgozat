@@ -35,7 +35,8 @@ public static int numberOfShips=0;
 public static String level="";
 public static int numberOfSystems=0;
 public static int fLoad = 0;
-    
+public static String sendTo;
+public static String generated;
     
     public static void main(String[] args) throws Exception {
         

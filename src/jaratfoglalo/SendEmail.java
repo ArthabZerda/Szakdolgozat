@@ -5,23 +5,24 @@
  */
 package jaratfoglalo;
 
-import static jaratfoglalo.JaratFoglalo.testerInt;
+import static jaratfoglalo.JaratFoglalo.sendTo;
+import static jaratfoglalo.JaratFoglalo.generated;
+import java.nio.charset.Charset;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.mail.Authenticator;
 import javax.mail.Message;
-import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
-import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 
 /**
@@ -84,57 +85,63 @@ public class SendEmail extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    protected String sendTo;
+   
     protected String mailTo;
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //https://www.youtube.com/watch?v=A7HAB5whD6I&ab_channel=GenuineCoder
-        
-        try{
-            sendTo =  jTextField1.getText();
+
+        try {
+            sendTo = jTextField1.getText();
             Class.forName("com.mysql.cj.jdbc.Driver");
-          Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok","root","");
-          
-          Statement stm = con.createStatement();
-          String sql = "SELECT `email` FROM users WHERE userfield LIKE '"+sendTo+"'";
-          ResultSet rs = stm.executeQuery(sql);
-          
-          while(rs.next()){
-              mailTo=rs.getString("email");
-              
-          }
-         
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
+
+            Statement stm = con.createStatement();
+            String sql = "SELECT `email` FROM users WHERE userfield LIKE '" + sendTo + "'";
+            ResultSet rs = stm.executeQuery(sql);
+
+            while (rs.next()) {
+                mailTo = rs.getString("email");
+
+            }
+
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
-        } 
-       
+        }
+
         try {
             JavaMailUtil.sendMail(mailTo);
         } catch (Exception ex) {
             Logger.getLogger(SendEmail.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        try{
-            sendTo =  jTextField1.getText();
+
+        try {
+            int generatePass = (int)(Math.random() * 99999) + 10000;
+            String newPass=String.valueOf(generatePass);
+            String rev = new StringBuilder(newPass).reverse().toString();
+            char f2 = rev.charAt(0);
+            String result = f2 + rev + f2;
+            System.out.println(result);
+            sendTo = jTextField1.getText();
+            generated =result;
+            
             Class.forName("com.mysql.cj.jdbc.Driver");
-          Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok","root","");
-          
-          Statement stm = con.createStatement();
-          String sql = "UPDATE `users` SET `passwordfield` = 'newpass' WHERE `userfield` LIKE '"+sendTo+"'";
-          stm.executeUpdate(sql);
-          
-         
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
+
+            Statement stm = con.createStatement();
+            String sql = "UPDATE `users` SET `passwordfield` = '"+result+"' WHERE `userfield` LIKE '" + sendTo + "'";
+            stm.executeUpdate(sql);
+
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
-        } 
-        
-        
+        }
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
-    
-    
+
     public static void main(String args[]) {
 
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -170,28 +177,28 @@ public class SendEmail extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
-        public void sendMail(String recepient) throws Exception{
-      System.out.println("Preparing");
+        public void sendMail(String recepient) throws Exception {
+        System.out.println("Preparing");
         Properties properties = new Properties();
-        
+
         properties.put("mail.sntp.auth", "true");
         properties.put("mail.sntp.starttls.enable", "true");
         properties.put("mail.sntp.host", "smtp.gmail.com");
         properties.put("mail.sntp.port", "587");
-        
+
         String mailN = "ait.arthab1022@gmail.com";
         String p = "Caesium137";
-        
+
         Session session = Session.getInstance(properties, new Authenticator() {
-            
+
             protected PasswordAuthentication getPaswordAuthentication() {
                 return new PasswordAuthentication(mailN, p);
             }
         });
-        
+
         Message message = prepareMessage(session, mailN, recepient);
         Transport.send(message);
-        
+
         System.out.println("Message sent succesfully");
     }
 
