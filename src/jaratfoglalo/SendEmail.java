@@ -36,6 +36,8 @@ public class SendEmail extends javax.swing.JFrame {
         jButton1.setOpaque(false);
         jButton1.setContentAreaFilled(false);
         jButton1.setBorderPainted(false);
+        
+        
     }
 
     /**
@@ -141,7 +143,7 @@ public class SendEmail extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private String mailTo;
-    private String changePassFor;
+    public static String changePassFor;
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //https://www.youtube.com/watch?v=A7HAB5whD6I&ab_channel=GenuineCoder
         try {
@@ -167,6 +169,7 @@ public class SendEmail extends javax.swing.JFrame {
         }
 
         try {
+            
             JavaMailUtil.sendMail(mailTo);
         } catch (Exception ex) {
             Logger.getLogger(SendEmail.class.getName()).log(Level.SEVERE, null, ex);
