@@ -42,6 +42,8 @@ public class JaratAddAdmin extends javax.swing.JFrame {
             jComboBox3.setVisible(false);
             jButton1.setVisible(false);
             jButton5.setVisible(false);
+            jPanel14.setVisible(false);
+            jPanel6.setVisible(false);
         }
         //userListF();
         closeB.setOpaque(false);
@@ -55,23 +57,23 @@ public class JaratAddAdmin extends javax.swing.JFrame {
         addR.setOpaque(false);
         addR.setContentAreaFilled(false);
         addR.setBorderPainted(false);
-        
+
         jButton1.setOpaque(false);
         jButton1.setContentAreaFilled(false);
         jButton1.setBorderPainted(false);
-        
+
         jButton2.setOpaque(false);
         jButton2.setContentAreaFilled(false);
         jButton2.setBorderPainted(false);
-        
+
         jButton3.setOpaque(false);
         jButton3.setContentAreaFilled(false);
         jButton3.setBorderPainted(false);
-        
+
         jButton4.setOpaque(false);
         jButton4.setContentAreaFilled(false);
         jButton4.setBorderPainted(false);
-        
+
         jButton5.setOpaque(false);
         jButton5.setContentAreaFilled(false);
         jButton5.setBorderPainted(false);
@@ -526,9 +528,6 @@ public class JaratAddAdmin extends javax.swing.JFrame {
 
             stm.executeUpdate("UPDATE `users` SET `clearance` = 'L4' WHERE `users`.`userfield` = '" + selectedUser + "';");
             JOptionPane.showMessageDialog(this, "You succesfully added " + selectedUser + " to admins");
-
-            // System.out.println("Hajó törölve: " + shipDeletion);
-            //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -574,7 +573,7 @@ public class JaratAddAdmin extends javax.swing.JFrame {
     private void jComboBox2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBox2MouseClicked
 
     }//GEN-LAST:event_jComboBox2MouseClicked
-    protected int slId;
+    private int slId;
     private void jComboBox2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox2ItemStateChanged
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -613,8 +612,8 @@ public class JaratAddAdmin extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jComboBox2ItemStateChanged
-    protected int appealDeletion;
-    protected String aplD;
+    private int appealDeletion;
+    private String aplD;
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -812,16 +811,15 @@ public class JaratAddAdmin extends javax.swing.JFrame {
             while (rs.next()) {
 
                 if (currentUser.matches(rs.getString("userfield"))) {
-                    System.out.println("Not listing current user");
+                    //System.out.println("Not listing current user");
                 } else if (rs.getString("clearance").matches("L4") || rs.getString("clearance").matches("O5")) {
-                    System.out.println("Not listing: " + rs.getString("userfield") + "-" + rs.getString("clearance"));
-                } else if(rs.getString("userfield").contains("╗")){
-                    //System.err.println(rs.getString("userfield").replaceAll("[╗]", "'"));
-                    
-                }else {
-                mezon=rs.getString("userfield");
-                mezon=mezon.replaceAll("[╗]", "'");
-                record[index++] = mezon;
+                    //System.out.println("Not listing: " + rs.getString("userfield") + "-" + rs.getString("clearance"));
+                } else if (rs.getString("userfield").contains("╗")) {
+
+                } else {
+                    mezon = rs.getString("userfield");
+                    mezon = mezon.replaceAll("[╗]", "'");
+                    record[index++] = mezon;
                 }
             }
             jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(record));
@@ -831,7 +829,7 @@ public class JaratAddAdmin extends javax.swing.JFrame {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    protected int countBanned;
+    private int countBanned;
 
     private void bnd() {
         countBanned = 0;
@@ -850,8 +848,7 @@ public class JaratAddAdmin extends javax.swing.JFrame {
                 }
 
             }
-            System.out.println("number of banned people: " + countBanned);
-
+            
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -882,7 +879,7 @@ public class JaratAddAdmin extends javax.swing.JFrame {
         }
     }
 
-    protected void startR() {
+    private void startR() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
@@ -920,47 +917,9 @@ public class JaratAddAdmin extends javax.swing.JFrame {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    protected void admins(){
-    
-    try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
 
-            Statement stm = con.createStatement();
-            String sql = "SELECT * FROM users WHERE 1";
-            ResultSet rs = stm.executeQuery(sql);
+    private void admins() {
 
-            String mezon = "userfield";
-
-            String[] record = new String[adminCount-1];
-
-            int index = 0;
-            while (rs.next()) {
-
-                if (currentUser.matches(rs.getString("userfield"))) {
-                    System.out.println("Not listing current user");
-                    
-                } else if (rs.getString("clearance").matches("L0") || rs.getString("clearance").matches("banned") || rs.getString("clearance").matches("O5")) {
-                    System.out.println("Not listing: " + rs.getString("userfield") + "-" + rs.getString("clearance"));
-                } else if(rs.getString("userfield").contains("╗")){
-                    
-                    
-                }else {
-                mezon=rs.getString("userfield");
-                mezon=mezon.replaceAll("[╗]", "'");
-                record[index++] = mezon;
-                }
-            }
-            jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(record));
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-/*
-    private void userListF() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
@@ -971,18 +930,22 @@ public class JaratAddAdmin extends javax.swing.JFrame {
 
             String mezon = "userfield";
 
-            String[] record = new String[testerInt];
+            String[] record = new String[adminCount - 1];
 
             int index = 0;
             while (rs.next()) {
-                if (rs.getString("clearance").matches("O5")) {
-                    System.out.println("Not listing O5's");
-                } else if (currentUser.matches(rs.getString("userfield"))) {
-                    System.out.println("Can't list current user");
+
+                if (currentUser.matches(rs.getString("userfield"))) {
+                    //System.out.println("Not listing current user");
+
+                } else if (rs.getString("clearance").matches("L0") || rs.getString("clearance").matches("banned") || rs.getString("clearance").matches("O5")) {
+                    //System.out.println("Not listing: " + rs.getString("userfield") + "-" + rs.getString("clearance"));
+                } else if (rs.getString("userfield").contains("╗")) {
+
                 } else {
-                mezon=rs.getString("userfield");
-                mezon=mezon.replaceAll("[╗]", "'");
-                record[index++] = mezon;
+                    mezon = rs.getString("userfield");
+                    mezon = mezon.replaceAll("[╗]", "'");
+                    record[index++] = mezon;
                 }
             }
             jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(record));
@@ -992,7 +955,7 @@ public class JaratAddAdmin extends javax.swing.JFrame {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-*/
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addR;

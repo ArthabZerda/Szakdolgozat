@@ -23,9 +23,9 @@ import javax.swing.JOptionPane;
  */
 public class JaratWallet extends javax.swing.JFrame {
 
-    protected int wal = 0;
-    protected boolean data = false;
-    protected boolean date = false;
+    private int wal = 0;
+    private boolean data = false;
+    private boolean date = false;
 
     /**
      * Creates new form JaratWallet
@@ -389,7 +389,7 @@ public class JaratWallet extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-protected int cvc = 0;
+private int cvc = 0;
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         cvc = Integer.parseInt(jTextField4.getText());
         int value = Integer.parseInt(jTextField5.getText());
@@ -427,15 +427,15 @@ protected int cvc = 0;
             }
     }//GEN-LAST:event_jButton1ActionPerformed
     }
-    protected int count = -1;
+    private int count = -1;
 
-    protected String seged = "";
+    private String seged = "";
     private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
 
 
     }//GEN-LAST:event_jTextField1KeyReleased
-    protected String dat;
-    protected int datCount = 0;
+    private String dat;
+    private int datCount = 0;
 
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
 
@@ -559,7 +559,7 @@ protected int cvc = 0;
         });
     }
 
-    protected void raiden() {
+    private void raiden() {
         //int cvc=Integer.parseInt(jTextField4.getText());
 
         try {

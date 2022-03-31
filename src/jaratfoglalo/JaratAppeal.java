@@ -158,7 +158,7 @@ public class JaratAppeal extends javax.swing.JFrame {
         jl.show();
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
-protected int amount;
+private int amount;
     private void jTextArea1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea1KeyPressed
         String tp = jTextArea1.getText();
         amount=tp.length()+1;
@@ -172,7 +172,7 @@ protected int amount;
         jLabel3.setText(String.valueOf(amount)+"/1999 characters");
     }//GEN-LAST:event_jTextArea1KeyPressed
 
-    protected void bnd(){
+    private void bnd(){
     try {
 
             Class.forName("com.mysql.cj.jdbc.Driver");

@@ -29,11 +29,11 @@ public class JaratRegister extends javax.swing.JFrame {
         registerButton.setOpaque(false);
         registerButton.setContentAreaFilled(false);
         registerButton.setBorderPainted(false);
-        
+
         jButton1.setOpaque(false);
         jButton1.setContentAreaFilled(false);
         jButton1.setBorderPainted(false);
-        
+
         jButton2.setOpaque(false);
         jButton2.setContentAreaFilled(false);
         jButton2.setBorderPainted(false);
@@ -276,7 +276,7 @@ public class JaratRegister extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    private String result="";
+    private String result = "";
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -294,35 +294,35 @@ public class JaratRegister extends javax.swing.JFrame {
             if (!registerEmail.contains("@") || !registerEmail.contains(".")) {
                 System.out.println("Invalid email");
                 JOptionPane.showMessageDialog(this, "Please enter a valid email");
-            }else if (registerName.matches("") || registerPass.matches("") || registerEmail.matches("")) {
-                    JOptionPane.showMessageDialog(this, "All fields has to be filled out!");
+            } else if (registerName.matches("") || registerPass.matches("") || registerEmail.matches("")) {
+                JOptionPane.showMessageDialog(this, "All fields has to be filled out!");
+            } else {
+                if (!rgel.matches(registerPass)) {
+                    System.out.println("Given password do not match");
+                    JOptionPane.showMessageDialog(this, "Given password do not match!");
                 } else {
-                    if (!rgel.matches(registerPass)) {
-                        System.out.println("Given password do not match");
-                        JOptionPane.showMessageDialog(this, "Given password do not match!");
+                    if (rs.next()) {
+                        System.out.println("Username is already taken!");
+                        JOptionPane.showMessageDialog(this, "Username is already taken!");
+                        regUsername.setText("");
+                        registerPassword1.setText("");
+                        registerPassword2.setText("");
+                        emailField.setText("");
                     } else {
-                        if (rs.next()) {
-                            System.out.println("Username is already taken!");
-                            JOptionPane.showMessageDialog(this, "Username is already taken!");
-                            regUsername.setText("");
-                            registerPassword1.setText("");
-                            registerPassword2.setText("");
-                            emailField.setText("");
-                        } else {
-                            String sql = "INSERT INTO `users` (`id`, `userfield`, `passwordfield`, `email`, `clearance`, `wallet`) VALUES (NULL, '" + registerName + "', '" + registerPass + "', '" + registerEmail + "' , 'L0', '0')";
-                            stm.executeUpdate(sql);
-                            JOptionPane.showMessageDialog(this, "Registered Successfully");
-                            
-                            JaratLogin lg = new JaratLogin();
-                            lg.setVisible(true);
-                            lg.setLocationRelativeTo(null);
-                            dispose();
-                            testerInt++;
-                            //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
-                        }
+                        String sql = "INSERT INTO `users` (`id`, `userfield`, `passwordfield`, `email`, `clearance`, `wallet`) VALUES (NULL, '" + registerName + "', '" + registerPass + "', '" + registerEmail + "' , 'L0', '0')";
+                        stm.executeUpdate(sql);
+                        JOptionPane.showMessageDialog(this, "Registered Successfully");
+
+                        JaratLogin lg = new JaratLogin();
+                        lg.setVisible(true);
+                        lg.setLocationRelativeTo(null);
+                        dispose();
+                        testerInt++;
+                        //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
                     }
                 }
-            
+            }
+
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -343,10 +343,9 @@ public class JaratRegister extends javax.swing.JFrame {
         JaratLogin lg = new JaratLogin();
         lg.setVisible(true);
         lg.setLocationRelativeTo(null);
-         dispose();
+        dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    
     /**
      * @param args the command line arguments
      */

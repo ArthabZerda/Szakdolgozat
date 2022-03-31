@@ -31,12 +31,12 @@ import javax.swing.table.DefaultTableModel;
  */
 public class JaratRoutes extends javax.swing.JFrame {
 
-    protected boolean confirmed = false;
-    protected int wal;
+    private boolean confirmed = false;
+    private int wal;
     /**
      * Creates new form JaratRoutes
      */
-    protected static int selId = 1;
+    private static int selId = 1;
 
     public JaratRoutes() {
         
@@ -585,20 +585,20 @@ public class JaratRoutes extends javax.swing.JFrame {
         jTable1.getColumnModel().getColumn(0).setMaxWidth(0);
         jTable1.getColumnModel().getColumn(0).setWidth(0);
     }//GEN-LAST:event_jButton1ActionPerformed
-    protected int ePrice;
-    protected int bPrice;
-    protected int fPrice;
-    protected String selel;
+    private int ePrice;
+    private int bPrice;
+    private int fPrice;
+    private String selel;
 
-    protected String dp;
-    protected String ds;
-    protected String sp;
-    protected String dt;
-    protected String type;
+    private String dp;
+    private String ds;
+    private String sp;
+    private String dt;
+    private String type;
 
-    protected int eSeat = 0;
-    protected int bSeat = 0;
-    protected int fSeat = 0;
+    private int eSeat = 0;
+    private int bSeat = 0;
+    private int fSeat = 0;
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
 
@@ -652,7 +652,7 @@ public class JaratRoutes extends javax.swing.JFrame {
         jr.show();
         dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
-    protected String selectedClass = "none";
+    private String selectedClass = "none";
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         int fAmount = (Integer) jSpinner1.getValue();
@@ -1157,7 +1157,7 @@ public class JaratRoutes extends javax.swing.JFrame {
         }
     }
 /*
-    protected void constant() {
+    private void constant() {
 
         try {
 
@@ -1188,7 +1188,7 @@ public class JaratRoutes extends javax.swing.JFrame {
 
     }
 */
-    protected void myWallet() {
+    private void myWallet() {
         try {
 
             Class.forName("com.mysql.cj.jdbc.Driver");

@@ -26,19 +26,19 @@ import javax.swing.table.DefaultTableModel;
  */
 public class JaratAddJarat extends javax.swing.JFrame {
 
-    protected String selectedFr = "";
-    protected String fromPort = "";
-    protected String toPort = "";
-    protected String selTo = "";
-    protected String selShip = "";
-    protected int fromD = 0;
-    protected int toD = 0;
-    protected int solD = 0;
-    protected int selFuel = 0;
-    protected int seco = 0;
-    protected int sebu = 0;
-    protected int sefi = 0;
-    protected String selectedDate = "";
+    private String selectedFr = "";
+    private String fromPort = "";
+    private String toPort = "";
+    private String selTo = "";
+    private String selShip = "";
+    private int fromD = 0;
+    private int toD = 0;
+    private int solD = 0;
+    private int selFuel = 0;
+    private int seco = 0;
+    private int sebu = 0;
+    private int sefi = 0;
+    private String selectedDate = "";
 
     /**
      * Creates new form JaratAddJarat
@@ -573,13 +573,13 @@ public class JaratAddJarat extends javax.swing.JFrame {
 
             Statement stm = con.createStatement();
             ResultSet rs = stm.executeQuery("SELECT systems.systemName , systems.starportName, systems.solDistance, shuttles.shipName, shuttles.maxFuel, shuttles.eSeats, shuttles.bSeats, shuttles.fSeats FROM shuttles , systems WHERE shuttles.shipName LIKE '" + selectedShip + "' AND systems.systemName LIKE '" + selectedFrom.replaceAll("[']", "╗") + "'");
+            JOptionPane.showMessageDialog(this, "New route uploaded!");
             int segedc = 0;
             int currentUser;
             //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
 
             while (rs.next()) {
-                System.out.println(rs.getString("shuttles.shipName"));
-                System.out.println(rs.getString("systems.systemName") + " : " + rs.getString("systems.starportName"));
+                
                 selectedFr = rs.getString("systems.systemName");
                 fromPort = rs.getString("systems.starportName");
                 selShip = rs.getString("shuttles.shipName");
@@ -638,7 +638,6 @@ public class JaratAddJarat extends javax.swing.JFrame {
 
             Statement stm = con.createStatement();
             if (selectedFr.matches(selTo)) {
-                System.out.println("HIBAAA");
                 JOptionPane.showMessageDialog(this, "Departure and Arrival location can NOT be the same\n(Data not uploaded)");
             } else if (selFuel < segedsold) {
                 JOptionPane.showMessageDialog(this, "Insuficient fuel for this distance\nPlease choose a ship with a fuel capacity above " + segedsold + " Tons!");
@@ -647,8 +646,7 @@ public class JaratAddJarat extends javax.swing.JFrame {
                 
                 String sql = "INSERT INTO `routes` (`id`, `fromS`, `toS`, `ship`, `mfuel`, `date` ,`economy`, `business` , `first`, `distance`) VALUES (NULL, '" + selectedFr.replaceAll("[']", "╗") + "', '" + selTo.replaceAll("[']", "╗") + "', '" + selShip + "', '" + selFuel + "', '" + selectedDate + " " + hour+":"+minute+ "', '" + seco + "', '" + sebu + "', '" + sefi + "', '" + solD + "')";
                 stm.executeUpdate(sql);
-                System.err.println(sql);
-                System.out.println("asdasdf: " + selFuel + ":::: " + solD);
+                
             }
             //INSERT INTO `routes` (`id`, `fromS`, `toS`, `ship`, `mfuel`, `date` ,`economy`, `business` , `first`) VALUES (NULL, '" + selectedFr + "', '" + selTo + "', '" + selShip + "', '" + selFuel + "', '" + selectedDate + "', '" + seco + "', '" + sebu + "', '" + sefi + "')"
 
@@ -698,8 +696,8 @@ public class JaratAddJarat extends javax.swing.JFrame {
         jm.show();
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
-    protected String selectedTicket;
-    protected int selectedRouteId;
+    private String selectedTicket;
+    private int selectedRouteId;
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
 
         int column = 0;
@@ -917,7 +915,7 @@ public class JaratAddJarat extends javax.swing.JFrame {
         }
     }
 
-    protected void routeList() {
+    private void routeList() {
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -934,10 +932,10 @@ public class JaratAddJarat extends javax.swing.JFrame {
                 
                 dep = rs.getString("fromS");
                 dep = dep.replaceAll("[╗]", "'");
-                System.out.println(dep);
+                
                 arr = rs.getString("toS");
                 arr = arr.replaceAll("[╗]", "'");
-                System.out.println(arr);
+                
                 rowData[0] = rs.getString("id");
                 rowData[1] = dep;
                 rowData[2] = arr;

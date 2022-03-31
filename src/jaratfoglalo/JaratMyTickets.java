@@ -39,7 +39,7 @@ public class JaratMyTickets extends javax.swing.JFrame {
     public JaratMyTickets() {
         initComponents();
         tickets();
-        jLabel1.setText("Username: "+currentUser.replaceAll("[╗]", "'"));
+        jLabel1.setText("Username: " + currentUser.replaceAll("[╗]", "'"));
         jTable1.getColumnModel().getColumn(0).setMinWidth(0);
         jTable1.getColumnModel().getColumn(0).setMaxWidth(0);
         jTable1.getColumnModel().getColumn(0).setWidth(0);
@@ -370,14 +370,14 @@ public class JaratMyTickets extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-protected String selected;
-    protected String usrId;
-    protected String dep;
-    protected String des;
-    protected String ship;
-    protected String date;
-    protected String seat;
-    protected String usr;
+    private String selected;
+    private String usrId;
+    private String dep;
+    private String des;
+    private String ship;
+    private String date;
+    private String seat;
+    private String usr;
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         int column = 0;
         int row = jTable1.getSelectedRow();
@@ -431,7 +431,7 @@ protected String selected;
         jr.show();
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
-    protected String tester = "asd";
+    private String tester = "asd";
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         Document document = new Document();
         try {
@@ -542,7 +542,7 @@ protected String selected;
         });
     }
 
-    protected void tickets() {
+    private void tickets() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
@@ -552,17 +552,17 @@ protected String selected;
             ResultSet rs = stm.executeQuery(sql);
             Object rowData[] = new Object[4];
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-            String dep="";
-            String arr="";
+            String dep = "";
+            String arr = "";
             while (rs.next()) {
-                
+
                 dep = rs.getString("departure");
                 dep = dep.replaceAll("[╗]", "'");
                 System.out.println(dep);
                 arr = rs.getString("destination");
                 arr = arr.replaceAll("[╗]", "'");
                 System.out.println(arr);
-              
+
                 rowData[0] = rs.getString("ticketId");
                 rowData[1] = dep;
                 rowData[2] = arr;

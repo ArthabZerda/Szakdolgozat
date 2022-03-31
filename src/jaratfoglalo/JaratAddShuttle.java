@@ -49,7 +49,7 @@ public class JaratAddShuttle extends javax.swing.JFrame {
         jButton5.setOpaque(false);
         jButton5.setContentAreaFilled(false);
         jButton5.setBorderPainted(false);
-        
+
         jButton6.setOpaque(false);
         jButton6.setContentAreaFilled(false);
         jButton6.setBorderPainted(false);
@@ -788,8 +788,7 @@ public class JaratAddShuttle extends javax.swing.JFrame {
             String fs = FCS_Field.getText();
 
             if (sN.matches("") || mf.matches("") || maxFu.matches("") || es.matches("") || bs.matches("") || fs.matches("")) {
-                System.out.println("Hiányzó textField");
-                //Hiba.setText("Az összes mező kitöltése kötelező");
+
                 if (sN.matches("")) {
                     snh.setText("*");
                 } else {
@@ -828,8 +827,6 @@ public class JaratAddShuttle extends javax.swing.JFrame {
                 stm.executeUpdate(sql);
                 JOptionPane.showMessageDialog(this, "Uploaded system succesfully");
                 numberOfShips++;
-                System.out.println("Number of ships in database has changed to: " + numberOfShips);
-                System.out.println("Feltöltve: " + "\nManufacturer: " + mf + "\nShip Name: " + sN + "\nMaxFuel: " + maxFu + "\nEconomy Seats" + es + "\nBusiness Seats: " + bs + "\nFirst Class Seats: " + fs);
                 shipListaTorol();
                 SN_Field.setText("");
                 manufacturers.setText("");
@@ -881,11 +878,7 @@ public class JaratAddShuttle extends javax.swing.JFrame {
             numberOfShips--;
             JOptionPane.showMessageDialog(this, "Deleted ship succesfully");
             shipListaTorol();
-            System.out.println("Hajó törölve: " + shipDeletion);
 
-            System.out.println("Number of ships in the database has changed to: " + numberOfShips);
-
-            //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -908,7 +901,6 @@ public class JaratAddShuttle extends javax.swing.JFrame {
 
             String system = SystemName.getText();
             system = system.replaceAll("[']", "╗");
-            System.out.println(system);
             String starport = StarportName.getText();
             starport = starport.replaceAll("[']", "╗");
             String dfs = DFS.getText();
@@ -924,7 +916,7 @@ public class JaratAddShuttle extends javax.swing.JFrame {
             FSS.setText("");
 
             numberOfSystems++;
-
+            systemListDelete();
             //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
@@ -972,20 +964,19 @@ public class JaratAddShuttle extends javax.swing.JFrame {
         jaj.show();
         dispose();
     }//GEN-LAST:event_addRActionPerformed
-protected int replaceId=0;
+    private int replaceId = 0;
     private void jComboBox2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBox2KeyPressed
-        
+
     }//GEN-LAST:event_jComboBox2KeyPressed
 
     private void jComboBox2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBox2MouseClicked
-        // TODO add your handling code here:
         
     }//GEN-LAST:event_jComboBox2MouseClicked
 
     private void jComboBox2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox2ItemStateChanged
         updateSytemList();
     }//GEN-LAST:event_jComboBox2ItemStateChanged
-protected String segedSystem="";
+    private String segedSystem = "";
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -993,44 +984,40 @@ protected String segedSystem="";
             segedSystem = jComboBox2.getItemAt(jComboBox2.getSelectedIndex());
             String system = SystemName1.getText();
             system = system.replaceAll("[']", "╗");
-            System.out.println(system);
             String starport = StarportName1.getText();
             starport = starport.replaceAll("[']", "╗");
             String dfs = DFS1.getText();
             String fss = FSS1.getText();
 
             Statement stm = con.createStatement();
-            String sql = "UPDATE `systems` SET `systemName` = '"+system.replaceAll("[']", "╗")+"', `starportName` = '"+starport+"', `solDistance` = '"+dfs+"', `numOfBodies` = '"+fss+"' WHERE `systems`.`id` = "+replaceId+"";
+            String sql = "UPDATE `systems` SET `systemName` = '" + system.replaceAll("[']", "╗") + "', `starportName` = '" + starport + "', `solDistance` = '" + dfs + "', `numOfBodies` = '" + fss + "' WHERE `systems`.`id` = " + replaceId + "";
             stm.executeUpdate(sql);
-            JOptionPane.showMessageDialog(this, "Sikeres feltöltés!'");
-           systemListDelete();
+            JOptionPane.showMessageDialog(this, "Upload succesfull!");
+            systemListDelete();
 
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
-        
-         try {
+
+        try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
 
             String system = SystemName1.getText();
             system = system.replaceAll("[']", "╗");
-            
+
             Statement stm = con.createStatement();
-            String sql = "UPDATE `routes` SET `fromS` = '"+system.replaceAll("[']", "╗")+"' WHERE `routes`.`fromS` LIKE '"+segedSystem.replaceAll("[']", "╗")+"'";
+            String sql = "UPDATE `routes` SET `fromS` = '" + system.replaceAll("[']", "╗") + "' WHERE `routes`.`fromS` LIKE '" + segedSystem.replaceAll("[']", "╗") + "'";
             stm.executeUpdate(sql);
-            
 
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void shipListaTorol() {
@@ -1057,28 +1044,29 @@ protected String segedSystem="";
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    private void updateSytemList(){
-    try {
+
+    private void updateSytemList() {
+        try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
 
             String selectedSystem = jComboBox2.getItemAt(jComboBox2.getSelectedIndex());
-            int a=0;
+            int a = 0;
             Statement stm = con.createStatement();
             ResultSet rs = stm.executeQuery("SELECT * FROM systems WHERE systemName LIKE '" + selectedSystem.replaceAll("[']", "╗") + "'");
-            String syName="";
-            String stName="";
+            String syName = "";
+            String stName = "";
             int dfs = 0;
             int fss = 0;
-                    
+
             while (rs.next()) {
                 replaceId = rs.getInt("id");
-                syName=rs.getString("systemName");
-                stName=rs.getString("starportName");
-                stName=stName.replaceAll("[╗]", "'");
-                syName=syName.replaceAll("[╗]", "'");
-                dfs=rs.getInt("solDistance");
-                fss=rs.getInt("numOfBodies");
+                syName = rs.getString("systemName");
+                stName = rs.getString("starportName");
+                stName = stName.replaceAll("[╗]", "'");
+                syName = syName.replaceAll("[╗]", "'");
+                dfs = rs.getInt("solDistance");
+                fss = rs.getInt("numOfBodies");
             }
             SystemName1.setText(syName);
             StarportName1.setText(stName);
@@ -1090,6 +1078,7 @@ protected String segedSystem="";
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
     private void systemListDelete() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -1099,7 +1088,6 @@ protected String segedSystem="";
             String sql = "SELECT `systemName` FROM systems WHERE 1";
             ResultSet rs = stm.executeQuery(sql);
             String mezon = "systemName";
-            System.out.println(mezon);
             String[] record = new String[numberOfSystems];
             int index = 0;
             while (rs.next()) {
