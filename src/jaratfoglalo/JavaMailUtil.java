@@ -36,7 +36,7 @@ public class JavaMailUtil {
     }
     public String pass;
     private static String emailPass;
-    public static void getP() {
+    public static void getP() {/*
         ArrayList<JavaMailUtil> adatok = new ArrayList<>();
         String pass1;
         String line;
@@ -58,7 +58,7 @@ public class JavaMailUtil {
         }
         for (JavaMailUtil r1 : adatok) {
             emailPass=r1.pass;
-        }
+       }*/
     }
 
     public static void sendMail(String recepient) throws Exception {
@@ -73,12 +73,12 @@ public class JavaMailUtil {
         properties.put("mail.smtp.port", "587");
 
         String mailN = "ait.arthab1022@gmail.com";
-       
+        
 
         Session session = Session.getInstance(properties, new Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(
-                        "ait.arthab1022@gmail.com", emailPass);
+                        "ait.arthab1022@gmail.com", "_\\(9812-&&32L*");
             }
         });
         //
