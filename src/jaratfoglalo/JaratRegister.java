@@ -300,10 +300,6 @@ public class JaratRegister extends javax.swing.JFrame {
                     if (!rgel.matches(registerPass)) {
                         System.out.println("Given password do not match");
                         JOptionPane.showMessageDialog(this, "Given password do not match!");
-                        //regUsername.setText("");
-                        //registerPassword1.setText("");
-                        //registerPassword2.setText("");
-                        //emailField.setText("");
                     } else {
                         if (rs.next()) {
                             System.out.println("Username is already taken!");
