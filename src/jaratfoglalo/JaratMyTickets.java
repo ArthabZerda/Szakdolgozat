@@ -558,10 +558,10 @@ public class JaratMyTickets extends javax.swing.JFrame {
 
                 dep = rs.getString("departure");
                 dep = dep.replaceAll("[╗]", "'");
-                System.out.println(dep);
+                
                 arr = rs.getString("destination");
                 arr = arr.replaceAll("[╗]", "'");
-                System.out.println(arr);
+               
 
                 rowData[0] = rs.getString("ticketId");
                 rowData[1] = dep;

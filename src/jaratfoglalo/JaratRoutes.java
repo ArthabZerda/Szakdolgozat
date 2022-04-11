@@ -39,15 +39,11 @@ public class JaratRoutes extends javax.swing.JFrame {
     private static int selId = 1;
 
     public JaratRoutes() {
-        
-       
-        
-        
+
         initComponents();
         lista();
         myWallet();
         boolean asd = true;
-       
 
         jSpinner1.setValue(1);
         jSpinner2.setValue(1);
@@ -728,7 +724,7 @@ public class JaratRoutes extends javax.swing.JFrame {
                                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
 
                                 Statement stm = con.createStatement();
-                                String sql = "INSERT INTO `tickets` (`ticketId`, `route_id`, `user_id`, `departure`, `destination`, `ship`, `date`, `seat`) VALUES (NULL,'" +selel+"', '" + currentId + "', '" + dp + "', '" + ds + "', '" + sp + "' , '" + dt + "', '" + type + "')";
+                                String sql = "INSERT INTO `tickets` (`ticketId`, `route_id`, `user_id`, `departure`, `destination`, `ship`, `date`, `seat`) VALUES (NULL,'" + selel + "', '" + currentId + "', '" + dp + "', '" + ds + "', '" + sp + "' , '" + dt + "', '" + type + "')";
 
                                 stm.executeUpdate(sql);
 
@@ -830,7 +826,7 @@ public class JaratRoutes extends javax.swing.JFrame {
                                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
 
                                 Statement stm = con.createStatement();
-                                String sql = "INSERT INTO `tickets` (`ticketId`, `route_id`, `user_id`, `departure`, `destination`, `ship`, `date`, `seat`) VALUES (NULL,'" +selel+"', '" + currentId + "', '" + dp + "', '" + ds + "', '" + sp + "' , '" + dt + "', '" + type + "')";
+                                String sql = "INSERT INTO `tickets` (`ticketId`, `route_id`, `user_id`, `departure`, `destination`, `ship`, `date`, `seat`) VALUES (NULL,'" + selel + "', '" + currentId + "', '" + dp + "', '" + ds + "', '" + sp + "' , '" + dt + "', '" + type + "')";
 
                                 stm.executeUpdate(sql);
 
@@ -930,7 +926,7 @@ public class JaratRoutes extends javax.swing.JFrame {
                                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
 
                                 Statement stm = con.createStatement();
-                                String sql = "INSERT INTO `tickets` (`ticketId`, `route_id`, `user_id`, `departure`, `destination`, `ship`, `date`, `seat`) VALUES (NULL,'" +selel+"', '" + currentId + "', '" + dp + "', '" + ds + "', '" + sp + "' , '" + dt + "', '" + type + "')";
+                                String sql = "INSERT INTO `tickets` (`ticketId`, `route_id`, `user_id`, `departure`, `destination`, `ship`, `date`, `seat`) VALUES (NULL,'" + selel + "', '" + currentId + "', '" + dp + "', '" + ds + "', '" + sp + "' , '" + dt + "', '" + type + "')";
 
                                 stm.executeUpdate(sql);
 
@@ -1113,13 +1109,7 @@ public class JaratRoutes extends javax.swing.JFrame {
             }
         });
     }
-  
-    
-    
-    
-    
-    
-    
+
     private void lista() {
 
         try {
@@ -1156,7 +1146,8 @@ public class JaratRoutes extends javax.swing.JFrame {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-/*
+
+    /*
     private void constant() {
 
         try {
@@ -1187,7 +1178,7 @@ public class JaratRoutes extends javax.swing.JFrame {
         }
 
     }
-*/
+     */
     private void myWallet() {
         try {
 

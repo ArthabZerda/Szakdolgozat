@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package jaratfoglalo;
+
 import static jaratfoglalo.JaratFoglalo.bruh;
 import static jaratfoglalo.JaratFoglalo.currentId;
 import static jaratfoglalo.JaratFoglalo.currentUser;
@@ -18,6 +19,7 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+
 /**
  *
  * @author Bakcsányi Dominik
@@ -38,11 +40,11 @@ public class JaratMegtekint extends javax.swing.JFrame {
         addSyst.setOpaque(false);
         addSyst.setContentAreaFilled(false);
         addSyst.setBorderPainted(false);
-        
-         addRoute.setOpaque(false);
+
+        addRoute.setOpaque(false);
         addRoute.setContentAreaFilled(false);
         addRoute.setBorderPainted(false);
-        
+
         addR.setOpaque(false);
         addR.setContentAreaFilled(false);
         addR.setBorderPainted(false);
@@ -50,7 +52,7 @@ public class JaratMegtekint extends javax.swing.JFrame {
         jButton7.setOpaque(false);
         jButton7.setContentAreaFilled(false);
         jButton7.setBorderPainted(false);
-        
+
     }
 
     /**
@@ -300,7 +302,7 @@ public class JaratMegtekint extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-       jaratHome jr = new jaratHome();
+        jaratHome jr = new jaratHome();
         jr.setLocationRelativeTo(null);
         jr.show();
         dispose();
@@ -331,8 +333,6 @@ public class JaratMegtekint extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_closeBActionPerformed
 
-    
-    
     /**
      * @param args the command line arguments
      */
@@ -359,13 +359,13 @@ public class JaratMegtekint extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(JaratMegtekint.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        
+
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new JaratMegtekint().setVisible(true);
-                
+
             }
         });
     }

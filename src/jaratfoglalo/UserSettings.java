@@ -38,27 +38,27 @@ public class UserSettings extends javax.swing.JFrame {
 
     public UserSettings() {
         initComponents();
-        
+
         jButton1.setOpaque(false);
         jButton1.setContentAreaFilled(false);
         jButton1.setBorderPainted(false);
-        
+
         jButton2.setOpaque(false);
         jButton2.setContentAreaFilled(false);
         jButton2.setBorderPainted(false);
-        
+
         jButton3.setOpaque(false);
         jButton3.setContentAreaFilled(false);
         jButton3.setBorderPainted(false);
-        
+
         jButton4.setOpaque(false);
         jButton4.setContentAreaFilled(false);
         jButton4.setBorderPainted(false);
-        
+
         closeB.setOpaque(false);
         closeB.setContentAreaFilled(false);
         closeB.setBorderPainted(false);
-        
+
         try {
 
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -453,7 +453,7 @@ public class UserSettings extends javax.swing.JFrame {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
 
             Statement stm = con.createStatement();
-            String sql = "SELECT `userfield` FROM users WHERE `email` LIKE '"  + jTextField4.getText() +  "'";
+            String sql = "SELECT `userfield` FROM users WHERE `email` LIKE '" + jTextField4.getText() + "'";
             ResultSet rs = stm.executeQuery(sql);
 
             if (rs.next()) {
@@ -474,7 +474,7 @@ public class UserSettings extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
+
         if (!jPasswordField1.getText().matches(jPasswordField2.getText())) {
             JOptionPane.showMessageDialog(this, "Given Passwords do not match!");
         } else {

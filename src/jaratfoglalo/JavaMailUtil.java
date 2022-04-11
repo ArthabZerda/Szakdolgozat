@@ -36,6 +36,7 @@ public class JavaMailUtil {
     }
     public String pass;
     private static String emailPass;
+
     public static void getP() {/*
         ArrayList<JavaMailUtil> adatok = new ArrayList<>();
         String pass1;
@@ -64,7 +65,7 @@ public class JavaMailUtil {
     public static void sendMail(String recepient) throws Exception {
 
         getP();
-        
+
         Properties properties = new Properties();
 
         properties.put("mail.smtp.auth", "true");
@@ -73,7 +74,6 @@ public class JavaMailUtil {
         properties.put("mail.smtp.port", "587");
 
         String mailN = "ait.arthab1022@gmail.com";
-        
 
         Session session = Session.getInstance(properties, new Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {

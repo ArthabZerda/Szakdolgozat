@@ -21,35 +21,31 @@ import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
 import javax.swing.JFrame;
+
 /**
  *
  * @author Bakcsányi Dominik
  */
-public class JaratLogin extends javax.swing.JFrame{
-
-   
+public class JaratLogin extends javax.swing.JFrame {
 
     /**
      * Creates new form JaratLogin
      */
     public JaratLogin() {
         initComponents();
-        
-        
+
         loginButton.setOpaque(false);
         loginButton.setContentAreaFilled(false);
         loginButton.setBorderPainted(false);
-        
+
         jButton1.setOpaque(false);
         jButton1.setContentAreaFilled(false);
         jButton1.setBorderPainted(false);
-        
+
         jButton2.setOpaque(false);
         jButton2.setContentAreaFilled(false);
         jButton2.setBorderPainted(false);
-      
-      
-        
+
     }
 
     /**
@@ -290,76 +286,64 @@ public class JaratLogin extends javax.swing.JFrame{
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        
-        
-        try{
-            
-            
-          Class.forName("com.mysql.cj.jdbc.Driver");
-          Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok","root","");
-          
-          String username = usernameField.getText();
-          username = username.replaceAll("[']", "╗");
-          username = username.replaceAll("[`]", "╗");
-          username = username.replaceAll("[;]", "╗");
-          String password = passwordField.getText();
-          password = password.replaceAll("[']", "╗");
-          password = password.replaceAll("[`]", "╗");
-          password = password.replaceAll("[;]", "╗");
-          
-          
-          
-          Statement stm = con.createStatement();
-          String sql = "SELECT * FROM users WHERE userfield='"+username+"' and passwordfield='"+password+"'";
-          //System.err.println(sql);
-          ResultSet rs = stm.executeQuery(sql);
-            
-            //'; Delete from users where id=3; Select * from users where userfield like '%
-          
-          //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
-          
-          
-          if (rs.next()) {
-              
-            
-            
-            currentUser=rs.getString("userfield");
-            currentId=rs.getInt("id");
-              System.out.println("Current User: " + currentUser);
-              System.out.println("Current User_Id: " + currentId);
-              level=rs.getString("clearance");
-              System.out.println("User clearance level: " + level);
-              if (!level.matches("banned")) {
-                  jaratHome name = new jaratHome();
-                  name.setVisible(true);
-                  name.setLocationRelativeTo(null);
-                  currentUser=rs.getString("userfield");
-                  currentUser.replaceAll("[╗]", "'");
-                  currentId=rs.getInt("id");
-                  
-                 
-                  
-              } else {
-                  JaratAppeal a = new JaratAppeal();
-                  a.setVisible(true);
-                  a.setLocationRelativeTo(null);
-              }
 
-              
-              dispose();
-             
-          }else{
-              JOptionPane.showMessageDialog(this,"Név vagy jelszó rossz");
-              usernameField.setText("");
-              passwordField.setText("");
-          }
-           
-      } catch (ClassNotFoundException ex) {
+        try {
+
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
+
+            String username = usernameField.getText();
+            username = username.replaceAll("[']", "╗");
+            username = username.replaceAll("[`]", "╗");
+            username = username.replaceAll("[;]", "╗");
+            String password = passwordField.getText();
+            password = password.replaceAll("[']", "╗");
+            password = password.replaceAll("[`]", "╗");
+            password = password.replaceAll("[;]", "╗");
+
+            Statement stm = con.createStatement();
+            String sql = "SELECT * FROM users WHERE userfield='" + username + "' and passwordfield='" + password + "'";
+            //System.err.println(sql);
+            ResultSet rs = stm.executeQuery(sql);
+
+            //'; Delete from users where id=3; Select * from users where userfield like '%
+            //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
+            if (rs.next()) {
+
+                currentUser = rs.getString("userfield");
+                currentId = rs.getInt("id");
+                System.out.println("Current User: " + currentUser);
+                System.out.println("Current User_Id: " + currentId);
+                level = rs.getString("clearance");
+                System.out.println("User clearance level: " + level);
+                if (!level.matches("banned")) {
+                    jaratHome name = new jaratHome();
+                    name.setVisible(true);
+                    name.setLocationRelativeTo(null);
+                    currentUser = rs.getString("userfield");
+                    currentUser.replaceAll("[╗]", "'");
+                    currentId = rs.getInt("id");
+
+                } else {
+                    JaratAppeal a = new JaratAppeal();
+                    a.setVisible(true);
+                    a.setLocationRelativeTo(null);
+                }
+
+                dispose();
+
+            } else {
+                JOptionPane.showMessageDialog(this, "Név vagy jelszó rossz");
+                usernameField.setText("");
+                passwordField.setText("");
+            }
+
+        } catch (ClassNotFoundException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(this,ex);
+            JOptionPane.showMessageDialog(this, ex);
         } catch (SQLException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
-            
+
         }        // TODO add your handling code here:
     }//GEN-LAST:event_loginButtonActionPerformed
 
@@ -379,13 +363,13 @@ public class JaratLogin extends javax.swing.JFrame{
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jLabel7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jLabel7KeyPressed
-       
+
     }//GEN-LAST:event_jLabel7KeyPressed
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
         SendEmail sm = new SendEmail();
-       sm.setLocationRelativeTo(null);
-       sm.show();
+        sm.setLocationRelativeTo(null);
+        sm.show();
     }//GEN-LAST:event_jLabel7MouseClicked
 
     /**
@@ -423,7 +407,7 @@ public class JaratLogin extends javax.swing.JFrame{
         });
     }
 
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

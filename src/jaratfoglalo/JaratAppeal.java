@@ -127,19 +127,18 @@ public class JaratAppeal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (amount>=2000) {
-             JOptionPane.showMessageDialog(this, "Your appeal message is too long");
-        }else{
-        try {
+        if (amount >= 2000) {
+            JOptionPane.showMessageDialog(this, "Your appeal message is too long");
+        } else {
+            try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
-                String app=jTextArea1.getText();
+                String app = jTextArea1.getText();
                 app = app.replaceAll("[']", "╗");
                 Statement stm = con.createStatement();
-                String sql = "INSERT INTO `appeals` (`id`, `user_id`, `reason`) VALUES (NULL, '"+currentId+"', '"+app+"');";
+                String sql = "INSERT INTO `appeals` (`id`, `user_id`, `reason`) VALUES (NULL, '" + currentId + "', '" + app + "');";
                 stm.executeUpdate(sql);
                 JOptionPane.showMessageDialog(this, "Your appeal has been sent. \nPlease be patient while our moderators review your appeal");
-
 
                 //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
             } catch (ClassNotFoundException ex) {
@@ -148,8 +147,9 @@ public class JaratAppeal extends javax.swing.JFrame {
                 Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
             }
             jTextArea1.setEditable(false);
-           jButton1.setVisible(false);
-            jTextArea1.setText("You have already sent an appeal.\nPlease be patient while our moderators review your appeal.");}
+            jButton1.setVisible(false);
+            jTextArea1.setText("You have already sent an appeal.\nPlease be patient while our moderators review your appeal.");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -158,41 +158,38 @@ public class JaratAppeal extends javax.swing.JFrame {
         jl.show();
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
-private int amount;
+    private int amount;
     private void jTextArea1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea1KeyPressed
         String tp = jTextArea1.getText();
-        amount=tp.length()+1;
-        if (amount>=2000) {
-            
+        amount = tp.length() + 1;
+        if (amount >= 2000) {
+
             jLabel3.setForeground(new java.awt.Color(255, 0, 0));
-        }else{
+        } else {
             jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         }
-        
-        jLabel3.setText(String.valueOf(amount)+"/1999 characters");
+
+        jLabel3.setText(String.valueOf(amount) + "/1999 characters");
     }//GEN-LAST:event_jTextArea1KeyPressed
 
-    private void bnd(){
-    try {
+    private void bnd() {
+        try {
 
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
-            
+
             Statement stm = con.createStatement();
-            String sql = "SELECT `user_id` FROM `appeals` WHERE `user_id`="+currentId+"";
+            String sql = "SELECT `user_id` FROM `appeals` WHERE `user_id`=" + currentId + "";
             ResultSet rs = stm.executeQuery(sql);
-            int segedUser=0;
-            while(rs.next()){
-                segedUser=rs.getInt("user_id");
-                if (segedUser==rs.getInt("user_id")) {
+            int segedUser = 0;
+            while (rs.next()) {
+                segedUser = rs.getInt("user_id");
+                if (segedUser == rs.getInt("user_id")) {
                     jTextArea1.setEditable(false);
                     jButton1.setVisible(false);
                     jTextArea1.setText("You have already sent an appeal.\nPlease be patient while our moderators review your appeal.");
                 }
             }
-            
-            
-            
 
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
@@ -201,6 +198,7 @@ private int amount;
 
         }
     }
+
     /**
      * @param args the command line arguments
      */

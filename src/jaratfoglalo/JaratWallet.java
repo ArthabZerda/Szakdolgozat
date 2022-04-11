@@ -419,8 +419,7 @@ private int cvc = 0;
                 jTextField5.setText("");
                 raiden();
 
-                //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
-            } catch (ClassNotFoundException ex) {
+                 } catch (ClassNotFoundException ex) {
                 Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex) {
                 Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
@@ -440,7 +439,7 @@ private int cvc = 0;
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
 
         String wa = jTextField1.getText();
-        String waCounter=wa.replaceAll("[-]", "");
+        String waCounter = wa.replaceAll("[-]", "");
 
         System.out.println(waCounter.length());
 
