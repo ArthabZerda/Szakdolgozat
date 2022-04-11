@@ -863,7 +863,9 @@ public class JaratAddShuttle extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         try {
-
+            /*
+            Kijelölt hajó adatainak lekérése és törlése
+            */
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
 
@@ -890,9 +892,13 @@ public class JaratAddShuttle extends javax.swing.JFrame {
 
         dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
-
+ boolean existing=false;
     private void AddSystemButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddSystemButtonActionPerformed
+       
+       
+        
         try {
+            //Csillagrendszer hozzáadása és karakterek átalakítása
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
 
@@ -902,8 +908,16 @@ public class JaratAddShuttle extends javax.swing.JFrame {
             starport = starport.replaceAll("[']", "╗");
             String dfs = DFS.getText();
             String fss = FSS.getText();
-
+            //Már létező rendszer kezelése (Két ugyan ojan nevű rendszer nem létezhet)
             Statement stm = con.createStatement();
+            String sql1 = "SELECT * FROM `systems` WHERE systemName='" + system + "'";
+            ResultSet rs = stm.executeQuery(sql1);
+            if (rs.next()) {
+                JOptionPane.showMessageDialog(this, "System already exists!");
+            }else{
+         
+            
+            
             String sql = "INSERT INTO `systems` (`id`, `systemName`, `starportName`, `solDistance`, `numOfBodies`) VALUES (NULL, '" + system + "', '" + starport + "', '" + dfs + "', '" + fss + "')";
             stm.executeUpdate(sql);
             JOptionPane.showMessageDialog(this, "Updated system!");
@@ -914,8 +928,9 @@ public class JaratAddShuttle extends javax.swing.JFrame {
 
             numberOfSystems++;
             systemListDelete();
-            //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
-        } catch (ClassNotFoundException ex) {
+            }
+            //listafrissítés
+            } catch (ClassNotFoundException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
@@ -924,7 +939,7 @@ public class JaratAddShuttle extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         try {
-
+            //Kijelölt csillagrendszer törlése az adatbáuísból
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
 
@@ -936,6 +951,7 @@ public class JaratAddShuttle extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Successfully removed system from the database");
             numberOfSystems--;
             systemListDelete();
+            //listafrissítés
 
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
@@ -976,6 +992,7 @@ public class JaratAddShuttle extends javax.swing.JFrame {
     private String segedSystem = "";
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         try {
+            //Kijelölt lézető rendszer átalakítása és frissítése az adatbázisban
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
             segedSystem = jComboBox2.getItemAt(jComboBox2.getSelectedIndex());
@@ -1019,6 +1036,7 @@ public class JaratAddShuttle extends javax.swing.JFrame {
 
     private void shipListaTorol() {
         try {
+            //Hajó lsi8ta frissítése törléskor és felvételkor
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
 
@@ -1044,6 +1062,7 @@ public class JaratAddShuttle extends javax.swing.JFrame {
 
     private void updateSytemList() {
         try {
+            //Csillagrendszer frissítése törlés, frissítés, és feltöltéskor
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
 
@@ -1077,6 +1096,7 @@ public class JaratAddShuttle extends javax.swing.JFrame {
     }
 
     private void systemListDelete() {
+        //rendszer törlés frissítés
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");

@@ -296,7 +296,7 @@ public class JaratRegister extends javax.swing.JFrame {
             if (!registerEmail.contains("@") || !registerEmail.contains(".")) {
                 System.out.println("Invalid email");
                 JOptionPane.showMessageDialog(this, "Please enter a valid email");
-                //Öres mező ellenőrzés
+                //Üres mező ellenőrzés
             } else if (registerName.matches("") || registerPass.matches("") || registerEmail.matches("")) {
                 JOptionPane.showMessageDialog(this, "All fields has to be filled out!");
             } else {
