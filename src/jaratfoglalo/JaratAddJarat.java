@@ -44,7 +44,7 @@ public class JaratAddJarat extends javax.swing.JFrame {
      * Creates new form JaratAddJarat
      */
     public JaratAddJarat() {
-
+        //Járatok kilistázása indításkor az elkészített funkciókkal
         initComponents();
         shutl();
         from();
@@ -531,23 +531,30 @@ public class JaratAddJarat extends javax.swing.JFrame {
     private int fromId;
     private int toId;
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       //Táblázat létrehozása (üres)
         jTable1.setModel(new DefaultTableModel(null, new String[]{"Route ID", "Departure", "Destination", "Date"}));
+       //Táblázat feltöltéses
         routeList();
 
         try {
+            
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
-
+            //Induli és cél pomntot kiveszi a kijelölt listából
             String selectedShip = shipBox.getItemAt(shipBox.getSelectedIndex());
             String selectedFrom = fromBox.getItemAt(fromBox.getSelectedIndex());
             String selectedTo = toBox.getItemAt(toBox.getSelectedIndex());
+            //Átalakítja az aposzterófokat ha aposzrtrófos karakter van a rendszer nevében
             selectedFrom = selectedFrom.replaceAll("[']", "╗");
             selectedTo = selectedTo.replaceAll("[']", "╗");
             System.out.println("Selecteds ship is: " + selectedShip);
             System.out.println("Selecteds from is: " + selectedFrom);
             System.out.println("Selecteds to is: " + selectedTo);
+            //Indulási dátum kijelölése
             selectedDate = ((JTextField) jDateChooser1.getDateEditor().getUiComponent()).getText();
+            //Dátum pontos elválasztását átalakítja kötöjelessé az sql működéséhez
             selectedDate = selectedDate.replaceAll("[.]", "-");
+            //utolsó átalakított kötőjelet kitörli ami a pontoknál volt
             selectedDate = selectedDate.substring(0, selectedDate.length() - 1);
             System.out.println("Departure date: " + selectedDate);
 
@@ -570,7 +577,7 @@ public class JaratAddJarat extends javax.swing.JFrame {
             }
             jTable1.setModel(new DefaultTableModel(null, new String[]{"Route ID", "Departure", "Destination", "Date"}));
             routeList();
-
+            //Járat lista frisssítése
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -578,7 +585,7 @@ public class JaratAddJarat extends javax.swing.JFrame {
         }
 
         try {
-
+            //kijelölt járat adatok kiiratása
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
 
@@ -603,16 +610,23 @@ public class JaratAddJarat extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
+        /*
+        Két redszer közötti távolság kiszámítása a a naptól való távolságugtól
+        Ha a cél közelebb van a anphoz mint az indulási pont akkor fordítva számolja,
+        hogy ne minuszba mwnjwn a távolság és pontos távolságot kapjunk
+        
+        */
         if (toD > fromD) {
             solD = toD - fromD;
         } else {
             solD = fromD - toD;
         }
-
+        //Távolsághoz szüksége üzemanyag ksizámolása
         System.out.println("Sol distance: " + solD);
         int segedsold = solD / 10;
 
         try {
+           
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
 
@@ -693,6 +707,7 @@ public class JaratAddJarat extends javax.swing.JFrame {
 
     private void shipBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_shipBoxItemStateChanged
         try {
+            //Beolvassa az éppen kijelölt játa adatait
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
 
@@ -756,9 +771,9 @@ public class JaratAddJarat extends javax.swing.JFrame {
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-
+        //Kijelölt járat törlése
         try {
-
+            
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
 
@@ -798,7 +813,8 @@ public class JaratAddJarat extends javax.swing.JFrame {
     }//GEN-LAST:event_closeBActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // UPDATE `tickets` SET `date` = '2022-03-24 02:06:10' WHERE `tickets`.`ticketId` = 2;
+        //Átírja a kijelölt létező járat indulsi időpontját
+        //Dátum átalakítása az SQL-nek érthető adatokká
         selectedDate = ((JTextField) jDateChooser1.getDateEditor().getUiComponent()).getText();
         selectedDate = selectedDate.replaceAll("[.]", "-");
         selectedDate = selectedDate.substring(0, selectedDate.length() - 1);
@@ -876,6 +892,7 @@ public class JaratAddJarat extends javax.swing.JFrame {
     }
 
     private void shutl() {
+        //Hajó lista feltöltése
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
@@ -899,6 +916,7 @@ public class JaratAddJarat extends javax.swing.JFrame {
     }
 
     private void from() {
+        //Kiindulsi pontok listájának feétöltése
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
@@ -924,6 +942,7 @@ public class JaratAddJarat extends javax.swing.JFrame {
     }
 
     private void to() {
+        //Célpont listájának feltöltése
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
@@ -949,7 +968,9 @@ public class JaratAddJarat extends javax.swing.JFrame {
     }
 
     private void routeList() {
-
+        /*
+        Táblázat feltöltése megfelelő adatokkal
+        */
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");

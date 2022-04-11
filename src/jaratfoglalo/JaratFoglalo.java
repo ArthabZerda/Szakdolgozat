@@ -27,10 +27,6 @@ class Tester {
     }
 }
 
-/**
- *
- * @author Bakcsányi Dominik
- */
 public class JaratFoglalo extends Tester {
     
     public static String bruh = "nem jó";
@@ -45,31 +41,18 @@ public class JaratFoglalo extends Tester {
     public static String sendTo;
     public static String newPass;
     public static String currentT;
+    
+    //Globális változók amik szükségesek Listák számához és felhasználó megjegyzésére
     public static void main(String[] args) throws Exception {
 
-        /*String reverseTest="abc";
-        byte[] strAsByteArray = reverseTest.getBytes();
-        byte[] result = new byte[strAsByteArray.length];
-        for (int i = 0; i < strAsByteArray.length; i++){
-            result[i] = strAsByteArray[strAsByteArray.length - i - 1];
-        }
-        System.out.println(new String(result));*/
- /*
-        String asd="admin";
-        String rev = new StringBuilder(asd).reverse().toString();
-        char f2= rev.charAt(0);
-        String result = f2+rev+f2;
-        System.out.println(result);
-        result = result.substring(1, result.length() - 1);
-        String encode = new StringBuilder(result).reverse().toString();
-        System.err.println(encode);
-         */
         JaratLogin jl = new JaratLogin();
         jl.setLocationRelativeTo(null);
         jl.show();
 
         JaratFoglalo newO = new JaratFoglalo();
-        newO.adder("adada");
+        // newO.adder("adada");
+        
+        //Felhasználók megszámlálása a késöbbi lista feltöltésére
         try {
 
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -80,8 +63,7 @@ public class JaratFoglalo extends Tester {
             ResultSet rs = stm.executeQuery(sql);
 
             while (rs.next()) {
-                testerInt++;
-
+                testerInt++; //FelhasználóSzám
             }
             testerInt++;
             System.out.println("Number of Users in the database is: " + testerInt);
@@ -91,6 +73,8 @@ public class JaratFoglalo extends Tester {
         } catch (SQLException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        //Hajók megszámlálása késöbbi lista feltöltésére
         try {
 
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -111,6 +95,8 @@ public class JaratFoglalo extends Tester {
         } catch (SQLException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        //Rendszerek megszámlálása késöbbi lsita feltöltésére
         try {
 
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -131,7 +117,8 @@ public class JaratFoglalo extends Tester {
         } catch (SQLException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+       
+        //admin számláló
         try {
 
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -153,6 +140,8 @@ public class JaratFoglalo extends Tester {
         } catch (SQLException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        //Járat törlése ha a járat indulási időpontja meghaladja az aktuális járat indulási dátumát
         try {
             
             

@@ -281,7 +281,7 @@ public class JaratRegister extends javax.swing.JFrame {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
-
+            //Felhasználó aposztrófok átalakítása
             String registerName = regUsername.getText();
             registerName = registerName.replaceAll("[']", "╗");
             String registerPass = registerPassword2.getText();
@@ -291,17 +291,22 @@ public class JaratRegister extends javax.swing.JFrame {
             Statement stm = con.createStatement();
             String sql1 = "SELECT * FROM users WHERE userfield='" + registerName + "'";
             ResultSet rs = stm.executeQuery(sql1);
+
+            //Valós email ellenőrzés.
             if (!registerEmail.contains("@") || !registerEmail.contains(".")) {
                 System.out.println("Invalid email");
                 JOptionPane.showMessageDialog(this, "Please enter a valid email");
+                //Öres mező ellenőrzés
             } else if (registerName.matches("") || registerPass.matches("") || registerEmail.matches("")) {
                 JOptionPane.showMessageDialog(this, "All fields has to be filled out!");
             } else {
                 if (!rgel.matches(registerPass)) {
+                    //Nem emegeggyező jelszavak
                     System.out.println("Given password do not match");
                     JOptionPane.showMessageDialog(this, "Given password do not match!");
                 } else {
                     if (rs.next()) {
+                        //Már lézető név ellenőrzése
                         System.out.println("Username is already taken!");
                         JOptionPane.showMessageDialog(this, "Username is already taken!");
                         regUsername.setText("");
@@ -309,6 +314,10 @@ public class JaratRegister extends javax.swing.JFrame {
                         registerPassword2.setText("");
                         emailField.setText("");
                     } else {
+                        /*
+                        Helyes Regisztrációs adatok.
+                        Feltöltés felhasználók közé
+                         */
                         String sql = "INSERT INTO `users` (`id`, `userfield`, `passwordfield`, `email`, `clearance`, `wallet`) VALUES (NULL, '" + registerName + "', '" + registerPass + "', '" + registerEmail + "' , 'L0', '0')";
                         stm.executeUpdate(sql);
                         JOptionPane.showMessageDialog(this, "Registered Successfully");
@@ -318,7 +327,6 @@ public class JaratRegister extends javax.swing.JFrame {
                         lg.setLocationRelativeTo(null);
                         dispose();
                         testerInt++;
-                        //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
                     }
                 }
             }
