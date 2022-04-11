@@ -26,6 +26,7 @@ public class JaratAppeal extends javax.swing.JFrame {
      */
     public JaratAppeal() {
         initComponents();
+        //indításkor ellenőrzés funkció
         bnd();
     }
 
@@ -127,10 +128,12 @@ public class JaratAppeal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        //Kérelem karakter hosszának kezelése (nem lehet több 2000-nél)
         if (amount >= 2000) {
             JOptionPane.showMessageDialog(this, "Your appeal message is too long");
         } else {
             try {
+                //Kérelem üzenet küldése az adatbázisba
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
                 String app = jTextArea1.getText();
@@ -140,12 +143,15 @@ public class JaratAppeal extends javax.swing.JFrame {
                 stm.executeUpdate(sql);
                 JOptionPane.showMessageDialog(this, "Your appeal has been sent. \nPlease be patient while our moderators review your appeal");
 
-                //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
+                
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex) {
                 Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
             }
+            /*Ha elküldte ne tujon újh üzenetet küldeni
+            Spam ellen
+            */
             jTextArea1.setEditable(false);
             jButton1.setVisible(false);
             jTextArea1.setText("You have already sent an appeal.\nPlease be patient while our moderators review your appeal.");
@@ -174,7 +180,7 @@ public class JaratAppeal extends javax.swing.JFrame {
 
     private void bnd() {
         try {
-
+            //Ha bejelentkezik újra de már írt kérelmet akkor ugayn úgy oletiltja az új üzenetk küldését
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
 

@@ -40,6 +40,8 @@ public class JaratMyTickets extends javax.swing.JFrame {
         initComponents();
         tickets();
         jLabel1.setText("Username: " + currentUser.replaceAll("[╗]", "'"));
+
+        //táblázat első sorának láthartatlanná tevése
         jTable1.getColumnModel().getColumn(0).setMinWidth(0);
         jTable1.getColumnModel().getColumn(0).setMaxWidth(0);
         jTable1.getColumnModel().getColumn(0).setWidth(0);
@@ -370,6 +372,8 @@ public class JaratMyTickets extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    //véltozók deklaráléása hasznáklathoz több class-ben
     private String selected;
     private String usrId;
     private String dep;
@@ -382,7 +386,7 @@ public class JaratMyTickets extends javax.swing.JFrame {
         int column = 0;
         int row = jTable1.getSelectedRow();
         selected = jTable1.getModel().getValueAt(row, column).toString();
-
+        //Kijelölt jegy adatainak kivétele a táblázatból exportáláshoz
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
@@ -433,6 +437,8 @@ public class JaratMyTickets extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
     private String tester = "asd";
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+
+        //jegy exportálása a kikért járat adataival
         Document document = new Document();
         try {
             PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(selected + "_ID_Ticket.pdf"));
@@ -453,40 +459,7 @@ public class JaratMyTickets extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(JaratMyTickets.class.getName()).log(Level.SEVERE, null, ex);
         }
-        //táblázatos pdf teszt
-        /*   String pt="";
-       JFileChooser j = new JFileChooser();
-       j.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-       int x= j.showSaveDialog(this);
-        if (x==JFileChooser.APPROVE_OPTION) {
-            pt=j.getSelectedFile().getPath();
-        }
-        try{
-           Document doc = new Document();
-           PdfWriter.getInstance(doc, new FileOutputStream(pt+"_"+tester+".pdf"));
-           doc.open();
-           PdfPTable table = new PdfPTable(4);
-           table.addCell("Ticket ID");
-           table.addCell("Departure");
-           table.addCell("Destination");
-           table.addCell("Date");
-            for (int i = 0; i < jTable1.getRowCount(); i++) {
-                String id = jTable1.getValueAt(i,0).toString();
-                String dp = jTable1.getValueAt(i,1).toString();
-                String ds = jTable1.getValueAt(i,2).toString();
-                String dt = jTable1.getValueAt(i,3).toString();
-                
-                table.addCell(id);
-                table.addCell(dp);
-                table.addCell(ds);
-                table.addCell(dt);
-            }
-            doc.add(table);
-            doc.close();
-           
-        }catch(Exception e){
-            System.err.println(e);
-        }*/
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void wallBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wallBActionPerformed
@@ -544,6 +517,7 @@ public class JaratMyTickets extends javax.swing.JFrame {
 
     private void tickets() {
         try {
+            //Táblázat feltöoltése indításkor a felhasználó megvásárólt jegyeivel
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
 
@@ -558,10 +532,9 @@ public class JaratMyTickets extends javax.swing.JFrame {
 
                 dep = rs.getString("departure");
                 dep = dep.replaceAll("[╗]", "'");
-                
+
                 arr = rs.getString("destination");
                 arr = arr.replaceAll("[╗]", "'");
-               
 
                 rowData[0] = rs.getString("ticketId");
                 rowData[1] = dep;

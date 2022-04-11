@@ -396,18 +396,21 @@ private int cvc = 0;
         String emptyName = jTextField3.getText();
         String emptyCr = jTextField3.getText();
         System.out.println(value);
-
+        //CVC kód ellenőrzés
         if (cvc < 100 || cvc > 1000) {
             JOptionPane.showMessageDialog(this, "Please enter valid card details!");
         } else if (emptyName.matches("")) {
-            System.out.println("sdf:(" + emptyCr + ")");
+           //Név ellenőrzés
             JOptionPane.showMessageDialog(this, "Please enter valid card details!");
         } else if (value < 0 || emptyName.matches("")) {
+            //Megfelelő pénz feltöltése elenőrzés
             JOptionPane.showMessageDialog(this, "Please enter valid amount");
         } else if (data == false || date == false) {
+            //megfelelő dátum ellenőrzés
             JOptionPane.showMessageDialog(this, "Please enter valid card details!");
         } else {
             try {
+                //Pénz feltöltése a felhasználó pénztácájába
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
 
@@ -437,7 +440,7 @@ private int cvc = 0;
     private int datCount = 0;
 
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
-
+        
         String wa = jTextField1.getText();
         String waCounter = wa.replaceAll("[-]", "");
 

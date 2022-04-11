@@ -33,9 +33,6 @@ public class JaratRoutes extends javax.swing.JFrame {
 
     private boolean confirmed = false;
     private int wal;
-    /**
-     * Creates new form JaratRoutes
-     */
     private static int selId = 1;
 
     public JaratRoutes() {
@@ -540,6 +537,10 @@ public class JaratRoutes extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         try {
+            /*
+            Járat keresése gombnymáskor.
+            A listábol csak azokat a járatokat jeleníti meg amelyek megegyeznek a felhasználó által keresett rensdzerekkel
+            */
             jTable1.setModel(new DefaultTableModel(null, new String[]{"id", "Departure", "Destination", "Launch Date"}));
 
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -576,11 +577,16 @@ public class JaratRoutes extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        //lista id tábla eltüntetése
         jTable1.getColumnModel().getColumn(0).setMinWidth(0);
         jTable1.getColumnModel().getColumn(0).setMaxWidth(0);
         jTable1.getColumnModel().getColumn(0).setWidth(0);
     }//GEN-LAST:event_jButton1ActionPerformed
+   
+    /*
+    Járat jegyek fapadostól elsőig,
+    hajó adatok hooz szükséges változoók
+    */
     private int ePrice;
     private int bPrice;
     private int fPrice;
@@ -601,7 +607,10 @@ public class JaratRoutes extends javax.swing.JFrame {
         int column = 0;
         int row = jTable1.getSelectedRow();
         selel = jTable1.getModel().getValueAt(row, column).toString();
-
+        /*
+        Kijelölt járat lekérdezése
+        
+        */
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
@@ -651,14 +660,17 @@ public class JaratRoutes extends javax.swing.JFrame {
     private String selectedClass = "none";
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+       
+        //Leellenőrzi hogy a felhasználó jó adatot adott emg a jegyek vásárlásához
         int fAmount = (Integer) jSpinner1.getValue();
         fLoad = fAmount;
         if (fAmount < 1) {
             JOptionPane.showMessageDialog(this, "Please enter a number above 0");
         } else {
+            //Fálhasználó biztosítása vásárláshoz
             int input = JOptionPane.showConfirmDialog(null, "Do you confirm your purchase for " + fAmount * ePrice + "?", "Confirmation",
                     JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-
+            //ha igen akkor a vásálrási folyamat elkezdődik
             if (input == 0) {
                 setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
 
@@ -670,13 +682,17 @@ public class JaratRoutes extends javax.swing.JFrame {
 
                 type = "Economy";
                 if (wal < fAmount * ePrice) {
+                    //Nem elegendő pénz ellenőrzése
                     JOptionPane.showMessageDialog(this, "Unsuficient credits!");
                 } else if (eSeat < fAmount) {
+                    //nincs elérhető ülés ellenőrzés
                     JOptionPane.showMessageDialog(this, "No available seats!");
                 } else {
+                    //frissíti az elérhető ülések számét vásárláskor
                     eSeat -= fAmount;
                     jLabel8.setText("Available seats: " + String.valueOf(eSeat));
                     try {
+                       //Levonja a felhasználó pánztárcájából azt az összeget amit elköltött vásárláskor
                         Class.forName("com.mysql.cj.jdbc.Driver");
                         Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
 
@@ -686,7 +702,6 @@ public class JaratRoutes extends javax.swing.JFrame {
                         stm.executeUpdate(sql);
                         JOptionPane.showMessageDialog(this, "Successfull purchase!");
 
-                        //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
                     } catch (ClassNotFoundException ex) {
                         Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (SQLException ex) {
@@ -694,6 +709,7 @@ public class JaratRoutes extends javax.swing.JFrame {
                     }
 
                     try {
+                        //levonja a járatokból az elérhető ülések számát amit a felhasználóvásárolt
                         Class.forName("com.mysql.cj.jdbc.Driver");
                         Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
 
@@ -702,7 +718,6 @@ public class JaratRoutes extends javax.swing.JFrame {
 
                         stm.executeUpdate(sql);
 
-                        //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
                     } catch (ClassNotFoundException ex) {
                         Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (SQLException ex) {
@@ -710,16 +725,20 @@ public class JaratRoutes extends javax.swing.JFrame {
                     }
                     int counter = 0;
                     while (counter != fAmount) {
-
+                        /*
+                        Addig megy ez a fojamat amig a feltöltések száma nem egyezik meg a megvásárolt jegyek számával
+                        */
                         try {
+                            
                             counter++;
                             System.err.print(" ▓ ");
                             if (counter % 10 == 0) {
                                 System.out.print("\n");
                             }
                             Thread.sleep(1000);
-
+                            //A folyamat vár 1 másodpercet minden feltöltéskor hogy az SQL-nek legyen ideje feldolgozni a feltöltött jegyeket ás ne omoljon össze
                             try {
+                                //Megvásárolt jegyek feltöltése a felhasználóhoz
                                 Class.forName("com.mysql.cj.jdbc.Driver");
                                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
 
@@ -728,7 +747,6 @@ public class JaratRoutes extends javax.swing.JFrame {
 
                                 stm.executeUpdate(sql);
 
-                                //INSERT INTO `users` (`id`, `user`, `pass`, `email`) VALUES (NULL, 'admin', 'admin', 'valami@email.hu');
                             } catch (ClassNotFoundException ex) {
                                 Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
                             } catch (SQLException ex) {
@@ -988,6 +1006,7 @@ public class JaratRoutes extends javax.swing.JFrame {
     private void jTextField2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyReleased
 
         try {
+            //Gobnyomásra frissíti a listát azokkal a járatokkkal amik megegyeznek a felhasználó által beírt adatokkal
             jTable1.setModel(new DefaultTableModel(null, new String[]{"id", "Departure", "Destination", "Launch Date"}));
 
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -1033,6 +1052,7 @@ public class JaratRoutes extends javax.swing.JFrame {
     private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
 
         try {
+            //Gobnyomásra frissíti a listát azokkal a járatokkkal amik megegyeznek a felhasználó által beírt adatokkal
             jTable1.setModel(new DefaultTableModel(null, new String[]{"id", "Departure", "Destination", "Launch Date"}));
 
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -1111,7 +1131,7 @@ public class JaratRoutes extends javax.swing.JFrame {
     }
 
     private void lista() {
-
+        //Az összes elérhet járat kilistázása indításkor
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
@@ -1147,41 +1167,9 @@ public class JaratRoutes extends javax.swing.JFrame {
         }
     }
 
-    /*
-    private void constant() {
-
-        try {
-
-            Thread.sleep(1000);
-            try {
-                Class.forName("com.mysql.cj.jdbc.Driver");
-                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
-
-                Statement stm = con.createStatement();
-                ResultSet rs = stm.executeQuery("SELECT * FROM `routes` WHERE id='" + selel + "';");
-
-                while (rs.next()) {
-                    eSeat = rs.getInt("economy");
-                    bSeat = rs.getInt("business");
-                    fSeat = rs.getInt("first");
-                }
-                jLabel8.setText("Available seats: " + String.valueOf(eSeat));
-                jLabel9.setText("Available seats: " + String.valueOf(bSeat));
-                jLabel10.setText("Available seats: " + String.valueOf(fSeat));
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (SQLException ex) {
-                Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } catch (InterruptedException ex) {
-            Logger.getLogger(JaratRoutes.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
-     */
     private void myWallet() {
         try {
-
+            //Felhasználó pénztárcájának frissítése indításkor és vásárláskor
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jaratok", "root", "");
 
