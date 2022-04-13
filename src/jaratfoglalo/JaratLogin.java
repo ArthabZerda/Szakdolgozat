@@ -318,7 +318,7 @@ public class JaratLogin extends javax.swing.JFrame {
                 dispose();
 
             } else {
-                JOptionPane.showMessageDialog(this, "Név vagy jelszó rossz");
+                JOptionPane.showMessageDialog(this, "Invalid username or password");
                 usernameField.setText("");
                 passwordField.setText("");
             }
