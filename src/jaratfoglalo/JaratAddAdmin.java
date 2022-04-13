@@ -28,6 +28,7 @@ public class JaratAddAdmin extends javax.swing.JFrame {
         appeals();
         startR();
         admins();
+        jTextArea1.setEditable(false);
         if (level.matches("L4")) {
             //L4-es admin felhasználóktól elveszi az adminok kezelését
             jComboBox3.setVisible(false);
@@ -757,7 +758,7 @@ public class JaratAddAdmin extends javax.swing.JFrame {
 
     private void numFix() {
         
-        //Users lsita sorszámának ujraszámolása adminok nélkül
+        //Users lista sorszámának ujraszámolása adminok nélkül
         try {
 
             Class.forName("com.mysql.cj.jdbc.Driver");
