@@ -8,7 +8,6 @@ package jaratfoglalo;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import static jaratfoglalo.JaratFoglalo.currentId;
 import static jaratfoglalo.JaratFoglalo.currentUser;
@@ -441,17 +440,22 @@ public class JaratMyTickets extends javax.swing.JFrame {
         //jegy exportálása a kikért járat adataival
         Document document = new Document();
         try {
-            PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(selected + "_ID_Ticket.pdf"));
-            document.open();
+            JFileChooser file=new JFileChooser();
+            file.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+            int result=file.showOpenDialog(rootPane);
+            if(result==JFileChooser.APPROVE_OPTION){
+                PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(file.getSelectedFile()+"/"+selected + "_ID_Ticket.pdf"));
+                document.open();
 
-            document.add(new Paragraph("\tTicket ID: " + selected + "\nTicket owner: " + usr.replaceAll("[╗]", "'")));
-            document.add(new Paragraph("Ship departures from: " + dep.replaceAll("[╗]", "'") + "\nArrives to: " + des.replaceAll("[╗]", "'") + "\nDeparture date: " + date));
+                document.add(new Paragraph("\tTicket ID: " + selected + "\nTicket owner: " + usr.replaceAll("[╗]", "'")));
+                document.add(new Paragraph("Ship departures from: " + dep.replaceAll("[╗]", "'") + "\nArrives to: " + des.replaceAll("[╗]", "'") + "\nDeparture date: " + date));
 
-            document.close();
-            writer.close();
-            jLabel4.setText("Successfully exported ticket!");
-            File openPdf = new File(selected + "_ID_Ticket.pdf");
-            Desktop.getDesktop().open(openPdf);
+                document.close();
+                writer.close();
+                jLabel4.setText("Successfully exported ticket!");
+                File openPdf = new File(file.getSelectedFile()+"/"+selected + "_ID_Ticket.pdf");
+                Desktop.getDesktop().open(openPdf);
+            }
         } catch (DocumentException e) {
             e.printStackTrace();
         } catch (FileNotFoundException e) {
