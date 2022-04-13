@@ -457,7 +457,7 @@ public class UserSettings extends javax.swing.JFrame {
             ResultSet rs = stm.executeQuery(sql);
 
             if (rs.next()) {
-                JOptionPane.showMessageDialog(this, "Username is already taken!");
+                JOptionPane.showMessageDialog(this, "Email is already taken!");
             } else {
                 String nName = jTextField3.getText();
                 String change = "UPDATE `users` SET `email` = '" + jTextField4.getText() + "' WHERE `users`.`id` = " + currentId + "";

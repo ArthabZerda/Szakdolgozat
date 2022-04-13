@@ -821,6 +821,13 @@ public class JaratAddShuttle extends javax.swing.JFrame {
                 // Hiba.setText("");
 
                 Statement stm = con.createStatement();
+                
+                String sql1 = "SELECT * FROM `shuttles` WHERE shipName LIKE '" + sN + "'";
+            ResultSet rs = stm.executeQuery(sql1);
+            if (rs.next()) {
+                JOptionPane.showMessageDialog(this, "Ship already exists!");
+            }else{
+                
                 String sql = "INSERT INTO `shuttles` (`id`, `manufacturer`,`shipName`, `maxFuel`, `eSeats`, `bSeats`, `fSeats`) VALUES (NULL, '" + mf + "','" + sN + "', '" + maxFu + "', '" + es + "', '" + bs + "', '" + fs + "')";
                 stm.executeUpdate(sql);
                 JOptionPane.showMessageDialog(this, "Uploaded system succesfully");
@@ -832,7 +839,7 @@ public class JaratAddShuttle extends javax.swing.JFrame {
                 ES_Field.setText("");
                 BS_Field.setText("");
                 FCS_Field.setText("");
-            }
+            }}
 
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
@@ -1004,11 +1011,17 @@ public class JaratAddShuttle extends javax.swing.JFrame {
             String fss = FSS1.getText();
 
             Statement stm = con.createStatement();
+            
+            String sql1 = "SELECT * FROM `systems` WHERE systemName='" + system + "'";
+            ResultSet rs = stm.executeQuery(sql1);
+            if (rs.next()) {
+                JOptionPane.showMessageDialog(this, "System already exists!");
+            }else{
             String sql = "UPDATE `systems` SET `systemName` = '" + system.replaceAll("[']", "╗") + "', `starportName` = '" + starport + "', `solDistance` = '" + dfs + "', `numOfBodies` = '" + fss + "' WHERE `systems`.`id` = " + replaceId + "";
             stm.executeUpdate(sql);
             JOptionPane.showMessageDialog(this, "Upload succesfull!");
             systemListDelete();
-
+            }
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {

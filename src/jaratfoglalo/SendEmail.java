@@ -17,6 +17,7 @@ import java.util.Properties;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -136,7 +137,9 @@ public class SendEmail extends javax.swing.JFrame {
     public static String changePassFor;
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //https://www.youtube.com/watch?v=A7HAB5whD6I&ab_channel=GenuineCoder
+        setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
         try {
+            
             int generatePass = (int) (Math.random() * 99999) + 10000;
             newPass = String.valueOf(generatePass);
             sendTo = jTextField1.getText();
@@ -146,11 +149,12 @@ public class SendEmail extends javax.swing.JFrame {
             Statement stm = con.createStatement();
             String sql = "SELECT `email`,`userfield` FROM users WHERE email LIKE '" + sendTo + "'";
             ResultSet rs = stm.executeQuery(sql);
-
+            
             while (rs.next()) {
                 mailTo = rs.getString("email");
                 changePassFor = rs.getString("userfield");
             }
+            
 
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(JaratLogin.class.getName()).log(Level.SEVERE, null, ex);
@@ -159,7 +163,6 @@ public class SendEmail extends javax.swing.JFrame {
         }
 
         try {
-
             JavaMailUtil.sendMail(mailTo);
         } catch (Exception ex) {
             Logger.getLogger(SendEmail.class.getName()).log(Level.SEVERE, null, ex);
@@ -182,7 +185,7 @@ public class SendEmail extends javax.swing.JFrame {
         jc.setLocationRelativeTo(null);
         jc.show();
         dispose();
-
+        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
